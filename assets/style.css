@@ -564,16 +564,14 @@ body {
 .action-buttons {
   display: flex;
   align-items: stretch;
+  /* Figma (node 26975:82095, the corrected/final version superseding
+     26973:80602's bled variant): 3 fixed 96px content-sized cards +
+     the 40px icon-only button sit inside the normal 343px content
+     width via justify-content:space-between — no edge bleed. */
   justify-content: space-between;
-  /* Figma bleeds this row 13.5px past the screen edge on each side
-     (wider than the normal 16px content margin) so 3 fixed 102px
-     content-sized cards + the 40px icon-only button fit with 8px
-     gaps via justify-between, instead of stretching to fill 343px. */
-  margin: 0 -13.5px;
-  padding: 0 16px;
 }
 .action-card {
-  flex: 0 0 102px;
+  flex: 0 0 96px;
   background: var(--color-surface-high-initial);
   border: none;
   border-radius: var(--core-border-radius-12);
@@ -589,7 +587,7 @@ body {
   font-family: inherit;
 }
 .action-card__label {
-  width: 78px;
+  max-width: 100%;
 }
 .action-card--icon-only {
   flex: 0 0 40px;
