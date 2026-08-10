@@ -244,6 +244,39 @@
           <line x1="12" y1="7.5" x2="12" y2="9" />
           <line x1="12" y1="17.25" x2="12" y2="18.5" />
         </symbol>
+        <symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="20" y1="12" x2="4" y2="12" />
+          <polyline points="10.5 5.5 4 12 10.5 18.5" />
+        </symbol>
+        <symbol id="i-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3" />
+          <path d="M19.4 13.5a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.04 1.56V19.5a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.04-1.56 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.56-1.04H4.5a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.56-1.04 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34H10.5a1.7 1.7 0 0 0 1.04-1.56V4.5a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1.04 1.56 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87V10.5a1.7 1.7 0 0 0 1.56 1.04h.15a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.56 1.04Z" />
+        </symbol>
+        <symbol id="i-chart-bar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="19" x2="5" y2="13" />
+          <line x1="12" y1="19" x2="12" y2="7" />
+          <line x1="19" y1="19" x2="19" y2="10" />
+          <line x1="3" y1="19" x2="21" y2="19" />
+        </symbol>
+        <symbol id="i-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9" />
+          <polyline points="8 12.5 10.8 15.2 16 9.5" />
+        </symbol>
+        <symbol id="i-warning-triangle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.6 4.4 2.9 18a2 2 0 0 0 1.75 3h14.7a2 2 0 0 0 1.75-3l-7.7-13.6a2 2 0 0 0-3.5 0Z" />
+          <line x1="12" y1="9.5" x2="12" y2="13.5" />
+          <circle cx="12" cy="16.5" r="0.15" fill="currentColor" stroke="currentColor" stroke-width="1.6" />
+        </symbol>
+        <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3.5" y="5" width="17" height="15.5" rx="2" />
+          <line x1="3.5" y1="9.5" x2="20.5" y2="9.5" />
+          <line x1="8" y1="3" x2="8" y2="6.5" />
+          <line x1="16" y1="3" x2="16" y2="6.5" />
+        </symbol>
+        <symbol id="i-sparkle" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+          <path d="M12 2c.6 3.6 2.4 5.4 6 6-3.6.6-5.4 2.4-6 6-.6-3.6-2.4-5.4-6-6 3.6-.6 5.4-2.4 6-6Z" />
+          <path d="M19 15c.3 1.8 1.2 2.7 3 3-1.8.3-2.7 1.2-3 3-.3-1.8-1.2-2.7-3-3 1.8-.3 2.7-1.2 3-3Z" />
+        </symbol>
         <symbol id="i-wifi" viewBox="0 0 16 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <path d="M1 5a11 11 0 0 1 14 0" />
           <path d="M3.5 8a7 7 0 0 1 9 0" />
@@ -306,7 +339,7 @@
                   <svg class="icon" width="24" height="24"><use href="#i-chat" /></svg>
                 </span>
               </button>
-              <button class="icon-btn" aria-label="Notifications">
+              <button class="icon-btn" id="notif-open" aria-label="Notifications">
                 <span class="glass-circle">
                   <span class="glass-circle__fill" aria-hidden="true"></span>
                   <span class="glass-circle__effect" aria-hidden="true"></span>
@@ -659,6 +692,364 @@
             <button class="btn-primary ts-button-l" id="qa-save">Save</button>
           </div>
         </div>
+
+        <!-- Notifications center -->
+        <div class="app-screen" id="notif-screen" aria-hidden="true">
+          <div class="app-screen__topbar">
+            <button class="icon-btn" id="notif-back" aria-label="Back">
+              <svg class="icon" width="24" height="24"><use href="#i-arrow-left" /></svg>
+            </button>
+            <h1 class="app-screen__title ts-title-s-bold">Notifications</h1>
+            <div class="app-screen__actions">
+              <button class="icon-btn" aria-label="Search notifications">
+                <svg class="icon" width="24" height="24"><use href="#i-search" /></svg>
+              </button>
+              <button class="icon-btn" id="notif-settings-open" aria-label="Notification settings">
+                <svg class="icon" width="24" height="24"><use href="#i-settings" /></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="notif-filters" role="tablist" aria-label="Filter notifications">
+            <button class="notif-filter notif-filter--active" data-filter="all" role="tab" aria-selected="true">All</button>
+            <button class="notif-filter" data-filter="action" role="tab" aria-selected="false">Action required</button>
+            <button class="notif-filter" data-filter="offers" role="tab" aria-selected="false">Offers</button>
+            <button class="notif-filter" data-filter="money" role="tab" aria-selected="false">Money and transactions</button>
+          </div>
+
+          <div class="app-screen__scroll">
+            <section class="notif-group" data-group>
+              <h2 class="notif-group__label ts-label-m-medium">Today</h2>
+
+              <article class="notif-card notif-card--unread" data-category="money action">
+                <span class="notif-card__icon" style="--bg: var(--color-surface-warning-initial)">
+                  <svg class="icon" width="20" height="20"><use href="#i-bulb" /></svg>
+                </span>
+                <div class="notif-card__body">
+                  <div class="notif-card__row">
+                    <span class="notif-card__title ts-title-xs-bold">Upcoming bill reminder</span>
+                    <span class="notif-card__time ts-label-s-regular">5m</span>
+                  </div>
+                  <p class="notif-card__text ts-body-s-regular">109.00 GEL, Tbilisi Energy, ID:1312663908</p>
+                  <button class="notif-pill ts-button-s">Pay Bill</button>
+                </div>
+              </article>
+
+              <article class="notif-card notif-card--unread" data-category="offers">
+                <span class="notif-card__icon" style="--bg: #8679f9">
+                  <svg class="icon" width="20" height="20"><use href="#i-heart" /></svg>
+                </span>
+                <div class="notif-card__body">
+                  <div class="notif-card__row">
+                    <span class="notif-card__title ts-title-xs-bold">Quick Balance View</span>
+                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  </div>
+                  <span class="badge badge--tint ts-button-s notif-card__tag">Offers for you</span>
+                  <p class="notif-card__text ts-body-s-regular">You often check your balance, try enabling quick balance view on your home&hellip;</p>
+                </div>
+                <span class="notif-card__photo photo-ph photo-ph--violet" aria-hidden="true"></span>
+              </article>
+
+              <article class="notif-card notif-card--unread" data-category="money action">
+                <span class="notif-card__icon" style="--bg: var(--color-surface-warning-initial)">
+                  <svg class="icon" width="20" height="20"><use href="#i-cash" /></svg>
+                </span>
+                <div class="notif-card__body">
+                  <div class="notif-card__row">
+                    <span class="notif-card__title ts-title-xs-bold">Loan payment reminder</span>
+                    <span class="notif-card__time ts-label-s-regular">12m</span>
+                  </div>
+                  <p class="notif-card__text ts-body-s-regular">109.00 GEL, Tbilisi Energy, ID:1312663908</p>
+                  <button class="notif-pill ts-button-s">Pay Loan</button>
+                </div>
+              </article>
+            </section>
+
+            <section class="notif-group" data-group>
+              <h2 class="notif-group__label ts-label-m-medium">Yesterday</h2>
+
+              <article class="notif-card" data-category="money">
+                <span class="notif-card__icon" style="--bg: var(--color-surface-primary-initial)">
+                  <svg class="icon" width="20" height="20"><use href="#i-chart-bar" /></svg>
+                </span>
+                <div class="notif-card__body">
+                  <div class="notif-card__row">
+                    <span class="notif-card__title ts-title-xs-bold">Weekly summary is ready!</span>
+                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  </div>
+                  <p class="notif-card__text ts-body-s-regular">June 1-7, 2026</p>
+                  <button class="notif-pill ts-button-s">See Summary</button>
+                </div>
+              </article>
+
+              <article class="notif-card" data-category="action">
+                <span class="notif-card__icon" style="--bg: var(--color-surface-warning-initial)">
+                  <svg class="icon" width="20" height="20"><use href="#i-bulb" /></svg>
+                </span>
+                <div class="notif-card__body">
+                  <div class="notif-card__row">
+                    <span class="notif-card__title ts-title-xs-bold">KYC verification required</span>
+                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  </div>
+                  <p class="notif-card__text ts-body-s-regular">This is a KYC-related notification. Some features are currently unavailable because your KYC is incomplete.</p>
+                  <button class="notif-pill ts-button-s">Update KYC</button>
+                </div>
+              </article>
+
+              <article class="notif-card" data-category="money">
+                <span class="notif-card__icon notif-card__icon--plain">
+                  <svg class="icon" width="20" height="20"><use href="#i-check-circle" /></svg>
+                </span>
+                <div class="notif-card__body">
+                  <div class="notif-card__row">
+                    <span class="notif-card__title ts-title-xs-bold">Credit card activated</span>
+                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  </div>
+                  <p class="notif-card__text ts-body-s-regular">Your credit card is now active. You can start making purchases immediately.</p>
+                </div>
+              </article>
+
+              <article class="notif-card" data-category="general">
+                <span class="notif-card__icon notif-card__icon--plain">
+                  <svg class="icon" width="20" height="20"><use href="#i-settings" /></svg>
+                </span>
+                <div class="notif-card__body">
+                  <div class="notif-card__row">
+                    <span class="notif-card__title ts-title-xs-bold">System maintenance</span>
+                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  </div>
+                  <p class="notif-card__text ts-body-s-regular">Tonight from 02:00&ndash;04:00. Some services may be temporarily unavailable</p>
+                </div>
+              </article>
+
+              <article class="notif-card" data-category="offers">
+                <span class="notif-card__icon" style="--bg: #f181c4">
+                  <svg class="icon" width="20" height="20"><use href="#i-sparkle" /></svg>
+                </span>
+                <div class="notif-card__body">
+                  <div class="notif-card__row">
+                    <span class="notif-card__title ts-title-xs-bold">Dear Mariam, Happy Birthday!</span>
+                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  </div>
+                  <p class="notif-card__text ts-body-s-regular">May the year ahead bring you health, happiness and continued success</p>
+                </div>
+              </article>
+            </section>
+
+            <section class="notif-group" data-group>
+              <h2 class="notif-group__label ts-label-m-medium">30 June</h2>
+
+              <article class="notif-card" data-category="offers">
+                <span class="notif-card__icon" style="--bg: #8679f9">
+                  <svg class="icon" width="20" height="20"><use href="#i-heart" /></svg>
+                </span>
+                <div class="notif-card__body">
+                  <div class="notif-card__row">
+                    <span class="notif-card__title ts-title-xs-bold">Concept Airport Lounge</span>
+                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  </div>
+                  <span class="badge badge--tint ts-button-s notif-card__tag">Offers for you</span>
+                  <p class="notif-card__text ts-body-s-regular">Get away from terminal crowds and enjoy comfortable seating in a co&hellip;</p>
+                  <button class="notif-pill ts-button-s">Explore More</button>
+                </div>
+                <span class="notif-card__photo photo-ph photo-ph--lounge" aria-hidden="true"></span>
+              </article>
+
+              <article class="notif-card" data-category="action">
+                <span class="notif-card__icon" style="--bg: var(--color-surface-warning-initial)">
+                  <svg class="icon" width="20" height="20"><use href="#i-warning-triangle" /></svg>
+                </span>
+                <div class="notif-card__body">
+                  <div class="notif-card__row">
+                    <span class="notif-card__title ts-title-xs-bold">New sign-in detected</span>
+                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  </div>
+                  <p class="notif-card__text ts-body-s-regular">Your account was just accessed from a new device in Tbilisi, Georgia.</p>
+                  <div class="notif-card__actions" data-signin-actions>
+                    <button class="notif-link ts-button-s" data-signin="allow">Yes, It's Me</button>
+                    <button class="notif-link notif-link--soft ts-button-s" data-signin="deny">No, Don't Allow</button>
+                  </div>
+                  <p class="notif-card__status ts-label-s-regular" data-signin-status hidden></p>
+                </div>
+              </article>
+
+              <article class="notif-card" data-category="action">
+                <span class="notif-card__icon" style="--bg: var(--color-surface-warning-initial)">
+                  <svg class="icon" width="20" height="20"><use href="#i-warning-triangle" /></svg>
+                </span>
+                <div class="notif-card__body">
+                  <div class="notif-card__row">
+                    <span class="notif-card__title ts-title-xs-bold">New sign-in detected</span>
+                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  </div>
+                  <p class="notif-card__text ts-body-s-regular">Your account was just accessed from a new device in Tbilisi, Georgia.</p>
+                  <p class="notif-card__status ts-label-s-regular">You confirmed it was you</p>
+                </div>
+              </article>
+
+              <article class="notif-card" data-category="action">
+                <span class="notif-card__icon" style="--bg: var(--color-surface-warning-initial)">
+                  <svg class="icon" width="20" height="20"><use href="#i-warning-triangle" /></svg>
+                </span>
+                <div class="notif-card__body">
+                  <div class="notif-card__row">
+                    <span class="notif-card__title ts-title-xs-bold">New sign-in detected</span>
+                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  </div>
+                  <p class="notif-card__text ts-body-s-regular">Your account was just accessed from a new device in Tbilisi, Georgia.</p>
+                  <p class="notif-card__status notif-card__status--negative ts-label-s-regular">Authorization declined</p>
+                </div>
+              </article>
+
+              <article class="notif-card" data-category="general">
+                <span class="notif-card__icon notif-card__icon--plain">
+                  <svg class="icon" width="20" height="20"><use href="#i-calendar" /></svg>
+                </span>
+                <div class="notif-card__body">
+                  <div class="notif-card__row">
+                    <span class="notif-card__title ts-title-xs-bold">Holiday banking hours</span>
+                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  </div>
+                  <p class="notif-card__text ts-body-s-regular">Due to the public holiday, branch operating hours will be adjusted on June 19, 2026. Check details in the app.</p>
+                </div>
+              </article>
+
+              <article class="notif-card" data-category="general">
+                <span class="notif-card__icon notif-card__icon--plain">
+                  <svg class="icon" width="20" height="20"><use href="#i-sync" /></svg>
+                </span>
+                <div class="notif-card__body">
+                  <div class="notif-card__row">
+                    <span class="notif-card__title ts-title-xs-bold">App update available</span>
+                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  </div>
+                  <p class="notif-card__text ts-body-s-regular">A new version of the app is available. Update now to access the latest features and improvements.</p>
+                  <button class="notif-pill ts-button-s">Update App</button>
+                </div>
+              </article>
+            </section>
+
+            <p class="notif-empty ts-body-s-regular" data-empty hidden>No notifications in this category</p>
+          </div>
+        </div>
+
+        <!-- Notification settings -->
+        <div class="app-screen" id="notif-settings-screen" aria-hidden="true">
+          <div class="app-screen__topbar">
+            <button class="icon-btn" id="notif-settings-back" aria-label="Back">
+              <svg class="icon" width="24" height="24"><use href="#i-arrow-left" /></svg>
+            </button>
+            <h1 class="app-screen__title ts-title-s-bold">Settings</h1>
+            <div class="app-screen__actions"></div>
+          </div>
+
+          <div class="app-screen__scroll">
+            <div class="settings-section">
+              <span class="settings-section__title ts-label-m-medium">How you want to receive notifications</span>
+              <div class="settings-group" role="radiogroup" aria-label="Delivery channel">
+                <label class="settings-row">
+                  <span class="settings-row__icon"><svg class="icon" width="18" height="18"><use href="#i-arrow-up-right" /></svg></span>
+                  <span class="settings-row__text">
+                    <span class="settings-row__title ts-label-m-medium">Push notifications</span>
+                    <span class="settings-row__sub ts-body-xs-regular">All notifications, except utility and overdraft payments</span>
+                  </span>
+                  <input type="radio" name="notif-channel" class="settings-radio" checked />
+                </label>
+                <label class="settings-row">
+                  <span class="settings-row__icon"><svg class="icon" width="18" height="18"><use href="#i-phone" /></svg></span>
+                  <span class="settings-row__text">
+                    <span class="settings-row__title ts-label-m-medium">SMS</span>
+                    <span class="settings-row__sub ts-body-xs-regular">Mobile number: 555****69</span>
+                  </span>
+                  <input type="radio" name="notif-channel" class="settings-radio" />
+                </label>
+              </div>
+            </div>
+
+            <div class="settings-section">
+              <span class="settings-section__title ts-label-m-medium">Money and transactions</span>
+              <div class="settings-group">
+                <label class="settings-row">
+                  <span class="settings-row__icon"><svg class="icon" width="18" height="18"><use href="#i-card" /></svg></span>
+                  <span class="settings-row__text">
+                    <span class="settings-row__title ts-label-m-medium">Transfers and Payments</span>
+                    <span class="settings-row__sub ts-body-xs-regular">Push, In-app</span>
+                  </span>
+                  <input type="checkbox" class="settings-switch" checked />
+                </label>
+                <label class="settings-row">
+                  <span class="settings-row__icon"><svg class="icon" width="18" height="18"><use href="#i-bell" /></svg></span>
+                  <span class="settings-row__text">
+                    <span class="settings-row__title ts-label-m-medium">Bill and loan Reminders</span>
+                    <span class="settings-row__sub ts-body-xs-regular">Push, SMS, in-app</span>
+                  </span>
+                  <input type="checkbox" class="settings-switch" checked />
+                </label>
+              </div>
+            </div>
+
+            <div class="settings-section">
+              <span class="settings-section__title ts-label-m-medium">Insights and suggestions</span>
+              <div class="settings-group">
+                <label class="settings-row">
+                  <span class="settings-row__icon"><svg class="icon" width="18" height="18"><use href="#i-chart-bar" /></svg></span>
+                  <span class="settings-row__text">
+                    <span class="settings-row__title ts-label-m-medium">Spending summaries</span>
+                    <span class="settings-row__sub ts-body-xs-regular">Push, In-app</span>
+                  </span>
+                  <input type="checkbox" class="settings-switch" checked />
+                </label>
+                <label class="settings-row">
+                  <span class="settings-row__icon"><svg class="icon" width="18" height="18"><use href="#i-arrow-up-right" /></svg></span>
+                  <span class="settings-row__text">
+                    <span class="settings-row__title ts-label-m-medium">Transfer suggestions</span>
+                    <span class="settings-row__sub ts-body-xs-regular">Off</span>
+                  </span>
+                  <input type="checkbox" class="settings-switch" />
+                </label>
+              </div>
+            </div>
+
+            <div class="settings-section">
+              <span class="settings-section__title ts-label-m-medium">Offers and personal moments</span>
+              <div class="settings-group">
+                <label class="settings-row">
+                  <span class="settings-row__icon"><svg class="icon" width="18" height="18"><use href="#i-chart-bar" /></svg></span>
+                  <span class="settings-row__text">
+                    <span class="settings-row__title ts-label-m-medium">Product and feature offers</span>
+                    <span class="settings-row__sub ts-body-xs-regular">Push, In-app</span>
+                  </span>
+                  <input type="checkbox" class="settings-switch" checked />
+                </label>
+                <label class="settings-row">
+                  <span class="settings-row__icon"><svg class="icon" width="18" height="18"><use href="#i-sparkle" /></svg></span>
+                  <span class="settings-row__text">
+                    <span class="settings-row__title ts-label-m-medium">Birthdays and celebrations</span>
+                    <span class="settings-row__sub ts-body-xs-regular">Push, in-app</span>
+                  </span>
+                  <input type="checkbox" class="settings-switch" checked />
+                </label>
+              </div>
+            </div>
+
+            <div class="settings-section">
+              <span class="settings-section__title ts-label-m-medium">Security and account activity</span>
+              <div class="settings-group">
+                <div class="settings-row settings-row--locked">
+                  <span class="settings-row__icon"><svg class="icon" width="18" height="18"><use href="#i-shield" /></svg></span>
+                  <span class="settings-row__text">
+                    <span class="settings-row__title ts-label-m-medium">Sign-ins and security alerts</span>
+                    <span class="settings-row__sub ts-body-xs-regular">Always on, Can't be muted</span>
+                    <span class="settings-row__sub ts-body-xs-regular">It protects you</span>
+                  </span>
+                  <span class="settings-row__lock" aria-label="Locked">
+                    <svg class="icon" width="18" height="18"><use href="#i-shield" /></svg>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -976,6 +1367,89 @@
         homeListEl.addEventListener("pointercancel", handlePointerUp);
 
         renderAll();
+      })();
+
+      // ---------------------------------------------------------------
+      // Notifications center + settings screens
+      // ---------------------------------------------------------------
+      (() => {
+        const notifOpenBtn = document.getElementById("notif-open");
+        const notifScreen = document.getElementById("notif-screen");
+        const notifBackBtn = document.getElementById("notif-back");
+        const settingsOpenBtn = document.getElementById("notif-settings-open");
+        const settingsScreen = document.getElementById("notif-settings-screen");
+        const settingsBackBtn = document.getElementById("notif-settings-back");
+
+        function openScreen(screen) {
+          screen.classList.add("is-open");
+          screen.setAttribute("aria-hidden", "false");
+        }
+        function closeScreen(screen) {
+          screen.classList.remove("is-open");
+          screen.setAttribute("aria-hidden", "true");
+        }
+
+        notifOpenBtn.addEventListener("click", () => openScreen(notifScreen));
+        notifBackBtn.addEventListener("click", () => closeScreen(notifScreen));
+        settingsOpenBtn.addEventListener("click", () => openScreen(settingsScreen));
+        settingsBackBtn.addEventListener("click", () => closeScreen(settingsScreen));
+
+        // Filter pills: show only notification cards matching the chosen
+        // category, and hide any date group that ends up with none left.
+        const filters = notifScreen.querySelectorAll(".notif-filter");
+        const groups = notifScreen.querySelectorAll(".notif-group");
+        const emptyMsg = notifScreen.querySelector("[data-empty]");
+
+        filters.forEach((filter) => {
+          filter.addEventListener("click", () => {
+            filters.forEach((f) => {
+              f.classList.remove("notif-filter--active");
+              f.setAttribute("aria-selected", "false");
+            });
+            filter.classList.add("notif-filter--active");
+            filter.setAttribute("aria-selected", "true");
+
+            const wanted = filter.dataset.filter;
+            let anyVisible = false;
+            groups.forEach((group) => {
+              let groupHasVisible = false;
+              group.querySelectorAll(".notif-card").forEach((card) => {
+                const match = wanted === "all" || (card.dataset.category || "").split(" ").includes(wanted);
+                card.hidden = !match;
+                if (match) groupHasVisible = true;
+              });
+              group.hidden = !groupHasVisible;
+              if (groupHasVisible) anyVisible = true;
+            });
+            emptyMsg.hidden = anyVisible;
+          });
+        });
+
+        // "New sign-in detected" cards: Yes/No resolve into a status line.
+        notifScreen.querySelectorAll("[data-signin-actions]").forEach((actions) => {
+          actions.addEventListener("click", (e) => {
+            const btn = e.target.closest("[data-signin]");
+            if (!btn) return;
+            const card = actions.closest(".notif-card");
+            const status = card.querySelector("[data-signin-status]");
+            const allowed = btn.dataset.signin === "allow";
+            status.textContent = allowed ? "You confirmed it was you" : "Authorization declined";
+            status.classList.toggle("notif-card__status--negative", !allowed);
+            status.hidden = false;
+            actions.hidden = true;
+          });
+        });
+
+        // Settings screen: radio rows are purely local state (toggle switches
+        // need no JS — a checked checkbox already renders as "on" via CSS).
+        settingsScreen.querySelectorAll(".settings-radio").forEach((radio) => {
+          radio.addEventListener("change", () => {
+            const group = radio.closest(".settings-group");
+            group.querySelectorAll(".settings-radio").forEach((r) => {
+              r.closest(".settings-row").classList.toggle("is-selected", r.checked);
+            });
+          });
+        });
       })();
     </script>
   </body>
