@@ -696,15 +696,15 @@
         <!-- Notifications center -->
         <div class="app-screen" id="notif-screen" aria-hidden="true">
           <div class="app-screen__topbar">
-            <button class="icon-btn" id="notif-back" aria-label="Back">
+            <button class="glass-pill glass-pill--icon" id="notif-back" aria-label="Back">
               <svg class="icon" width="24" height="24"><use href="#i-arrow-left" /></svg>
             </button>
             <h1 class="app-screen__title ts-title-s-bold">Notifications</h1>
-            <div class="app-screen__actions">
-              <button class="icon-btn" aria-label="Search notifications">
+            <div class="glass-pill glass-pill--group">
+              <button class="glass-pill__btn" aria-label="Search notifications">
                 <svg class="icon" width="24" height="24"><use href="#i-search" /></svg>
               </button>
-              <button class="icon-btn" id="notif-settings-open" aria-label="Notification settings">
+              <button class="glass-pill__btn" id="notif-settings-open" aria-label="Notification settings">
                 <svg class="icon" width="24" height="24"><use href="#i-settings" /></svg>
               </button>
             </div>
@@ -712,9 +712,12 @@
 
           <div class="notif-filters" role="tablist" aria-label="Filter notifications">
             <button class="notif-filter notif-filter--active" data-filter="all" role="tab" aria-selected="true">All</button>
-            <button class="notif-filter" data-filter="action" role="tab" aria-selected="false">Action required</button>
-            <button class="notif-filter" data-filter="offers" role="tab" aria-selected="false">Offers</button>
-            <button class="notif-filter" data-filter="money" role="tab" aria-selected="false">Money and transactions</button>
+            <button class="notif-filter" data-filter="money" role="tab" aria-selected="false">Money and transactions<svg class="icon notif-filter__close" width="12" height="12"><use href="#i-close" /></svg></button>
+            <button class="notif-filter" data-filter="action" role="tab" aria-selected="false">Action required<svg class="icon notif-filter__close" width="12" height="12"><use href="#i-close" /></svg></button>
+            <button class="notif-filter" data-filter="info" role="tab" aria-selected="false">Info and updates<svg class="icon notif-filter__close" width="12" height="12"><use href="#i-close" /></svg></button>
+            <button class="notif-filter" data-filter="offers" role="tab" aria-selected="false">Offers<svg class="icon notif-filter__close" width="12" height="12"><use href="#i-close" /></svg></button>
+            <button class="notif-filter" data-filter="insights" role="tab" aria-selected="false">Insights &amp; suggestions<svg class="icon notif-filter__close" width="12" height="12"><use href="#i-close" /></svg></button>
+            <button class="notif-filter" data-filter="personal" role="tab" aria-selected="false">Personal moments<svg class="icon notif-filter__close" width="12" height="12"><use href="#i-close" /></svg></button>
           </div>
 
           <div class="app-screen__scroll">
@@ -722,45 +725,55 @@
               <h2 class="notif-group__label ts-label-m-medium">Today</h2>
 
               <article class="notif-card notif-card--unread" data-category="money action">
-                <span class="notif-card__icon" style="--bg: var(--color-surface-warning-initial)">
+                <span class="notif-card__icon" style="--bg: #e6c230">
                   <svg class="icon" width="20" height="20"><use href="#i-bulb" /></svg>
                 </span>
                 <div class="notif-card__body">
-                  <div class="notif-card__row">
-                    <span class="notif-card__title ts-title-xs-bold">Upcoming bill reminder</span>
-                    <span class="notif-card__time ts-label-s-regular">5m</span>
+                  <div class="notif-card__text-block">
+                    <span class="notif-card__title ts-label-m-medium">Upcoming bill reminder</span>
+                    <p class="notif-card__text ts-body-xs-regular">109.00 GEL, Tbilisi Energy, ID:1312663908</p>
                   </div>
-                  <p class="notif-card__text ts-body-s-regular">109.00 GEL, Tbilisi Energy, ID:1312663908</p>
-                  <button class="notif-pill ts-button-s">Pay Bill</button>
+                  <div class="notif-card__actions">
+                    <button class="notif-pill ts-label-s-medium">Pay Bill</button>
+                  </div>
+                </div>
+                <div class="notif-card__date">
+                  <span class="notif-card__time ts-body-xs-regular">5m</span>
                 </div>
               </article>
 
-              <article class="notif-card notif-card--unread" data-category="offers">
-                <span class="notif-card__icon" style="--bg: #8679f9">
+              <article class="notif-card notif-card--unread" data-category="offers insights">
+                <span class="notif-card__icon" style="--bg: #a369ff">
                   <svg class="icon" width="20" height="20"><use href="#i-heart" /></svg>
                 </span>
                 <div class="notif-card__body">
-                  <div class="notif-card__row">
-                    <span class="notif-card__title ts-title-xs-bold">Quick Balance View</span>
-                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  <div class="notif-card__text-block">
+                    <span class="notif-card__title ts-label-m-medium">Quick Balance&nbsp; View</span>
+                    <span class="notif-card__tag ts-label-s-regular">Offers for you</span>
+                    <p class="notif-card__text ts-body-xs-regular">You often check your balance, try enabling quick balance view on your home screen for faster access.</p>
                   </div>
-                  <span class="badge badge--tint ts-button-s notif-card__tag">Offers for you</span>
-                  <p class="notif-card__text ts-body-s-regular">You often check your balance, try enabling quick balance view on your home&hellip;</p>
                 </div>
-                <span class="notif-card__photo photo-ph photo-ph--violet" aria-hidden="true"></span>
+                <div class="notif-card__date">
+                  <span class="notif-card__time ts-body-xs-regular">09:45</span>
+                  <span class="notif-card__photo photo-ph photo-ph--violet" aria-hidden="true"></span>
+                </div>
               </article>
 
               <article class="notif-card notif-card--unread" data-category="money action">
-                <span class="notif-card__icon" style="--bg: var(--color-surface-warning-initial)">
+                <span class="notif-card__icon" style="--bg: #e6c230">
                   <svg class="icon" width="20" height="20"><use href="#i-cash" /></svg>
                 </span>
                 <div class="notif-card__body">
-                  <div class="notif-card__row">
-                    <span class="notif-card__title ts-title-xs-bold">Loan payment reminder</span>
-                    <span class="notif-card__time ts-label-s-regular">12m</span>
+                  <div class="notif-card__text-block">
+                    <span class="notif-card__title ts-label-m-medium">Loan payment reminder</span>
+                    <p class="notif-card__text ts-body-xs-regular">109.00 GEL, Tbilisi Energy, ID:1312663908</p>
                   </div>
-                  <p class="notif-card__text ts-body-s-regular">109.00 GEL, Tbilisi Energy, ID:1312663908</p>
-                  <button class="notif-pill ts-button-s">Pay Loan</button>
+                  <div class="notif-card__actions">
+                    <button class="notif-pill ts-label-s-medium">Pay Loan</button>
+                  </div>
+                </div>
+                <div class="notif-card__date">
+                  <span class="notif-card__time ts-body-xs-regular">12m</span>
                 </div>
               </article>
             </section>
@@ -768,70 +781,84 @@
             <section class="notif-group" data-group>
               <h2 class="notif-group__label ts-label-m-medium">Yesterday</h2>
 
-              <article class="notif-card" data-category="money">
-                <span class="notif-card__icon" style="--bg: var(--color-surface-primary-initial)">
+              <article class="notif-card" data-category="money insights">
+                <span class="notif-card__icon" style="--bg: #00adee">
                   <svg class="icon" width="20" height="20"><use href="#i-chart-bar" /></svg>
                 </span>
                 <div class="notif-card__body">
-                  <div class="notif-card__row">
-                    <span class="notif-card__title ts-title-xs-bold">Weekly summary is ready!</span>
-                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  <div class="notif-card__text-block">
+                    <span class="notif-card__title ts-label-m-medium">Weekly summary is ready!</span>
+                    <p class="notif-card__text ts-body-xs-regular">June 1-7, 2026</p>
                   </div>
-                  <p class="notif-card__text ts-body-s-regular">June 1-7, 2026</p>
-                  <button class="notif-pill ts-button-s">See Summary</button>
+                  <div class="notif-card__actions">
+                    <button class="notif-pill ts-label-s-medium">See Summary</button>
+                  </div>
+                </div>
+                <div class="notif-card__date">
+                  <span class="notif-card__time ts-body-xs-regular">09:45</span>
                 </div>
               </article>
 
-              <article class="notif-card" data-category="action">
-                <span class="notif-card__icon" style="--bg: var(--color-surface-warning-initial)">
+              <article class="notif-card" data-category="action info">
+                <span class="notif-card__icon" style="--bg: #e6c230">
                   <svg class="icon" width="20" height="20"><use href="#i-bulb" /></svg>
                 </span>
                 <div class="notif-card__body">
-                  <div class="notif-card__row">
-                    <span class="notif-card__title ts-title-xs-bold">KYC verification required</span>
-                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  <div class="notif-card__text-block">
+                    <span class="notif-card__title ts-label-m-medium">KYC verification required</span>
+                    <p class="notif-card__text ts-body-xs-regular">This is a KYC-related notification. Some features are currently unavailable because your KYC is incomplete.</p>
                   </div>
-                  <p class="notif-card__text ts-body-s-regular">This is a KYC-related notification. Some features are currently unavailable because your KYC is incomplete.</p>
-                  <button class="notif-pill ts-button-s">Update KYC</button>
+                  <div class="notif-card__actions">
+                    <button class="notif-pill ts-label-s-medium">Update KYC</button>
+                  </div>
+                </div>
+                <div class="notif-card__date">
+                  <span class="notif-card__time ts-body-xs-regular">09:45</span>
                 </div>
               </article>
 
-              <article class="notif-card" data-category="money">
+              <article class="notif-card" data-category="money info">
                 <span class="notif-card__icon notif-card__icon--plain">
                   <svg class="icon" width="20" height="20"><use href="#i-check-circle" /></svg>
                 </span>
                 <div class="notif-card__body">
-                  <div class="notif-card__row">
-                    <span class="notif-card__title ts-title-xs-bold">Credit card activated</span>
-                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  <div class="notif-card__text-block">
+                    <span class="notif-card__title ts-label-m-medium">Credit card activated</span>
+                    <p class="notif-card__text ts-body-xs-regular">Your credit card is now active. You can start making purchases immediately.</p>
                   </div>
-                  <p class="notif-card__text ts-body-s-regular">Your credit card is now active. You can start making purchases immediately.</p>
+                </div>
+                <div class="notif-card__date">
+                  <span class="notif-card__time ts-body-xs-regular">09:45</span>
                 </div>
               </article>
 
-              <article class="notif-card" data-category="general">
+              <article class="notif-card" data-category="info">
                 <span class="notif-card__icon notif-card__icon--plain">
                   <svg class="icon" width="20" height="20"><use href="#i-settings" /></svg>
                 </span>
                 <div class="notif-card__body">
-                  <div class="notif-card__row">
-                    <span class="notif-card__title ts-title-xs-bold">System maintenance</span>
-                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  <div class="notif-card__text-block">
+                    <span class="notif-card__title ts-label-m-medium">System maintenance</span>
+                    <p class="notif-card__text ts-body-xs-regular">Tonight from 02:00&ndash;04:00. Some services may be temporarily unavailable</p>
                   </div>
-                  <p class="notif-card__text ts-body-s-regular">Tonight from 02:00&ndash;04:00. Some services may be temporarily unavailable</p>
+                </div>
+                <div class="notif-card__date">
+                  <span class="notif-card__time ts-body-xs-regular">09:45</span>
                 </div>
               </article>
 
-              <article class="notif-card" data-category="offers">
+              <article class="notif-card" data-category="personal">
                 <span class="notif-card__icon" style="--bg: #f181c4">
                   <svg class="icon" width="20" height="20"><use href="#i-sparkle" /></svg>
                 </span>
                 <div class="notif-card__body">
-                  <div class="notif-card__row">
-                    <span class="notif-card__title ts-title-xs-bold">Dear Mariam, Happy Birthday!</span>
-                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  <div class="notif-card__text-block">
+                    <span class="notif-card__title ts-label-m-medium">Dear Mariam, Happy Birthday!</span>
+                    <p class="notif-card__text ts-body-xs-regular">May the year ahead bring you health, happiness and continued success</p>
                   </div>
-                  <p class="notif-card__text ts-body-s-regular">May the year ahead bring you health, happiness and continued success</p>
+                </div>
+                <div class="notif-card__date">
+                  <span class="notif-card__time ts-body-xs-regular">09:45</span>
                 </div>
               </article>
             </section>
@@ -840,96 +867,116 @@
               <h2 class="notif-group__label ts-label-m-medium">30 June</h2>
 
               <article class="notif-card" data-category="offers">
-                <span class="notif-card__icon" style="--bg: #8679f9">
+                <span class="notif-card__icon" style="--bg: #a369ff">
                   <svg class="icon" width="20" height="20"><use href="#i-heart" /></svg>
                 </span>
                 <div class="notif-card__body">
-                  <div class="notif-card__row">
-                    <span class="notif-card__title ts-title-xs-bold">Concept Airport Lounge</span>
-                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  <div class="notif-card__text-block">
+                    <span class="notif-card__title ts-label-m-medium">Concept Airport Lounge</span>
+                    <span class="notif-card__tag ts-label-s-regular">Offers for you</span>
+                    <p class="notif-card__text ts-body-xs-regular">Get away from terminal crowds and enjoy comfortable seating in a conducive atmosphere for relaxation and productivity</p>
                   </div>
-                  <span class="badge badge--tint ts-button-s notif-card__tag">Offers for you</span>
-                  <p class="notif-card__text ts-body-s-regular">Get away from terminal crowds and enjoy comfortable seating in a co&hellip;</p>
-                  <button class="notif-pill ts-button-s">Explore More</button>
+                  <div class="notif-card__actions">
+                    <button class="notif-pill ts-label-s-medium">Explore More</button>
+                  </div>
                 </div>
-                <span class="notif-card__photo photo-ph photo-ph--lounge" aria-hidden="true"></span>
+                <div class="notif-card__date">
+                  <span class="notif-card__time ts-body-xs-regular">09:45</span>
+                  <span class="notif-card__photo photo-ph photo-ph--lounge" aria-hidden="true"></span>
+                </div>
               </article>
 
-              <article class="notif-card" data-category="action">
-                <span class="notif-card__icon" style="--bg: var(--color-surface-warning-initial)">
+              <article class="notif-card" data-category="action info">
+                <span class="notif-card__icon" style="--bg: #e6c230">
                   <svg class="icon" width="20" height="20"><use href="#i-warning-triangle" /></svg>
                 </span>
                 <div class="notif-card__body">
-                  <div class="notif-card__row">
-                    <span class="notif-card__title ts-title-xs-bold">New sign-in detected</span>
-                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  <div class="notif-card__text-block">
+                    <span class="notif-card__title ts-label-m-medium">New sign-in detected</span>
+                    <p class="notif-card__text ts-body-xs-regular">Your account was just accessed from a new device in Tbilisi, Georgia.</p>
                   </div>
-                  <p class="notif-card__text ts-body-s-regular">Your account was just accessed from a new device in Tbilisi, Georgia.</p>
                   <div class="notif-card__actions" data-signin-actions>
-                    <button class="notif-link ts-button-s" data-signin="allow">Yes, It's Me</button>
-                    <button class="notif-link notif-link--soft ts-button-s" data-signin="deny">No, Don't Allow</button>
+                    <button class="notif-pill ts-label-s-medium" data-signin="allow">Yes, It's Me</button>
+                    <button class="notif-pill notif-pill--plain ts-label-s-medium" data-signin="deny">No, Don't Allow</button>
                   </div>
-                  <p class="notif-card__status ts-label-s-regular" data-signin-status hidden></p>
+                  <p class="notif-card__status ts-body-xs-regular" data-signin-status hidden></p>
+                </div>
+                <div class="notif-card__date">
+                  <span class="notif-card__time ts-body-xs-regular">09:45</span>
                 </div>
               </article>
 
-              <article class="notif-card" data-category="action">
-                <span class="notif-card__icon" style="--bg: var(--color-surface-warning-initial)">
+              <article class="notif-card" data-category="action info">
+                <span class="notif-card__icon" style="--bg: #e6c230">
                   <svg class="icon" width="20" height="20"><use href="#i-warning-triangle" /></svg>
                 </span>
                 <div class="notif-card__body">
-                  <div class="notif-card__row">
-                    <span class="notif-card__title ts-title-xs-bold">New sign-in detected</span>
-                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  <div class="notif-card__text-block">
+                    <span class="notif-card__title ts-label-m-medium">New sign-in detected</span>
+                    <p class="notif-card__text ts-body-xs-regular">Your account was just accessed from a new device in Tbilisi, Georgia.</p>
                   </div>
-                  <p class="notif-card__text ts-body-s-regular">Your account was just accessed from a new device in Tbilisi, Georgia.</p>
-                  <p class="notif-card__status ts-label-s-regular">You confirmed it was you</p>
+                  <div class="notif-card__actions">
+                    <p class="notif-card__status ts-body-xs-regular">You confirmed it was you</p>
+                  </div>
+                </div>
+                <div class="notif-card__date">
+                  <span class="notif-card__time ts-body-xs-regular">09:45</span>
                 </div>
               </article>
 
-              <article class="notif-card" data-category="action">
-                <span class="notif-card__icon" style="--bg: var(--color-surface-warning-initial)">
+              <article class="notif-card" data-category="action info">
+                <span class="notif-card__icon" style="--bg: #e6c230">
                   <svg class="icon" width="20" height="20"><use href="#i-warning-triangle" /></svg>
                 </span>
                 <div class="notif-card__body">
-                  <div class="notif-card__row">
-                    <span class="notif-card__title ts-title-xs-bold">New sign-in detected</span>
-                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  <div class="notif-card__text-block">
+                    <span class="notif-card__title ts-label-m-medium">New sign-in detected</span>
+                    <p class="notif-card__text ts-body-xs-regular">Your account was just accessed from a new device in Tbilisi, Georgia.</p>
                   </div>
-                  <p class="notif-card__text ts-body-s-regular">Your account was just accessed from a new device in Tbilisi, Georgia.</p>
-                  <p class="notif-card__status notif-card__status--negative ts-label-s-regular">Authorization declined</p>
+                  <div class="notif-card__actions">
+                    <p class="notif-card__status notif-card__status--negative ts-body-xs-regular">Authorization declined</p>
+                  </div>
+                </div>
+                <div class="notif-card__date">
+                  <span class="notif-card__time ts-body-xs-regular">09:45</span>
                 </div>
               </article>
 
-              <article class="notif-card" data-category="general">
+              <article class="notif-card" data-category="info">
                 <span class="notif-card__icon notif-card__icon--plain">
                   <svg class="icon" width="20" height="20"><use href="#i-calendar" /></svg>
                 </span>
                 <div class="notif-card__body">
-                  <div class="notif-card__row">
-                    <span class="notif-card__title ts-title-xs-bold">Holiday banking hours</span>
-                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  <div class="notif-card__text-block">
+                    <span class="notif-card__title ts-label-m-medium">Holiday banking hours</span>
+                    <p class="notif-card__text ts-body-xs-regular">Due to the public holiday, branch operating hours will be adjusted on June 19, 2026. Check details in the app.</p>
                   </div>
-                  <p class="notif-card__text ts-body-s-regular">Due to the public holiday, branch operating hours will be adjusted on June 19, 2026. Check details in the app.</p>
+                </div>
+                <div class="notif-card__date">
+                  <span class="notif-card__time ts-body-xs-regular">09:45</span>
                 </div>
               </article>
 
-              <article class="notif-card" data-category="general">
+              <article class="notif-card" data-category="info">
                 <span class="notif-card__icon notif-card__icon--plain">
-                  <svg class="icon" width="20" height="20"><use href="#i-sync" /></svg>
+                  <svg class="icon" width="20" height="20"><use href="#i-shield" /></svg>
                 </span>
                 <div class="notif-card__body">
-                  <div class="notif-card__row">
-                    <span class="notif-card__title ts-title-xs-bold">App update available</span>
-                    <span class="notif-card__time ts-label-s-regular">09:45</span>
+                  <div class="notif-card__text-block">
+                    <span class="notif-card__title ts-label-m-medium">App update available</span>
+                    <p class="notif-card__text ts-body-xs-regular">A new version of the app is available. Update now to access the latest features and improvements.</p>
                   </div>
-                  <p class="notif-card__text ts-body-s-regular">A new version of the app is available. Update now to access the latest features and improvements.</p>
-                  <button class="notif-pill ts-button-s">Update App</button>
+                  <div class="notif-card__actions">
+                    <button class="notif-pill ts-label-s-medium">Update App</button>
+                  </div>
+                </div>
+                <div class="notif-card__date">
+                  <span class="notif-card__time ts-body-xs-regular">09:45</span>
                 </div>
               </article>
             </section>
 
-            <p class="notif-empty ts-body-s-regular" data-empty hidden>No notifications in this category</p>
+            <p class="notif-empty ts-body-xs-regular" data-empty hidden>No notifications in this category</p>
           </div>
         </div>
 
@@ -1422,6 +1469,16 @@
               if (groupHasVisible) anyVisible = true;
             });
             emptyMsg.hidden = anyVisible;
+          });
+        });
+
+        // The small "x" on a filter chip clears that filter back to "All"
+        // without also triggering the chip's own select handler.
+        const allFilter = notifScreen.querySelector('[data-filter="all"]');
+        notifScreen.querySelectorAll(".notif-filter__close").forEach((closeIcon) => {
+          closeIcon.addEventListener("click", (e) => {
+            e.stopPropagation();
+            allFilter.click();
           });
         });
 
