@@ -136,6 +136,7 @@
       <div class="device__button device__button--power" aria-hidden="true"></div>
       <div class="phone">
         <div class="gradient-bg" aria-hidden="true"></div>
+        <div class="gradient-bg-fade" aria-hidden="true"></div>
 
         <div class="statusbar">
           <span class="statusbar__time">9:41</span>
@@ -151,14 +152,13 @@
             <button class="icon-btn" aria-label="Menu">
               <span class="glass-circle">
                 <span class="glass-circle__fill" aria-hidden="true"></span>
-                <span class="glass-circle__tint-dark" aria-hidden="true"></span>
-                <span class="glass-circle__tint-light" aria-hidden="true"></span>
                 <span class="glass-circle__effect" aria-hidden="true"></span>
                 <svg class="icon" width="24" height="24"><use href="#i-menu" /></svg>
               </span>
             </button>
             <div class="brand">
               <span class="brand__mark" aria-hidden="true"></span>
+              <span class="brand__divider" aria-hidden="true"></span>
               <span class="brand__text">concept</span>
               <span class="brand__chevron">⌄</span>
             </div>
@@ -166,8 +166,6 @@
               <button class="icon-btn" aria-label="Chat">
                 <span class="glass-circle">
                   <span class="glass-circle__fill" aria-hidden="true"></span>
-                  <span class="glass-circle__tint-dark" aria-hidden="true"></span>
-                  <span class="glass-circle__tint-light" aria-hidden="true"></span>
                   <span class="glass-circle__effect" aria-hidden="true"></span>
                   <svg class="icon" width="24" height="24"><use href="#i-chat" /></svg>
                 </span>
@@ -175,8 +173,6 @@
               <button class="icon-btn" aria-label="Notifications">
                 <span class="glass-circle">
                   <span class="glass-circle__fill" aria-hidden="true"></span>
-                  <span class="glass-circle__tint-dark" aria-hidden="true"></span>
-                  <span class="glass-circle__tint-light" aria-hidden="true"></span>
                   <span class="glass-circle__effect" aria-hidden="true"></span>
                   <svg class="icon" width="24" height="24"><use href="#i-bell" /></svg>
                 </span>
@@ -205,7 +201,7 @@
               </div>
               <div class="account-card__amount ts-title-xl-bold">1 000.00 ₾</div>
               <div class="account-card__row">
-                <span class="account-card__card-thumb photo-ph" aria-hidden="true"></span>
+                <span class="account-card__card-thumb card-thumb" aria-hidden="true"></span>
                 <div class="account-card__card-text">
                   <span class="title-sm ts-label-m-regular">Primary card</span>
                   <span class="subtitle-xs ts-label-s-regular">Secondary text</span>
@@ -247,7 +243,7 @@
             <!-- Ad carousel 1: loan offers -->
             <div class="ad-scroll" role="group" aria-label="Loan offers">
               <article class="ad-card">
-                <span class="ad-card__photo photo-ph" aria-hidden="true"></span>
+                <span class="ad-card__photo photo-ph photo-ph--consumer" aria-hidden="true"></span>
                 <div class="ad-card__body">
                   <span class="title-sm ts-label-m-medium">Consumer Loan</span>
                   <span class="badge badge--primary ts-button-s"
@@ -261,7 +257,7 @@
                 </button>
               </article>
               <article class="ad-card">
-                <span class="ad-card__photo photo-ph" aria-hidden="true"></span>
+                <span class="ad-card__photo photo-ph photo-ph--mortgage" aria-hidden="true"></span>
                 <div class="ad-card__body">
                   <span class="title-sm ts-label-m-medium">Mortgage Loan</span>
                   <span class="badge badge--tint ts-button-s"
@@ -275,7 +271,7 @@
                 </button>
               </article>
               <article class="ad-card">
-                <span class="ad-card__photo photo-ph" aria-hidden="true"></span>
+                <span class="ad-card__photo photo-ph photo-ph--secured" aria-hidden="true"></span>
                 <div class="ad-card__body">
                   <span class="title-sm ts-label-m-medium">Secured Loan</span>
                   <span class="badge badge--tint ts-button-s"
