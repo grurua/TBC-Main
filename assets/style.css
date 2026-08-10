@@ -844,3 +844,199 @@ body {
   background: var(--color-text-strong-default);
   opacity: 0.9;
 }
+
+/* ---------------------------------------------------------------- */
+/* Quick actions edit sheet                                          */
+/* ---------------------------------------------------------------- */
+
+.sheet-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: rgba(15, 18, 21, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.sheet-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 84%;
+  z-index: 11;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface-high-initial);
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.18);
+  transform: translateY(100%);
+  transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.sheet.is-open {
+  transform: translateY(0);
+}
+
+.sheet__grabber {
+  width: 36px;
+  height: 4px;
+  border-radius: var(--core-border-radius-round);
+  background: var(--color-stroke-strong-initial);
+  margin: 10px auto 0;
+  flex-shrink: 0;
+}
+
+.sheet__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px 4px;
+  flex-shrink: 0;
+}
+.sheet__title {
+  margin: 0 0 2px;
+  color: var(--color-text-strong-default);
+  font-size: 20px;
+  font-weight: 700;
+}
+.sheet__subtitle {
+  margin: 0;
+  color: var(--color-text-soft-default);
+  font-size: 13px;
+}
+
+.sheet__body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 0 20px 12px;
+}
+
+.sheet__section {
+  margin-top: 20px;
+}
+.sheet__section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.sheet__section-title {
+  color: var(--color-text-soft-default);
+}
+.sheet__count {
+  color: var(--color-text-primary-initial);
+}
+
+.sheet__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.sheet__footer {
+  flex-shrink: 0;
+  padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -1px 0 var(--color-stroke-softer-initial);
+}
+.btn-primary {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: var(--core-border-radius-12);
+  background: var(--color-surface-primary-initial);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease, opacity 0.1s ease;
+}
+.btn-primary:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+.sheet-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 2px;
+  background: var(--color-surface-high-initial);
+}
+.sheet-row--dragging {
+  z-index: 2;
+  box-shadow: var(--shadow-bottom-m);
+  border-radius: var(--core-border-radius-8);
+}
+.sheet-row__handle {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border: none;
+  background: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-disabled-default);
+  cursor: grab;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.sheet-row__icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: var(--core-border-radius-8);
+  background: var(--color-surface-higher-initial);
+  color: var(--color-icon-strong-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sheet-row__avatar {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sheet-row__label {
+  flex: 1 1 0;
+  min-width: 0;
+  color: var(--color-text-strong-default);
+}
+.sheet-row__btn {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease, opacity 0.15s ease;
+}
+.sheet-row__btn:active {
+  transform: scale(0.9);
+}
+.sheet-row__btn--remove {
+  background: var(--color-surface-negative-initial);
+}
+.sheet-row__btn--add {
+  background: var(--color-surface-primary-initial);
+}
+.sheet-row__btn--add:disabled {
+  background: var(--color-surface-primary-disabled);
+  cursor: not-allowed;
+}
