@@ -5,9 +5,11 @@
 
   NOTE ON PLACEHOLDERS: real icon glyphs and photos could not be
   downloaded in this environment (network egress to www.figma.com is
-  blocked — see design-system/DESIGN_SYSTEM.md §11). Every element
-  marked `.icon-ph` / `.photo-ph` is a neutral placeholder standing in
-  for a real Figma-exported asset and must be swapped in later.
+  blocked — see design-system/DESIGN_SYSTEM.md §11). Icons use a hand-
+  built inline SVG sprite (standard line-icon glyphs, see index.html)
+  instead of the real TBC icon set. Elements marked `.photo-ph` are
+  still neutral placeholders standing in for a real Figma photo asset.
+  Swap both for the real exported assets when available.
 */
 
 * {
@@ -81,18 +83,13 @@ body {
 }
 
 /* ---------------------------------------------------------------- */
-/* Placeholders                                                      */
+/* Icons + placeholders                                              */
 /* ---------------------------------------------------------------- */
 
-.icon-ph {
-  --size: 24px;
-  display: inline-block;
-  width: var(--size);
-  height: var(--size);
-  border-radius: 50%;
-  background: currentColor;
-  opacity: 0.32;
+.icon {
+  display: block;
   flex-shrink: 0;
+  color: inherit;
 }
 
 /* Generic "image placeholder" motif (sun + mountains) drawn in pure
@@ -243,9 +240,7 @@ body {
   display: flex;
   align-items: center;
   gap: 4px;
-}
-.statusbar__icons .icon-ph {
-  border-radius: 3px;
+  color: var(--color-icon-strong-default);
 }
 
 /* ---------------------------------------------------------------- */
@@ -505,10 +500,8 @@ body {
   justify-content: center;
   flex-shrink: 0;
 }
-.ad-card__icon .icon-ph {
-  --size: 40px;
+.ad-card__icon .icon {
   color: var(--color-icon-primary-initial);
-  opacity: 0.5;
 }
 .ad-card__body {
   flex: 1 1 0;
@@ -547,9 +540,6 @@ body {
 }
 .badge--tint {
   background: #e5f7fd;
-}
-.badge .icon-ph {
-  --size: 16px;
 }
 
 /* Transactions */
@@ -680,9 +670,6 @@ body {
   font-size: 9.5px;
   font-weight: 500;
   line-height: 14px;
-}
-.tab .icon-ph {
-  color: currentColor;
 }
 .tab--active {
   color: var(--color-text-primary-initial);
