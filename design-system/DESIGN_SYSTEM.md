@@ -9,6 +9,7 @@
 | Foundation library | `Foundation library — v1.0.9` (`LpJB5rw5bB1J4SHwOb103G`) |
 | Light თემა | `TBC light theme — v1.7.6` (`NTOW2uJfNLIbkbPWLVa2lc`) |
 | Dark თემა | `TBC dark theme — v1.7.6` (`E9KO7KaKVHhkZC5q138LMi`) |
+| კომპონენტების ბიბლიოთეკა | `Shared mobile library (Beta)` (`fEKxKXTLXz20QBXNqNoGvX`) |
 
 მანქანურად წასაკითხი ტოკენები ინახება `design-system/tokens/`-ში (`colors.light.json`, `colors.dark.json`, `typography.json`, `spacing.json`, `radius.json`, `opacity.json`, `motion.json`, `shadows.json`) და აგრეგირებულია `tokens.css`-ში — CSS custom properties, რომელიც ავტომატურად ერგება ლაითს/დარქს.
 
@@ -239,14 +240,119 @@ Foundation library-ს გვერდი **"🎈 Global icons"** შეიც�
 
 ---
 
-## 10. რაც ჯერ არ არის ამოღებული
+## 10. კომპონენტები (Shared mobile library — Beta)
 
-გამოგზავნილი Figma ბმულები ყველა **ფაუნდეიშენ/ტოკენ** გვერდებს წარმოადგენდა (ფერი, ტიპოგრაფია, spacing, radius, opacity, motion, icons). **კონკრეტული UI-კომპონენტების** (Button, Input, Card, Modal, Badge, Tabs და ა.შ.) spec/variant გვერდები ჯერ არ მისვლია — ეს ცალკე node-ბმულებით უნდა გამომიგზავნოთ (component library ფაილიდან), რომ იგივე პრინციპით ავაწყო component-level გაიდლაინი (ზომები, states, padding-ები ტოკენებზე მიბმული).
+წყარო: Figma ფაილი `Shared mobile library (Beta)` (`fEKxKXTLXz20QBXNqNoGvX`), ~50 დოკუმენტირებული კომპონენტი. **წესი: ახალი UI ყოველთვის ამ კომპონენტებით იწყობა — არა ad-hoc/ხელით შექმნილი ალტერნატივებით.** თითოეულის ფერი/ტიპოგრაფია ზემოთ აღწერილ სემანტიკურ ტოკენებზეა მიბმული (მაგ. Action Button-ის დოკუმენტაციაში პირდაპირ ჩანს `colour/surface/high/initial`, `colour/icon/primary/initial`, `text/style/label/s/regular` და ა.შ. ტოკენ-რეფერენსები).
+
+ქვემოთ — თითოეული კომპონენტის ვარიანტთა ღერძები (variant axes) და ზუსტი ზომები Figma-დან.
+
+### 10.1 Actions
+
+| კომპონენტი | ვარიანტები | ზომები |
+|---|---|---|
+| **Button** (`TBCXButton`) | Type=Primary/Secondary/Tertiary/Positive/Negative/Warning · Size=Large/Small · State=Initial/Pressed/Loading · Disabled=True/False | Large: 343×44px (ან content-fit); Small: 36px სიმაღლე, სიგანე content-ზეა დამოკიდებული (~62–109px); Tertiary/Loading — შეიძლება იყოს მხოლოდ-აიქონი (62px) |
+| **Action Button** (`TBCXActionButton`) | Color=High/Higher/Subtle/Negative/Warning/Positive/Tertiary · Icon size=Large/Small · Disabled=False/True (მხოლოდ High-ზე) | Large: 100×82px; Small: 100×66px; circle shape: Regular 50px / Small 44px |
+| **Button Group** (`TBCXButtonGroups`) | Type=1 Button/2 Vertical/3 Vertical/2 Horizontal | 1 Button, 2 Horizontal: 343×44px; 2 Vertical: 343×96px; 3 Vertical: 343×148px |
+| **Chip** | Selected=True/False · Pressed=True/False · Disabled=True/False | Unselected: 109×34px; Selected: 127×34px (checkmark-ისთვის უფრო განიერი) |
+| **Chip selector** | Chips=2/3/4/5 (ერთდროულად ხილული chip-ების რაოდენობა) | 2→182×34, 3→277×34, 4→372×34, 5→467×34px |
+
+### 10.2 ფორმები / შეყვანა
+
+| კომპონენტი | ვარიანტები | ზომები |
+|---|---|---|
+| **TextField** | Background=High/Higher · State=Initial/Active/Negative/Positive · Filled=False/True · Disabled=False/True | 343×56px |
+| **TextArea** | State=Initial/Active/Negative/Positive/Disabled · BG=Surface high/higher · Filled=False/True | 350×133px |
+| **Search** | State=Initial/Active/Filled · Disabled=No/Yes | Initial/Active/Disabled: 343×44px; Filled (შედეგებით): 343×198px |
+| **Dropdown** | BG=High/Higher · Error=No/Yes · Disabled=No/Yes · Filled=False/True · Bordered=Yes/No | Bordered: 343×56px; უსაზღვრო: 343×40px |
+| **Amount Field** | State=Initial/Active/Filled · Disabled=False/True | 343×160px |
+| **Checkbox** | State=Unchecked/Checked/Indeterminate · Error=False/True · Disabled=False/True | 24×24px (checkbox + label კომბო: 163×24–27px) |
+| **Radio Button** | Selected=True/False · Disabled=False/True · Error=False/True | 24×24px |
+| **Switch** | State=inactive/Checked/Checked.disabled/inactive-disabled | 48×30px |
+| **Helper Text** | State=Initial/Primary/Info | 198×24px |
+| **Validation** | Color=Neutral/Positive/Negative/Warning/Info | 223×32px (გაფართოებული input&validations სისტემა: Type=Description text/Link/Info/Description&Symbols/Symbols/Password × State=Initial/Positive/Negative, 343×20–60px) |
+
+### 10.3 სიები (Lists)
+
+| კომპონენტი | ვარიანტები | ზომები |
+|---|---|---|
+| **List Item** (`TBCXListItem`) | Reversed=False/True · Style=Naked/Bordered · Disabled=No/Yes · Pressed=False/True | Naked: 343×40px; Bordered: 343×56px |
+| **List Item — Transaction** (`TBCXListItemTransaction`) | Disabled=No/Yes · State=Initial/Pressed · Leading=Avatar/Category | 343×56px; leading icon 40×40px |
+| **List Item — Transfer** (`TBCXListItemTransfer`) | Disabled=False/True · State=Initial/Pressed · Style=Naked/Bordered | 343×77px |
+| **Accordion** | Expanded=False/True · Disabled=False/True | Collapsed: 343×56px; Expanded: 343×98px |
+
+### 10.4 მონაცემთა ჩვენება
+
+| კომპონენტი | ვარიანტები | ზომები |
+|---|---|---|
+| **Amount** (`TBCXAmount`) | Style=Symbol/Text currency · Type=Default/Positive/Negative/Mask · Size=Small/Medium/Large · Disabled=False/True | Small: 21px; Medium: 30px; Large: 42px (სიმაღლე) |
+| **Title** (`TBCXTitle`) | Size=ExtraSmall/Small/Medium/Large/Extra Large | XS/Small: 24px; Medium/Large: 30px; Extra Large: 36px (სიმაღლე); ფონტები — §2-ის title/headline scale |
+| **Badge** | color=TBC Brand/Primary/Positive/Negative/Warning/Ertguli/Concept/Wealth/Neutral/Disabled/Custom · condensed=True/False · Subtle=True/False | condensed=False: 78×29px; condensed=True: 68×26px |
+| **Avatar** | Shape=Round/Circle · Size=ExtraSmall/Small/Medium/Large/ExtraLarge/ExtraExtraLarge · Type=Initials/Photo/Fallback | XS:24, S:32, M:40, L:48, XL:56, XXL:64px |
+| **Avatar Stack** | Size=Small/Medium/Large · Amount=2/3/4/5 | Medium: 2→62×38 … 5→134×38px (თითო დამატებულზე +24px სიგანე) |
+| **Category** | Type=47+ კატეგორია-აიქონი (Bills, Mobile, Transport, Groceries, Salary, Transfers და ა.შ.) | ფიქსირებული 40×40px |
+| **Category Stack** | Category amount=1/2/3/4 | 1→62×38 … 4→134×38px |
+| **Main Balance** | Mask=None/Full/Partial | 330×70px |
+| **Fee & Commissions** | Bordered=Yes/No · Loading=True/False | Bordered: 194×32 (or 146×32 loading); უსაზღვრო: 170×24 (or 122×24 loading) |
+| **Product Card** | Layout=Vertical/Square-Horizontal · Loading=Yes/No · With Button=Yes/No | Vertical: 165.5×113px; Square-Horizontal: 343×66px |
+| **Products** (icon set) | Select product=Account/Saving/Card Icon/Deposit/Ertguli/Card Image/Credit card/Loan (+ ბარათის ბრენდი/ფერი ვარიანტები) | 56×36px |
+| **Icon** (wrapper) | BG color=High/Higher/Low/Lower/Positive/Warning/Negative/Subtle/Highest/Transparent · Shape=Circle/Square · Size=XS/S/M/L/XL; ბარე Icon: color=Primary/Grey/White/Positive/Warning/Negative · Disabled | XS:24, S:36 (Transparent S:32 — შეუსაბამობა Figma-ში), M:40, L:56, XL:80px; ბარე აიქონი: 24×24px |
+| **Icon Badge** | Type=Approved/Failed/Processing/Waiting for approval/Partially approved/Blocked/Trusted | 16×16px |
+
+### 10.5 ნავიგაცია
+
+| კომპონენტი | ვარიანტები | ზომები |
+|---|---|---|
+| **Top Navigation** | boolean properties (back icon/actions/logo) — variant-სახელებში კომბინატორიკა არ ჩანს | 343×24–28px |
+| **Bottom Navigation** | Menu items=1–5 · nav item State=Active/Inactive | სრული ბარი: 375×91px; ცალკეული item ~31–48×46px |
+| **Tab Segment Control — Adaptive** | Segment=2/3 | 343×32px |
+| **Tab Segment Control — Scrollable** (`TBCXTabsScrollable`) | Segment=2/3/4; ცალკეული `.tabSegment`: State=Active/Inactive · Disabled | 2→212×32, 3→322×32, 4→432×32px; ცალკე სეგმენტი: 91×32px |
+| **Active Step** | Total Steps=2/3/4/5 · Active step=1..N | 343×45px |
+
+### 10.6 Feedback & სტატუსი
+
+| კომპონენტი | ვარიანტები | ზომები |
+|---|---|---|
+| **Text Banner** (`TBCXTextBanner`) | type=Info/Neutral/Negative/Positive/Warning | 351×138px (კომპაქტური ვარიანტი: 351×48/64px) |
+| **Alert** | content-driven (icon+title+description+0–2 action button) | სიგანე 343px ფიქსირებული, სიმაღლე 164–430px content-ის მიხედვით |
+| **Notification** | Type=Neutral/Positive/Warning/Negative | ბაზისური 351×80px; რეალურ კონტექსტში 64–80px |
+| **Tooltip** (inline trigger icon) | Style=Neutral/Warning/Negative | 16×16px |
+| **Tooltip [In progress]** — ცალკე, დაუსრულებელი, სრული ბუშტი-ვერსია | Position=Top/Bottom-Centre/Left/Right, Right/Left | Top/Bottom: 99×48px; Right/Left: 107×40px |
+| **Feedback Pages** | Icon: Type=Positive/Negative/Processing/System error; სრული გვერდი: Type=With icon/Avatar/Custom visual | აიქონი: 80×80px; სრული გვერდი: 375×734px |
+| **Loaders** (`TBCXLoaderDots`, `TBCXLoaderSpinner`) | Color=Neutral/Primary/Light · Size=Small/Large · Disabled=Yes/No | Dots: Small 38×8, Large 76×16px; Spinner: Small 16×16, Large 32×32px |
+| **Skeleton** | loading placeholder (Start/End ანიმაციის კადრები) | 1110×292px (მაგალითი) |
+
+### 10.7 პროგრესი
+
+| კომპონენტი | ვარიანტები | ზომები |
+|---|---|---|
+| **Percent Progress** | Percent=20/40/60/80/100% | 343×45px |
+| **Steps Progress** | Total Steps=2/3/4/5 × Current step=1..N | 343×45px |
+| **Slider Indicator** | Total slides=2/3/4/5 · dot State=Active/Inactive | 2→24×8 … 5→60×8px; active dot 12×8, inactive 8×8px |
+
+### 10.8 Overlays
+
+| კომპონენტი | ვარიანტები | ზომები |
+|---|---|---|
+| **Bottom Sheet** (`TBCXBottomSheet`) | slot/boolean-driven, ფორმალური variant-სახელები არ ჩანს | ბაზისური frame: 375×148px; content slot: 343×100px |
+
+> **შენიშვნა:** ეს ცხრილები აღწერს variant-ღერძებსა და ზუსტ ზომებს Figma component-page-ებიდან. თითოეული კომპონენტის დეტალური CSS (padding, border, ჩრდილი და ა.შ.) რეალურ screen-ის აწყობისას ცალკე მოიტანება `get_design_context`-ით — ეს ცხრილი კატალოგია და swap/decision reference, არა CSS spec.
 
 ---
 
-## 11. გამოყენების წესი კოდში
+## 11. Asset-ების შეზღუდვა (ცნობილი ხარვეზი)
+
+ამ გარემოს (session) ინტერნეტ-წვდომის ორგანიზაციულმა პოლიტიკამ დაბლოკა წვდომა `www.figma.com`-ის ასეთ domain-ზე (მათ შორის Figma-ს ასეთ asset CDN-ზეც). ეს ნიშნავს, რომ:
+
+- ✅ **Layout, ფერები, ტიპოგრაფია, spacing, ზომები, კომპონენტების variant/state სისტემა** — ყველა 100%-ით ზუსტადაა ამოღებული Figma-ს API-დან (`get_design_context` / `get_variable_defs` / `get_metadata`) და საიმედოა.
+- ❌ **რეალური SVG/PNG ფაილები** (icon glyph-ები, ბარათის ფოტო, loan/საბანკო ილუსტრაციები) ვერ ჩამოიტვირთა — ამ session-ში ვერც `curl`, ვერც `WebFetch` ვერ აღწევს `www.figma.com`-ს (`EGRESS_BLOCKED`).
+
+**გამოსავალი:** სანამ ეს არ მოგვარდება (admin-მა უნდა დაუშვას წვდომა `www.figma.com`-ზე ამ environment-ის/session-ის პარამეტრებში, ან თქვენ თვითონ export გაუკეთოთ საჭირო აიქონებს/ფოტოებს Figma-დან და ატვირთოთ repo-ში `design-system/assets/`-ში), კონკრეტულ ეკრანებზე იმპლემენტაციისას აიქონები/ფოტოები დროებით placeholder-ებით (ფერადი ბლოკებით, ცნობილი ფონის hex-ით) შეივსება — ეს მკაფიოდ აღინიშნება კოდში `TODO: replace with real asset` კომენტარით.
+
+---
+
+## 12. გამოყენების წესი კოდში
 
 1. არასდროს ჩაწეროთ პირდაპირი hex/px მნიშვნელობა კომპონენტში — მხოლოდ `design-system/tokens/tokens.css`-ის CSS variables (`var(--color-surface-high-initial)`, `var(--core-spacing-16)` და ა.შ.).
 2. თემის გადართვა ხდება `<html data-theme="light">` / `data-theme="dark"` ატრიბუტით; მისი არარსებობისას სისტემური პარამეტრი მუშაობს ავტომატურად.
-3. ახალი კომპონენტის დიზაინისას პირველად შემოწმდეს, არსებობს თუ არა შესაბამისი სემანტიკური ტოკენი (`color/surface/...`, `color/text/...` და ა.შ.) — ახალი ნედლი ფერი არ დაემატება, თუ Figma-ს ტოკენებში არ არსებობს.
+3. ახალი UI ელემენტი ყოველთვის იწყება §10-ის კომპონენტების კატალოგიდან შესაბამისის მოძებნით — ახალი, ad-hoc კომპონენტი/ლეიაუთი არ იქმნება, სანამ Shared mobile library-ში ანალოგი არსებობს.
+4. ახალი ფერი არ დაემატება, თუ Figma-ს ტოკენებში (§3) არ არსებობს.
