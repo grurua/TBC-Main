@@ -615,8 +615,6 @@ body {
   gap: var(--core-spacing-12);
   overflow-x: auto;
   scroll-snap-type: x proximity;
-  margin: 0 calc(var(--core-spacing-16) * -1);
-  padding: 0 var(--core-spacing-16);
   scrollbar-width: none;
 }
 .ad-scroll::-webkit-scrollbar {
