@@ -849,53 +849,81 @@
         });
 
         // Drag-to-reorder within "On your home screen" (pointer events,
-        // works for mouse and touch alike).
+        // works for mouse and touch alike). Sibling rows live-shift out
+        // of the way (like iOS/Trello reordering) instead of only
+        // snapping into place after drop.
+        const DRAG_EASE = "transform 0.22s cubic-bezier(0.22, 1, 0.36, 1)";
         let dragState = null;
 
         homeListEl.addEventListener("pointerdown", (e) => {
           const handle = e.target.closest(".sheet-row__handle");
           if (!handle) return;
+          e.preventDefault();
           const row = handle.closest(".sheet-row");
           const rows = Array.from(homeListEl.children);
+          const currentIndex = rows.indexOf(row);
+          const rowHeight = row.offsetHeight;
+          const step = rows.length > 1 ? rows[1].offsetTop - rows[0].offsetTop : rowHeight + 8;
+
           dragState = {
             row,
+            rows,
+            currentIndex,
+            targetIndex: currentIndex,
+            rowHeight,
+            step,
             startY: e.clientY,
             startTop: row.offsetTop,
-            rowHeight: row.offsetHeight,
-            rows,
-            order: rows.map((r) => r.dataset.id),
           };
+
+          rows.forEach((r) => {
+            if (r !== row) r.style.transition = DRAG_EASE;
+          });
           row.classList.add("sheet-row--dragging");
           row.setPointerCapture(e.pointerId);
         });
 
         homeListEl.addEventListener("pointermove", (e) => {
           if (!dragState) return;
-          const dy = e.clientY - dragState.startY;
-          dragState.row.style.transform = `translateY(${dy}px)`;
-          dragState.row.style.zIndex = "2";
+          const { row, rows, currentIndex, rowHeight, step, startY, startTop } = dragState;
 
-          const newTop = dragState.startTop + dy + dragState.rowHeight / 2;
-          const currentIndex = dragState.order.indexOf(dragState.row.dataset.id);
+          const dy = e.clientY - startY;
+          row.style.transform = `translateY(${dy}px) scale(1.03)`;
+
+          const pointerCenter = startTop + dy + rowHeight / 2;
           let targetIndex = currentIndex;
-          dragState.rows.forEach((r, i) => {
-            if (r === dragState.row) return;
-            const rowMid = r.offsetTop + dragState.rowHeight / 2;
-            if (i < currentIndex && newTop < rowMid) targetIndex = Math.min(targetIndex, i);
-            if (i > currentIndex && newTop > rowMid) targetIndex = Math.max(targetIndex, i);
+          rows.forEach((r, i) => {
+            if (i === currentIndex) return;
+            const rowCenter = r.offsetTop + rowHeight / 2;
+            if (i < currentIndex && pointerCenter < rowCenter) targetIndex = Math.min(targetIndex, i);
+            if (i > currentIndex && pointerCenter > rowCenter) targetIndex = Math.max(targetIndex, i);
           });
-          if (targetIndex !== currentIndex) {
-            const id = dragState.order.splice(currentIndex, 1)[0];
-            dragState.order.splice(targetIndex, 0, id);
-            homeIds = dragState.order.slice();
-          }
+
+          rows.forEach((r, i) => {
+            if (i === currentIndex) return;
+            let shift = 0;
+            if (i > currentIndex && i <= targetIndex) shift = -step;
+            else if (i < currentIndex && i >= targetIndex) shift = step;
+            r.style.transform = shift ? `translateY(${shift}px)` : "";
+          });
+
+          dragState.targetIndex = targetIndex;
         });
 
         function endDrag() {
           if (!dragState) return;
-          dragState.row.classList.remove("sheet-row--dragging");
-          dragState.row.style.transform = "";
-          dragState.row.style.zIndex = "";
+          const { row, rows, currentIndex, targetIndex } = dragState;
+
+          if (targetIndex !== currentIndex) {
+            const id = homeIds.splice(currentIndex, 1)[0];
+            homeIds.splice(targetIndex, 0, id);
+          }
+
+          row.classList.remove("sheet-row--dragging");
+          rows.forEach((r) => {
+            r.style.transition = "";
+            r.style.transform = "";
+          });
           dragState = null;
           renderAll();
         }
