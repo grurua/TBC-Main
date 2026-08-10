@@ -230,11 +230,13 @@ body {
 
 /* On an actual phone the device IS already the frame — the fake
    titanium bezel, Dynamic Island and side buttons are presentation
-   chrome for viewing this on a desktop/tablet only. Below ~500px
-   viewport width, drop the mockup entirely and let the screen fill
-   the real viewport edge-to-edge, so it always fits without needing
-   to zoom or scroll horizontally regardless of which phone opens it. */
-@media (max-width: 500px) {
+   chrome for viewing this on a desktop/tablet only. Below ~500px in
+   EITHER dimension (width covers portrait, height covers a phone
+   turned sideways — even a Pro Max is ~430px in its short dimension),
+   drop the mockup entirely and let the screen fill the real viewport
+   edge-to-edge, so it always fits without needing to zoom or scroll
+   regardless of which phone (or orientation) opens it. */
+@media (max-width: 500px), (max-height: 500px) {
   body {
     background: var(--color-surface-canvas-initial);
     /* svh = smallest viewport height, i.e. with the browser's address
