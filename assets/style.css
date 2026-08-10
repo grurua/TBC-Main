@@ -21,7 +21,7 @@ body {
   margin: 0;
   padding: 0;
   color: var(--color-text-strong-default);
-  font-family: "TBC X", system-ui, sans-serif;
+  font-family: "TBC X", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -294,7 +294,7 @@ body {
   flex-shrink: 0;
 }
 .statusbar__time {
-  font-family: "TBC X", sans-serif;
+  font-family: "TBC X", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 15px;
   font-weight: 600;
   color: var(--color-text-strong-default);
@@ -823,7 +823,7 @@ body {
   gap: 2px;
   padding: 9px 10px;
   color: var(--color-text-soft-default);
-  font-family: "TBC X", sans-serif;
+  font-family: "TBC X", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 9.5px;
   font-weight: 500;
   line-height: 14px;
