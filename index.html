@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ka">
+<html lang="ka" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -12,13 +12,26 @@
       Implements Figma node 5719:2418 ("Home", file Dma7u5cUNIhbrsDwxda39T).
       All colors / type / spacing / radii / shadows come from
       design-system/tokens/tokens.css (see design-system/DESIGN_SYSTEM.md).
+      `data-theme="light"` above pins this page to the light theme for now
+      (dark theme tokens already exist in tokens.css for later).
 
       Elements with class "icon-ph" / "photo-ph" are placeholders —
       real icon and photo assets from Figma could not be downloaded in
       this environment (network egress to www.figma.com is blocked).
       Swap them for the real exported assets when available.
+
+      The `.device` wrapper below is a presentational iPhone 16 mockup
+      frame (titanium bezel + Dynamic Island) built in pure CSS — it is
+      not part of the Figma design itself, just packaging for the
+      screen inside it.
     -->
-    <div class="phone">
+    <div class="device">
+      <div class="device__island" aria-hidden="true"></div>
+      <div class="device__button device__button--action" aria-hidden="true"></div>
+      <div class="device__button device__button--volume-up" aria-hidden="true"></div>
+      <div class="device__button device__button--volume-down" aria-hidden="true"></div>
+      <div class="device__button device__button--power" aria-hidden="true"></div>
+      <div class="phone">
       <div class="gradient-bg" aria-hidden="true"></div>
 
       <div class="statusbar">
@@ -304,6 +317,7 @@
         </div>
         <div class="tabbar__home-indicator" aria-hidden="true"></div>
       </nav>
+      </div>
     </div>
   </body>
 </html>
