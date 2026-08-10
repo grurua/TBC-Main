@@ -69,6 +69,10 @@
           <line x1="2" y1="2" x2="22" y2="22" />
           <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24" />
         </symbol>
+        <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" />
+          <circle cx="12" cy="12" r="3" />
+        </symbol>
         <symbol id="i-arrow-up-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <line x1="7" y1="17" x2="17" y2="7" />
           <polyline points="7 7 17 7 17 17" />
@@ -195,10 +199,16 @@
           </nav>
 
           <div class="search">
-            <div class="search__field">
+            <label class="search__field" for="search-input">
               <svg class="icon" width="24" height="24"><use href="#i-search" /></svg>
-              <span class="search__placeholder ts-label-m-regular">Ask or search anything</span>
-            </div>
+              <input
+                id="search-input"
+                class="search__placeholder ts-label-m-regular"
+                type="text"
+                placeholder="Ask or search anything"
+                autocomplete="off"
+              />
+            </label>
           </div>
         </div>
 
@@ -209,11 +219,15 @@
               <div class="account-card__head">
                 <span class="ts-label-m-regular">Total Available</span>
                 <span class="account-card__actions">
-                  <svg class="icon" width="24" height="24"><use href="#i-edit" /></svg>
-                  <svg class="icon" width="24" height="24"><use href="#i-eye-off" /></svg>
+                  <button class="icon-btn icon-btn--inline" aria-label="Edit balance name">
+                    <svg class="icon" width="24" height="24"><use href="#i-edit" /></svg>
+                  </button>
+                  <button class="icon-btn icon-btn--inline" id="balance-toggle" aria-label="Hide balance" aria-pressed="false">
+                    <svg class="icon" width="24" height="24"><use href="#i-eye-off" /></svg>
+                  </button>
                 </span>
               </div>
-              <div class="account-card__amount ts-title-xl-bold">1 000.00 ₾</div>
+              <div class="account-card__amount ts-title-xl-bold" id="balance-amount" data-value="1 000.00 ₾">1 000.00 ₾</div>
               <div class="account-card__row">
                 <svg class="account-card__card-thumb" width="56" height="36" viewBox="0 0 56 36" aria-hidden="true">
                   <defs>
@@ -393,6 +407,7 @@
               </div>
               <ul class="tx-list">
                 <li class="tx-item">
+                  <button class="tx-item__btn">
                   <span class="tx-item__icon" style="--bg: #f181c4" aria-hidden="true"></span>
                   <div class="tx-item__text">
                     <span class="title-sm ts-label-m-regular">Voulez vous</span>
@@ -401,8 +416,10 @@
                   <span class="amount-sm ts-label-s-regular"
                     ><span class="amount__value">-567.11</span> <span class="amount__currency">₾</span></span
                   >
+                  </button>
                 </li>
                 <li class="tx-item">
+                  <button class="tx-item__btn">
                   <span class="tx-item__icon" style="--bg: #4bb7b1" aria-hidden="true"></span>
                   <div class="tx-item__text">
                     <span class="title-sm ts-label-m-regular">Wolt</span>
@@ -411,8 +428,10 @@
                   <span class="amount-sm ts-label-s-regular"
                     ><span class="amount__value">-92.05</span> <span class="amount__currency">₾</span></span
                   >
+                  </button>
                 </li>
                 <li class="tx-item">
+                  <button class="tx-item__btn">
                   <span class="tx-item__icon" style="--bg: #f94850" aria-hidden="true"></span>
                   <div class="tx-item__text">
                     <span class="title-sm ts-label-m-regular">Entree</span>
@@ -421,8 +440,10 @@
                   <span class="amount-sm ts-label-s-regular"
                     ><span class="amount__value">-34.00</span> <span class="amount__currency">₾</span></span
                   >
+                  </button>
                 </li>
                 <li class="tx-item">
+                  <button class="tx-item__btn">
                   <span class="tx-item__icon" style="--bg: #e6c230" aria-hidden="true"></span>
                   <div class="tx-item__text">
                     <span class="title-sm ts-label-m-regular">Silknet</span>
@@ -431,8 +452,10 @@
                   <span class="amount-sm ts-label-s-regular"
                     ><span class="amount__value">-48.00</span> <span class="amount__currency">₾</span></span
                   >
+                  </button>
                 </li>
                 <li class="tx-item">
+                  <button class="tx-item__btn">
                   <span class="tx-item__icon" style="--bg: #8679f9" aria-hidden="true"></span>
                   <div class="tx-item__text">
                     <span class="title-sm ts-label-m-regular">Pineo ecosystem</span>
@@ -441,6 +464,7 @@
                   <span class="amount-sm ts-label-s-regular"
                     ><span class="amount__value">-1 200.00</span> <span class="amount__currency">₾</span></span
                   >
+                  </button>
                 </li>
               </ul>
               <button class="btn-tertiary ts-button-l">All Transactions</button>
@@ -475,5 +499,40 @@
         </nav>
       </div>
     </div>
+
+    <script>
+      // Tab bar: switch the active tab on click.
+      document.querySelector(".tabbar__bar").addEventListener("click", (e) => {
+        const tab = e.target.closest(".tab");
+        if (!tab) return;
+        document.querySelectorAll(".tab--active").forEach((t) => t.classList.remove("tab--active"));
+        tab.classList.add("tab--active");
+      });
+
+      // Account card: eye icon toggles masking the balance.
+      const balanceToggle = document.getElementById("balance-toggle");
+      const balanceAmount = document.getElementById("balance-amount");
+      let balanceHidden = false;
+      balanceToggle.addEventListener("click", () => {
+        balanceHidden = !balanceHidden;
+        balanceToggle.querySelector("use").setAttribute("href", balanceHidden ? "#i-eye" : "#i-eye-off");
+        balanceToggle.setAttribute("aria-pressed", String(balanceHidden));
+        balanceToggle.setAttribute("aria-label", balanceHidden ? "Show balance" : "Hide balance");
+        balanceAmount.textContent = balanceHidden ? "•••••• ₾" : balanceAmount.dataset.value;
+      });
+
+      // Ad carousels: the close (x) button dismisses that one card.
+      document.querySelectorAll(".ad-scroll").forEach((scroll) => {
+        scroll.addEventListener("click", (e) => {
+          const dismissBtn = e.target.closest(".icon-btn--ghost");
+          if (!dismissBtn) return;
+          const card = dismissBtn.closest(".ad-card");
+          card.style.transition = "opacity 0.15s ease, transform 0.15s ease";
+          card.style.opacity = "0";
+          card.style.transform = "scale(0.92)";
+          card.addEventListener("transitionend", () => card.remove(), { once: true });
+        });
+      });
+    </script>
   </body>
 </html>
