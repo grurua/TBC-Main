@@ -27,6 +27,7 @@ body {
 body {
   background: radial-gradient(circle at 50% 0%, #f4f4f5 0%, #dcdce0 100%);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* ---------------------------------------------------------------- */
@@ -225,6 +226,36 @@ body {
   width: 3px;
   height: 92px;
   border-radius: 0 2px 2px 0;
+}
+
+/* On an actual phone the device IS already the frame — the fake
+   titanium bezel, Dynamic Island and side buttons are presentation
+   chrome for viewing this on a desktop/tablet only. Below ~500px
+   viewport width, drop the mockup entirely and let the screen fill
+   the real viewport edge-to-edge, so it always fits without needing
+   to zoom or scroll horizontally regardless of which phone opens it. */
+@media (max-width: 500px) {
+  body {
+    background: var(--color-surface-canvas-initial);
+  }
+  .device {
+    width: 100%;
+    height: 100dvh;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+  }
+  .device__island,
+  .device__button {
+    display: none;
+  }
+  .phone {
+    border-radius: 0;
+    box-shadow: none;
+  }
 }
 
 /* ---------------------------------------------------------------- */
