@@ -276,6 +276,37 @@
           <path d="M12 2c.6 3.6 2.4 5.4 6 6-3.6.6-5.4 2.4-6 6-.6-3.6-2.4-5.4-6-6 3.6-.6 5.4-2.4 6-6Z" />
           <path d="M19 15c.3 1.8 1.2 2.7 3 3-1.8.3-2.7 1.2-3 3-.3-1.8-1.2-2.7-3-3 1.8-.3 2.7-1.2 3-3Z" />
         </symbol>
+        <symbol id="i-user-arrow-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="10" cy="9.5" r="3.25" />
+          <path d="M3.5 20.5c0-3.7 3.2-6 6.5-6s6.5 2.3 6.5 6" />
+          <path d="M15.5 3.5h5v5" />
+          <line x1="20.5" y1="3.5" x2="14" y2="10" />
+        </symbol>
+        <symbol id="i-card-arrows" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="14" height="11" rx="2" />
+          <line x1="2" y1="7.5" x2="16" y2="7.5" />
+          <path d="M17.2 15.2a3.3 3.3 0 0 0 5.3-1" />
+          <path d="M22.5 12.2a3.3 3.3 0 0 0-5.3 1" />
+          <polyline points="21.6 12.6 22.6 12.3 22.9 13.3" />
+          <polyline points="18.1 14.9 17.1 15.2 16.8 14.2" />
+        </symbol>
+        <symbol id="i-umbrella" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 11a9 9 0 0 1 18 0Z" />
+          <path d="M3 11c0-1.4 1-2.2 2-2.2s2 .8 2 2.2 1 2.2 2 2.2 2-.8 2-2.2 1-2.2 2-2.2 2 .8 2 2.2 1 2.2 2 2.2 2-.8 2-2.2" />
+          <line x1="12" y1="11" x2="12" y2="19.5" />
+          <path d="M12 19.5a2 2 0 0 1-4 0" />
+        </symbol>
+        <symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 13 3.5 15l-1-1.3L11 9.5V4.8c0-.7.5-1.3 1-1.3s1 .6 1 1.3V9.5l8.5 4.2-1 1.3L13 13v4.3l2.2 1.7v1.2L12 19.4l-3.2.8v-1.2L11 17.3Z" />
+        </symbol>
+        <symbol id="i-safe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3.5" width="15" height="14" rx="2" />
+          <line x1="6" y1="8" x2="13" y2="8" />
+          <line x1="6" y1="12" x2="11" y2="12" />
+          <circle cx="17.5" cy="16.5" r="4" fill="var(--color-surface-high-initial, #fff)" />
+          <line x1="17.5" y1="14.3" x2="17.5" y2="18.7" />
+          <line x1="15.3" y1="16.5" x2="19.7" y2="16.5" />
+        </symbol>
         <symbol id="i-wifi" viewBox="0 0 16 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <path d="M1 5a11 11 0 0 1 14 0" />
           <path d="M3.5 8a7 7 0 0 1 9 0" />
@@ -1112,6 +1143,166 @@
             </div>
           </div>
         </div>
+
+        <!-- Search flow: opens when the Home search field is tapped -->
+        <div class="app-screen" id="search-screen" aria-hidden="true">
+          <div class="statusbar">
+            <span class="statusbar__time">9:41</span>
+            <span class="statusbar__icons">
+              <svg class="icon" width="18" height="14"><use href="#i-signal" /></svg>
+              <svg class="icon" width="16" height="14"><use href="#i-wifi" /></svg>
+              <svg class="icon" width="25" height="14"><use href="#i-battery" /></svg>
+            </span>
+          </div>
+          <div class="search-screen__topbar">
+            <div class="search">
+              <label class="search__field" for="search-screen-input">
+                <svg class="icon" width="24" height="24"><use href="#i-search" /></svg>
+                <input
+                  id="search-screen-input"
+                  class="search__placeholder ts-label-m-regular"
+                  type="text"
+                  placeholder="Ask or search anything"
+                  autocomplete="off"
+                />
+              </label>
+            </div>
+            <button class="icon-btn" id="search-cancel" aria-label="Close search">
+              <span class="glass-circle">
+                <span class="glass-circle__fill" aria-hidden="true"></span>
+                <span class="glass-circle__effect" aria-hidden="true"></span>
+                <svg class="icon" width="24" height="24"><use href="#i-close" /></svg>
+              </span>
+            </button>
+          </div>
+
+          <div class="app-screen__scroll search-screen__scroll">
+            <div class="search-section">
+              <div class="search-section__head">
+                <span class="ts-title-xs-bold">Most used</span>
+                <button class="search-link ts-label-m-medium" id="search-show-more">Show more</button>
+              </div>
+              <div class="most-used-card">
+                <button class="most-used-item" data-query="Transfer to someone">
+                  <span class="most-used-item__icon"><svg class="icon" width="24" height="24"><use href="#i-user-arrow-out" /></svg></span>
+                  <span class="most-used-item__label ts-body-xs-regular">Transfer to someone</span>
+                </button>
+                <button class="most-used-item" data-query="Pay Bills">
+                  <span class="most-used-item__icon"><svg class="icon" width="24" height="24"><use href="#i-receipt" /></svg></span>
+                  <span class="most-used-item__label ts-body-xs-regular">Pay Bills</span>
+                </button>
+                <button class="most-used-item" data-query="From other bank 24/7">
+                  <span class="most-used-item__icon"><svg class="icon" width="24" height="24"><use href="#i-card-arrows" /></svg></span>
+                  <span class="most-used-item__label ts-body-xs-regular">From other bank 24/7</span>
+                </button>
+                <button class="most-used-item" data-query="Auto comfort">
+                  <span class="most-used-item__icon"><svg class="icon" width="24" height="24"><use href="#i-car" /></svg></span>
+                  <span class="most-used-item__label ts-body-xs-regular">Auto comfort</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="search-section">
+              <div class="search-section__head">
+                <span class="ts-title-xs-bold">Resent searches</span>
+                <button class="search-link ts-label-m-medium" id="search-clear-all">Clear all</button>
+              </div>
+              <div class="search-recent" id="search-recent-list">
+                <div class="search-recent__item">
+                  <button class="search-recent__main" data-query="Transfer to someone">
+                    <span class="search-recent__icon"><svg class="icon" width="20" height="20"><use href="#i-user-arrow-out" /></svg></span>
+                    <span class="search-recent__label ts-label-m-regular">Transfer to someone</span>
+                  </button>
+                  <button class="search-recent__remove" aria-label="Remove">
+                    <svg class="icon" width="20" height="20"><use href="#i-close" /></svg>
+                  </button>
+                </div>
+                <div class="search-recent__item">
+                  <button class="search-recent__main" data-query="Pay bills">
+                    <span class="search-recent__icon"><svg class="icon" width="20" height="20"><use href="#i-receipt" /></svg></span>
+                    <span class="search-recent__label ts-label-m-regular">Pay bills</span>
+                  </button>
+                  <button class="search-recent__remove" aria-label="Remove">
+                    <svg class="icon" width="20" height="20"><use href="#i-close" /></svg>
+                  </button>
+                </div>
+                <div class="search-recent__item">
+                  <button class="search-recent__main" data-query="From another bank">
+                    <span class="search-recent__icon"><svg class="icon" width="20" height="20"><use href="#i-card-arrows" /></svg></span>
+                    <span class="search-recent__label ts-label-m-regular">From another bank</span>
+                  </button>
+                  <button class="search-recent__remove" aria-label="Remove">
+                    <svg class="icon" width="20" height="20"><use href="#i-close" /></svg>
+                  </button>
+                </div>
+                <div class="search-recent__item">
+                  <button class="search-recent__main" data-query="Auto comfort">
+                    <span class="search-recent__icon"><svg class="icon" width="20" height="20"><use href="#i-car" /></svg></span>
+                    <span class="search-recent__label ts-label-m-regular">Auto comfort</span>
+                  </button>
+                  <button class="search-recent__remove" aria-label="Remove">
+                    <svg class="icon" width="20" height="20"><use href="#i-close" /></svg>
+                  </button>
+                </div>
+                <div class="search-recent__item">
+                  <button class="search-recent__main" data-query="Incurance">
+                    <span class="search-recent__icon"><svg class="icon" width="20" height="20"><use href="#i-umbrella" /></svg></span>
+                    <span class="search-recent__label ts-label-m-regular">Incurance</span>
+                  </button>
+                  <button class="search-recent__remove" aria-label="Remove">
+                    <svg class="icon" width="20" height="20"><use href="#i-close" /></svg>
+                  </button>
+                </div>
+                <div class="search-recent__item">
+                  <button class="search-recent__main" data-query="Travel">
+                    <span class="search-recent__icon"><svg class="icon" width="20" height="20"><use href="#i-plane" /></svg></span>
+                    <span class="search-recent__label ts-label-m-regular">Travel</span>
+                  </button>
+                  <button class="search-recent__remove" aria-label="Remove">
+                    <svg class="icon" width="20" height="20"><use href="#i-close" /></svg>
+                  </button>
+                </div>
+                <div class="search-recent__item">
+                  <button class="search-recent__main" data-query="Nino">
+                    <span class="search-recent__icon"><svg class="icon" width="20" height="20"><use href="#i-person" /></svg></span>
+                    <span class="search-recent__label ts-label-m-regular">Nino</span>
+                  </button>
+                  <button class="search-recent__remove" aria-label="Remove">
+                    <svg class="icon" width="20" height="20"><use href="#i-close" /></svg>
+                  </button>
+                </div>
+                <div class="search-recent__item">
+                  <button class="search-recent__main" data-query="Card">
+                    <span class="search-recent__icon"><svg class="icon" width="20" height="20"><use href="#i-card" /></svg></span>
+                    <span class="search-recent__label ts-label-m-regular">Card</span>
+                  </button>
+                  <button class="search-recent__remove" aria-label="Remove">
+                    <svg class="icon" width="20" height="20"><use href="#i-close" /></svg>
+                  </button>
+                </div>
+                <div class="search-recent__item">
+                  <button class="search-recent__main" data-query="Depost">
+                    <span class="search-recent__icon"><svg class="icon" width="20" height="20"><use href="#i-safe" /></svg></span>
+                    <span class="search-recent__label ts-label-m-regular">Depost</span>
+                  </button>
+                  <button class="search-recent__remove" aria-label="Remove">
+                    <svg class="icon" width="20" height="20"><use href="#i-close" /></svg>
+                  </button>
+                </div>
+                <div class="search-recent__item">
+                  <button class="search-recent__main" data-query="Other Banks">
+                    <span class="search-recent__icon"><svg class="icon" width="20" height="20"><use href="#i-bank" /></svg></span>
+                    <span class="search-recent__label ts-label-m-regular">Other Banks</span>
+                  </button>
+                  <button class="search-recent__remove" aria-label="Remove">
+                    <svg class="icon" width="20" height="20"><use href="#i-close" /></svg>
+                  </button>
+                </div>
+              </div>
+              <p class="search-recent__empty ts-body-xs-regular" hidden>No recent searches</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1511,6 +1702,119 @@
               r.closest(".settings-row").classList.toggle("is-selected", r.checked);
             });
           });
+        });
+      })();
+
+      // ---------------------------------------------------------------
+      // Search flow — opens when the Home search field is tapped
+      // ---------------------------------------------------------------
+      (() => {
+        const homeInput = document.getElementById("search-input");
+        const searchScreen = document.getElementById("search-screen");
+        const screenInput = document.getElementById("search-screen-input");
+        const cancelBtn = document.getElementById("search-cancel");
+        const clearAllBtn = document.getElementById("search-clear-all");
+        const recentList = document.getElementById("search-recent-list");
+        const recentEmpty = document.querySelector(".search-recent__empty");
+
+        function openSearch() {
+          searchScreen.classList.add("is-open");
+          searchScreen.setAttribute("aria-hidden", "false");
+          // Real focus so the device's own keyboard appears - no fake
+          // on-screen keyboard is drawn, unlike the static Figma mock.
+          // preventScroll is required: the field is still off-screen (mid
+          // slide-in transition) at the moment focus() runs, and without
+          // it the browser's default focus-scroll-into-view yanks the
+          // whole .phone sideways to "reveal" it.
+          screenInput.focus({ preventScroll: true });
+        }
+        function closeSearch() {
+          screenInput.blur();
+          searchScreen.classList.remove("is-open");
+          searchScreen.setAttribute("aria-hidden", "true");
+          screenInput.value = "";
+        }
+
+        homeInput.addEventListener("focus", () => {
+          homeInput.blur();
+          openSearch();
+        });
+        homeInput.addEventListener("click", openSearch);
+        cancelBtn.addEventListener("click", closeSearch);
+
+        // Rotating placeholder ("Search Text Animation" in the source):
+        // types out each example query, pauses, then deletes it before
+        // moving to the next one, cycling forever while the field is empty.
+        const PLACEHOLDER_PHRASES = [
+          "Ask or search anything",
+          "Search anything",
+          "Search “Exchange USD”",
+          "Search “Deposit”",
+          "Search your friend’s name",
+          "Search bill payment title",
+        ];
+        const TYPE_MS = 45;
+        const DELETE_MS = 25;
+        const HOLD_MS = 1400;
+        let placeholderTimer = null;
+
+        function runPlaceholderCycle() {
+          let phraseIndex = 0;
+          function typePhrase() {
+            if (document.activeElement === screenInput && screenInput.value) return;
+            const phrase = PLACEHOLDER_PHRASES[phraseIndex % PLACEHOLDER_PHRASES.length];
+            let charIndex = 0;
+            clearInterval(placeholderTimer);
+            placeholderTimer = setInterval(() => {
+              charIndex++;
+              screenInput.placeholder = phrase.slice(0, charIndex);
+              if (charIndex >= phrase.length) {
+                clearInterval(placeholderTimer);
+                setTimeout(deletePhrase, HOLD_MS);
+              }
+            }, TYPE_MS);
+          }
+          function deletePhrase() {
+            const phrase = PLACEHOLDER_PHRASES[phraseIndex % PLACEHOLDER_PHRASES.length];
+            let charIndex = phrase.length;
+            clearInterval(placeholderTimer);
+            placeholderTimer = setInterval(() => {
+              charIndex--;
+              screenInput.placeholder = phrase.slice(0, Math.max(charIndex, 0));
+              if (charIndex <= 0) {
+                clearInterval(placeholderTimer);
+                phraseIndex++;
+                setTimeout(typePhrase, 200);
+              }
+            }, DELETE_MS);
+          }
+          typePhrase();
+        }
+        runPlaceholderCycle();
+
+        function applyQuery(query) {
+          screenInput.value = query;
+          screenInput.focus({ preventScroll: true });
+        }
+        document.querySelectorAll(".most-used-item, .search-recent__main").forEach((btn) => {
+          btn.addEventListener("click", () => applyQuery(btn.dataset.query));
+        });
+
+        function refreshEmptyState() {
+          const hasItems = recentList.querySelectorAll(".search-recent__item").length > 0;
+          recentList.hidden = !hasItems;
+          recentEmpty.hidden = hasItems;
+          clearAllBtn.hidden = !hasItems;
+        }
+        recentList.addEventListener("click", (e) => {
+          const removeBtn = e.target.closest(".search-recent__remove");
+          if (!removeBtn) return;
+          removeBtn.closest(".search-recent__item").remove();
+          refreshEmptyState();
+        });
+        clearAllBtn.addEventListener("click", () => {
+          recentList.querySelectorAll(".search-recent__item").forEach((item) => item.remove());
+          refreshEmptyState();
         });
       })();
     </script>
