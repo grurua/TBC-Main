@@ -307,6 +307,34 @@
           <line x1="17.5" y1="14.3" x2="17.5" y2="18.7" />
           <line x1="15.3" y1="16.5" x2="19.7" y2="16.5" />
         </symbol>
+        <symbol id="i-globe-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="10" cy="13" r="7.5" />
+          <path d="M2.5 13h15" />
+          <path d="M10 5.5c2.2 2 2.2 13 0 15" />
+          <path d="M10 5.5c-2.2 2-2.2 13 0 15" />
+          <path d="M16 3h5.5v5.5" />
+          <line x1="21.5" y1="3" x2="14.5" y2="10" />
+        </symbol>
+        <symbol id="i-check-circle-filled" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M8 12.3 10.6 15 16.3 9" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </symbol>
+        <symbol id="i-close-circle-filled" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M8.5 8.5 15.5 15.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" />
+          <path d="M15.5 8.5 8.5 15.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" />
+        </symbol>
+        <symbol id="i-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9.5 5.5 16 12 9.5 18.5" />
+        </symbol>
+        <symbol id="i-trend-up" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 13 8 8 11.5 11.5 17 6" />
+          <polyline points="12.5 6 17 6 17 10.5" />
+        </symbol>
+        <symbol id="i-trend-down" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 7 8 12 11.5 8.5 17 14" />
+          <polyline points="12.5 14 17 14 17 9.5" />
+        </symbol>
         <symbol id="i-wifi" viewBox="0 0 16 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <path d="M1 5a11 11 0 0 1 14 0" />
           <path d="M3.5 8a7 7 0 0 1 9 0" />
@@ -1165,6 +1193,9 @@
                   placeholder="Ask or search anything"
                   autocomplete="off"
                 />
+                <button class="search__clear" id="search-inline-clear" aria-label="Clear text" hidden>
+                  <svg class="icon" width="24" height="24"><use href="#i-close-circle-filled" /></svg>
+                </button>
               </label>
             </div>
             <button class="icon-btn" id="search-cancel" aria-label="Close search">
@@ -1177,6 +1208,7 @@
           </div>
 
           <div class="app-screen__scroll search-screen__scroll">
+            <div id="search-start">
             <div class="search-section">
               <div class="search-section__head">
                 <span class="ts-title-xs-bold">Most used</span>
@@ -1300,6 +1332,232 @@
                 </div>
               </div>
               <p class="search-recent__empty ts-body-xs-regular" hidden>No recent searches</p>
+            </div>
+            </div>
+
+            <div id="search-results" hidden>
+              <div class="search-section" data-result-section="quick-actions">
+                <div class="search-section__head">
+                  <span class="ts-title-xs-bold">Quick actions</span>
+                  <button class="search-link ts-label-m-medium">Show more</button>
+                </div>
+                <div class="most-used-card most-used-card--list">
+                  <button class="result-row" data-result-row data-match-title="Transfer to someone">
+                    <span class="result-row__icon"><svg class="icon" width="24" height="24"><use href="#i-user-arrow-out" /></svg></span>
+                    <span class="result-row__text">
+                      <span class="result-row__title ts-label-m-regular" data-title></span>
+                      <span class="result-row__subtitle ts-body-xs-regular">Standard transfer within or outside the Bank</span>
+                    </span>
+                  </button>
+                  <button class="result-row" data-result-row data-match-title="International transfer">
+                    <span class="result-row__icon"><svg class="icon" width="24" height="24"><use href="#i-globe-arrow" /></svg></span>
+                    <span class="result-row__text">
+                      <span class="result-row__title ts-label-m-regular" data-title></span>
+                      <span class="result-row__subtitle ts-body-xs-regular">Bank transfers to 200+ countries worldwide</span>
+                    </span>
+                  </button>
+                  <button class="result-row" data-result-row data-match-title="Transfer to treasury">
+                    <span class="result-row__icon"><svg class="icon" width="24" height="24"><use href="#i-bank" /></svg></span>
+                    <span class="result-row__text">
+                      <span class="result-row__title ts-label-m-regular" data-title></span>
+                      <span class="result-row__subtitle ts-body-xs-regular">Tax type transfers</span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="search-section" data-result-section="transactions" data-static-section>
+                <div class="search-section__head">
+                  <span class="ts-title-xs-bold">Transactions</span>
+                  <button class="search-link ts-label-m-medium">See all</button>
+                </div>
+                <ul class="tx-list most-used-card most-used-card--list">
+                  <li class="tx-item">
+                    <button class="tx-item__btn">
+                      <span class="tx-item__icon" style="--bg: #8679f9" aria-hidden="true">
+                        <svg class="icon" width="20" height="20"><use href="#i-cross" /></svg>
+                      </span>
+                      <div class="tx-item__text">
+                        <span class="title-sm ts-label-m-regular">Aversi</span>
+                        <span class="subtitle-xs ts-label-s-regular">25 Aug, 15:30</span>
+                      </div>
+                      <span class="amount-sm ts-label-s-regular"><span class="amount__value">249.15</span> <span class="amount__currency">₾</span></span>
+                    </button>
+                  </li>
+                  <li class="tx-item">
+                    <button class="tx-item__btn">
+                      <span class="tx-item__icon tx-item__icon--avatar" style="--bg: #d9a98a" aria-hidden="true">
+                        G
+                        <svg class="icon tx-item__badge" width="14" height="14"><use href="#i-check-circle-filled" /></svg>
+                      </span>
+                      <div class="tx-item__text">
+                        <span class="title-sm ts-label-m-regular">Giorgi Beridze</span>
+                        <span class="subtitle-xs ts-label-s-regular">13 Aug, 12:45</span>
+                      </div>
+                      <span class="amount-sm ts-label-s-regular"><span class="amount__value">130.00</span> <span class="amount__currency">₾</span></span>
+                    </button>
+                  </li>
+                  <li class="tx-item">
+                    <button class="tx-item__btn">
+                      <span class="tx-item__icon" style="--bg: #4bb7b1" aria-hidden="true">
+                        <svg class="icon" width="20" height="20"><use href="#i-moped" /></svg>
+                        <svg class="icon tx-item__badge" width="14" height="14"><use href="#i-check-circle-filled" /></svg>
+                      </span>
+                      <div class="tx-item__text">
+                        <span class="title-sm ts-label-m-regular">Glovo</span>
+                        <span class="subtitle-xs ts-label-s-regular">9 Aug, 13:00</span>
+                      </div>
+                      <span class="amount-sm ts-label-s-regular"><span class="amount__value">17.23</span> <span class="amount__currency">₾</span></span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="search-section" data-result-section="products" data-static-section>
+                <div class="search-section__head">
+                  <span class="ts-title-xs-bold">Products</span>
+                  <button class="search-link ts-label-m-medium">Show more</button>
+                </div>
+                <div class="most-used-card most-used-card--list">
+                  <button class="result-row" data-result-row data-match-title="Transfers">
+                    <span class="result-row__icon"><svg class="icon" width="24" height="24"><use href="#i-swap" /></svg></span>
+                    <span class="result-row__text">
+                      <span class="result-row__title ts-label-m-regular" data-title></span>
+                    </span>
+                  </button>
+                  <button class="result-row" data-result-row data-match-title="Payments">
+                    <span class="result-row__icon"><svg class="icon" width="24" height="24"><use href="#i-receipt" /></svg></span>
+                    <span class="result-row__text">
+                      <span class="result-row__title ts-label-m-regular" data-title></span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="search-section" data-result-section="investments" data-static-section>
+                <div class="search-section__head">
+                  <span class="ts-title-xs-bold">Investments</span>
+                  <button class="search-link ts-label-m-medium">Show more</button>
+                </div>
+                <div class="most-used-card most-used-card--list">
+                  <button class="result-row invest-row" data-result-row data-match-title="Tradeweb">
+                    <span class="result-row__icon result-row__icon--letter" style="--bg: #4bb7b1">T</span>
+                    <span class="result-row__text">
+                      <span class="result-row__title ts-label-m-regular" data-title></span>
+                      <span class="result-row__subtitle ts-body-xs-regular">TW / 0.98298127</span>
+                    </span>
+                    <span class="invest-row__figures">
+                      <span class="ts-label-s-medium">246.89 $</span>
+                      <span class="invest-row__trend invest-row__trend--down ts-label-s-medium">
+                        <svg class="icon" width="14" height="14"><use href="#i-trend-down" /></svg>9.42 %
+                      </span>
+                    </span>
+                  </button>
+                  <button class="result-row invest-row" data-result-row data-match-title="Trendlines Group">
+                    <span class="result-row__icon result-row__icon--letter" style="--bg: #8679f9">T</span>
+                    <span class="result-row__text">
+                      <span class="result-row__title ts-label-m-regular" data-title></span>
+                      <span class="result-row__subtitle ts-body-xs-regular">SGX / 0.98298127</span>
+                    </span>
+                    <span class="invest-row__figures">
+                      <span class="ts-label-s-medium">720.45 $</span>
+                      <span class="invest-row__trend invest-row__trend--down ts-label-s-medium">
+                        <svg class="icon" width="14" height="14"><use href="#i-trend-down" /></svg>0.12 %
+                      </span>
+                    </span>
+                  </button>
+                  <button class="result-row invest-row" data-result-row data-match-title="Tesla">
+                    <span class="result-row__icon result-row__icon--letter" style="--bg: #f94850">T</span>
+                    <span class="result-row__text">
+                      <span class="result-row__title ts-label-m-regular" data-title></span>
+                      <span class="result-row__subtitle ts-body-xs-regular">TSLA / 0.98298127</span>
+                    </span>
+                    <span class="invest-row__figures">
+                      <span class="ts-label-s-medium">2304.55 $</span>
+                      <span class="invest-row__trend invest-row__trend--up ts-label-s-medium">
+                        <svg class="icon" width="14" height="14"><use href="#i-trend-up" /></svg>12.39 %
+                      </span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="search-section" data-result-section="crypto" data-static-section>
+                <div class="search-section__head">
+                  <span class="ts-title-xs-bold">Cryptocurrencies</span>
+                  <button class="search-link ts-label-m-medium">Show more</button>
+                </div>
+                <div class="most-used-card most-used-card--list">
+                  <button class="result-row invest-row" data-result-row data-match-title="TRON">
+                    <span class="result-row__icon result-row__icon--letter" style="--bg: #e6c230">T</span>
+                    <span class="result-row__text">
+                      <span class="result-row__title ts-label-m-regular" data-title></span>
+                      <span class="result-row__subtitle ts-body-xs-regular">TRX / 0.98298127</span>
+                    </span>
+                    <span class="invest-row__figures">
+                      <span class="ts-label-s-medium">2304.55 $</span>
+                      <span class="invest-row__trend invest-row__trend--up ts-label-s-medium">
+                        <svg class="icon" width="14" height="14"><use href="#i-trend-up" /></svg>12.39 %
+                      </span>
+                    </span>
+                  </button>
+                  <button class="result-row invest-row" data-result-row data-match-title="TONCOIN">
+                    <span class="result-row__icon result-row__icon--letter" style="--bg: #00adee">T</span>
+                    <span class="result-row__text">
+                      <span class="result-row__title ts-label-m-regular" data-title></span>
+                      <span class="result-row__subtitle ts-body-xs-regular">TON / 0.98298127</span>
+                    </span>
+                    <span class="invest-row__figures">
+                      <span class="ts-label-s-medium">246.89 $</span>
+                      <span class="invest-row__trend invest-row__trend--down ts-label-s-medium">
+                        <svg class="icon" width="14" height="14"><use href="#i-trend-down" /></svg>9.42 %
+                      </span>
+                    </span>
+                  </button>
+                  <button class="result-row invest-row" data-result-row data-match-title="THEDER">
+                    <span class="result-row__icon result-row__icon--letter" style="--bg: #4bb7b1">T</span>
+                    <span class="result-row__text">
+                      <span class="result-row__title ts-label-m-regular" data-title></span>
+                      <span class="result-row__subtitle ts-body-xs-regular">USDT / 0.98298127</span>
+                    </span>
+                    <span class="invest-row__figures">
+                      <span class="ts-label-s-medium">720.45 $</span>
+                      <span class="invest-row__trend invest-row__trend--down ts-label-s-medium">
+                        <svg class="icon" width="14" height="14"><use href="#i-trend-down" /></svg>0.12 %
+                      </span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="search-section" data-result-section="help" data-static-section>
+                <div class="search-section__head">
+                  <span class="ts-title-xs-bold">Help on the topic</span>
+                  <button class="search-link ts-label-m-medium">See all</button>
+                </div>
+                <div class="most-used-card most-used-card--list">
+                  <button class="result-row result-row--help">
+                    <span class="result-row__text">
+                      <span class="result-row__title ts-label-m-regular">Sending money from TBC bank to other Georgian bank</span>
+                    </span>
+                    <svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg>
+                  </button>
+                  <button class="result-row result-row--help">
+                    <span class="result-row__text">
+                      <span class="result-row__title ts-label-m-regular">What are bank transfer fees?</span>
+                    </span>
+                    <svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg>
+                  </button>
+                  <button class="result-row result-row--help">
+                    <span class="result-row__text">
+                      <span class="result-row__title ts-label-m-regular">What are the transfer timeframes?</span>
+                    </span>
+                    <svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg>
+                  </button>
+                </div>
+              </div>
+
+              <p class="search-recent__empty ts-body-xs-regular" id="search-no-results" hidden>No results found</p>
             </div>
           </div>
         </div>
@@ -1733,6 +1991,7 @@
           searchScreen.classList.remove("is-open");
           searchScreen.setAttribute("aria-hidden", "true");
           screenInput.value = "";
+          renderResults("");
         }
 
         homeInput.addEventListener("focus", () => {
@@ -1795,6 +2054,7 @@
         function applyQuery(query) {
           screenInput.value = query;
           screenInput.focus({ preventScroll: true });
+          renderResults(query);
         }
         document.querySelectorAll(".most-used-item, .search-recent__main").forEach((btn) => {
           btn.addEventListener("click", () => applyQuery(btn.dataset.query));
@@ -1815,6 +2075,89 @@
         clearAllBtn.addEventListener("click", () => {
           recentList.querySelectorAll(".search-recent__item").forEach((item) => item.remove());
           refreshEmptyState();
+        });
+
+        // ---------------------------------------------------------------
+        // Live results — matches Figma node 5833:11025 ("Search
+        // Transactions") for the query "Trans". The same substring-match
+        // + highlight mechanism generalizes to any other query typed
+        // against this same content (e.g. "tesla", "swap", "payments"):
+        // matching rows/sections stay, the rest hide, and the matched
+        // substring is highlighted the same way. Sections not tied to a
+        // literal text match (Transactions, Help on the topic) are, per
+        // the source design itself (their row text carries no highlight
+        // span), always shown together with any other match rather than
+        // filtered.
+        const searchStart = document.getElementById("search-start");
+        const searchResults = document.getElementById("search-results");
+        const inlineClear = document.getElementById("search-inline-clear");
+        const noResultsMsg = document.getElementById("search-no-results");
+        const resultRows = Array.from(document.querySelectorAll("[data-result-row]"));
+        const resultSections = Array.from(document.querySelectorAll("[data-result-section]"));
+
+        function highlight(text, query) {
+          const i = text.toLowerCase().indexOf(query.toLowerCase());
+          if (i === -1) return document.createTextNode(text);
+          const frag = document.createDocumentFragment();
+          frag.append(text.slice(0, i));
+          const mark = document.createElement("mark");
+          mark.textContent = text.slice(i, i + query.length);
+          frag.append(mark);
+          frag.append(text.slice(i + query.length));
+          return frag;
+        }
+
+        function renderResults(rawQuery) {
+          const query = rawQuery.trim();
+          inlineClear.hidden = !query;
+
+          if (!query) {
+            searchStart.hidden = false;
+            searchResults.hidden = true;
+            return;
+          }
+
+          // "Quick actions" is the only section the source design shows
+          // being filtered by the query (its 3 rows are all "trans"
+          // matches); every other section (Transactions, Products,
+          // Investments, Cryptocurrencies, Help) is shown in full as
+          // static companion content regardless of query, per that same
+          // source - only their matching titles pick up the highlight.
+          let anyMatch = false;
+          resultRows.forEach((row) => {
+            const title = row.dataset.matchTitle;
+            const match = title.toLowerCase().includes(query.toLowerCase());
+            const filterable = row.closest('[data-result-section="quick-actions"]') !== null;
+            if (filterable) row.hidden = !match;
+            if (match) {
+              anyMatch = true;
+              const titleEl = row.querySelector("[data-title]");
+              titleEl.textContent = "";
+              titleEl.appendChild(highlight(title, query));
+            } else if (!filterable) {
+              row.querySelector("[data-title]").textContent = title;
+            }
+          });
+
+          resultSections.forEach((section) => {
+            if (section.dataset.staticSection !== undefined) {
+              section.hidden = !anyMatch;
+              return;
+            }
+            const visibleRows = section.querySelectorAll("[data-result-row]:not([hidden])").length;
+            section.hidden = visibleRows === 0;
+          });
+
+          searchStart.hidden = true;
+          searchResults.hidden = false;
+          noResultsMsg.hidden = anyMatch;
+        }
+
+        screenInput.addEventListener("input", () => renderResults(screenInput.value));
+        inlineClear.addEventListener("click", () => {
+          screenInput.value = "";
+          screenInput.focus({ preventScroll: true });
+          renderResults("");
         });
       })();
     </script>
