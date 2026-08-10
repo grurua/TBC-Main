@@ -977,6 +977,15 @@ body {
   box-shadow: var(--shadow-bottom-s);
   border-radius: var(--core-border-radius-12);
   flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+/* Long-press anywhere on a home-screen row to pick it up (not just the
+   handle icon) — see the pointerdown/pointermove logic in the script. */
+#qa-home-list .sheet-row {
+  cursor: grab;
+}
+#qa-home-list .sheet-row--dragging {
+  cursor: grabbing;
 }
 .sheet-row--plain {
   padding: 12px 16px;

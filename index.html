@@ -849,17 +849,26 @@
         });
 
         // Drag-to-reorder within "On your home screen" (pointer events,
-        // works for mouse and touch alike). Sibling rows live-shift out
-        // of the way (like iOS/Trello reordering) instead of only
-        // snapping into place after drop.
+        // works for mouse and touch alike). Long-press ANYWHERE on the
+        // row (not just the handle icon) arms the drag, so it doesn't
+        // hijack normal taps or scrolling the sheet — only a press held
+        // still for LONG_PRESS_MS starts dragging. Sibling rows
+        // live-shift out of the way (like iOS/Trello reordering) instead
+        // of only snapping into place after drop.
         const DRAG_EASE = "transform 0.22s cubic-bezier(0.22, 1, 0.36, 1)";
+        const LONG_PRESS_MS = 350;
+        const PRESS_CANCEL_PX = 10;
         let dragState = null;
+        let pendingPress = null;
+        let pressTimer = null;
 
-        homeListEl.addEventListener("pointerdown", (e) => {
-          const handle = e.target.closest(".sheet-row__handle");
-          if (!handle) return;
-          e.preventDefault();
-          const row = handle.closest(".sheet-row");
+        function clearPendingPress() {
+          if (pressTimer) clearTimeout(pressTimer);
+          pressTimer = null;
+          pendingPress = null;
+        }
+
+        function armDrag(row, pointerId, atY) {
           const rows = Array.from(homeListEl.children);
           const currentIndex = rows.indexOf(row);
           const rowHeight = row.offsetHeight;
@@ -872,7 +881,7 @@
             targetIndex: currentIndex,
             rowHeight,
             step,
-            startY: e.clientY,
+            startY: atY,
             startTop: row.offsetTop,
           };
 
@@ -880,34 +889,62 @@
             if (r !== row) r.style.transition = DRAG_EASE;
           });
           row.classList.add("sheet-row--dragging");
-          row.setPointerCapture(e.pointerId);
+          try {
+            row.setPointerCapture(pointerId);
+          } catch (err) {
+            /* pointer may already have been released */
+          }
+        }
+
+        homeListEl.addEventListener("pointerdown", (e) => {
+          if (e.target.closest(".sheet-row__btn")) return; // let add/remove clicks behave normally
+          const row = e.target.closest(".sheet-row");
+          if (!row) return;
+          clearPendingPress();
+          pendingPress = { row, pointerId: e.pointerId, startX: e.clientX, startY: e.clientY, lastY: e.clientY };
+          pressTimer = setTimeout(() => {
+            if (!pendingPress) return;
+            const { row: pressedRow, pointerId, lastY } = pendingPress;
+            pressTimer = null;
+            pendingPress = null;
+            armDrag(pressedRow, pointerId, lastY);
+          }, LONG_PRESS_MS);
         });
 
         homeListEl.addEventListener("pointermove", (e) => {
-          if (!dragState) return;
-          const { row, rows, currentIndex, rowHeight, step, startY, startTop } = dragState;
+          if (dragState) {
+            e.preventDefault();
+            const { row, rows, currentIndex, rowHeight, step, startY, startTop } = dragState;
 
-          const dy = e.clientY - startY;
-          row.style.transform = `translateY(${dy}px) scale(1.03)`;
+            const dy = e.clientY - startY;
+            row.style.transform = `translateY(${dy}px) scale(1.03)`;
 
-          const pointerCenter = startTop + dy + rowHeight / 2;
-          let targetIndex = currentIndex;
-          rows.forEach((r, i) => {
-            if (i === currentIndex) return;
-            const rowCenter = r.offsetTop + rowHeight / 2;
-            if (i < currentIndex && pointerCenter < rowCenter) targetIndex = Math.min(targetIndex, i);
-            if (i > currentIndex && pointerCenter > rowCenter) targetIndex = Math.max(targetIndex, i);
-          });
+            const pointerCenter = startTop + dy + rowHeight / 2;
+            let targetIndex = currentIndex;
+            rows.forEach((r, i) => {
+              if (i === currentIndex) return;
+              const rowCenter = r.offsetTop + rowHeight / 2;
+              if (i < currentIndex && pointerCenter < rowCenter) targetIndex = Math.min(targetIndex, i);
+              if (i > currentIndex && pointerCenter > rowCenter) targetIndex = Math.max(targetIndex, i);
+            });
 
-          rows.forEach((r, i) => {
-            if (i === currentIndex) return;
-            let shift = 0;
-            if (i > currentIndex && i <= targetIndex) shift = -step;
-            else if (i < currentIndex && i >= targetIndex) shift = step;
-            r.style.transform = shift ? `translateY(${shift}px)` : "";
-          });
+            rows.forEach((r, i) => {
+              if (i === currentIndex) return;
+              let shift = 0;
+              if (i > currentIndex && i <= targetIndex) shift = -step;
+              else if (i < currentIndex && i >= targetIndex) shift = step;
+              r.style.transform = shift ? `translateY(${shift}px)` : "";
+            });
 
-          dragState.targetIndex = targetIndex;
+            dragState.targetIndex = targetIndex;
+            return;
+          }
+
+          if (pendingPress && e.pointerId === pendingPress.pointerId) {
+            pendingPress.lastY = e.clientY;
+            const moved = Math.hypot(e.clientX - pendingPress.startX, e.clientY - pendingPress.startY);
+            if (moved > PRESS_CANCEL_PX) clearPendingPress(); // real scroll/tap-drag, not a long-press
+          }
         });
 
         function endDrag() {
@@ -927,8 +964,16 @@
           dragState = null;
           renderAll();
         }
-        homeListEl.addEventListener("pointerup", endDrag);
-        homeListEl.addEventListener("pointercancel", endDrag);
+
+        function handlePointerUp() {
+          if (dragState) {
+            endDrag();
+            return;
+          }
+          clearPendingPress();
+        }
+        homeListEl.addEventListener("pointerup", handlePointerUp);
+        homeListEl.addEventListener("pointercancel", handlePointerUp);
 
         renderAll();
       })();
