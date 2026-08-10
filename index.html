@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="ka">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>TBC — Home</title>
+    <link rel="stylesheet" href="design-system/tokens/tokens.css" />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <!--
+      Implements Figma node 5719:2418 ("Home", file Dma7u5cUNIhbrsDwxda39T).
+      All colors / type / spacing / radii / shadows come from
+      design-system/tokens/tokens.css (see design-system/DESIGN_SYSTEM.md).
+
+      Elements with class "icon-ph" / "photo-ph" are placeholders —
+      real icon and photo assets from Figma could not be downloaded in
+      this environment (network egress to www.figma.com is blocked).
+      Swap them for the real exported assets when available.
+    -->
+    <div class="phone">
+      <div class="gradient-bg" aria-hidden="true"></div>
+
+      <div class="statusbar">
+        <span class="statusbar__time">9:41</span>
+        <span class="statusbar__icons">
+          <span class="icon-ph" style="--size: 20px; height: 14px"></span>
+          <span class="icon-ph" style="--size: 16px; height: 14px"></span>
+          <span class="icon-ph" style="--size: 25px; height: 14px"></span>
+        </span>
+      </div>
+
+      <div class="topbar">
+        <nav class="header">
+          <button class="icon-btn" aria-label="Menu">
+            <span class="icon-ph" style="--size: 24px"></span>
+          </button>
+          <div class="brand">
+            <span class="brand__mark" aria-hidden="true"></span>
+            <span class="brand__text">concept</span>
+            <span class="brand__chevron">⌄</span>
+          </div>
+          <div class="header__actions">
+            <button class="icon-btn" aria-label="Chat">
+              <span class="icon-ph" style="--size: 24px"></span>
+            </button>
+            <button class="icon-btn" aria-label="Notifications">
+              <span class="icon-ph" style="--size: 24px"></span>
+            </button>
+          </div>
+        </nav>
+
+        <div class="search">
+          <div class="search__field">
+            <span class="icon-ph" style="--size: 24px"></span>
+            <span class="search__placeholder ts-label-m-regular">Ask or search anything</span>
+          </div>
+        </div>
+      </div>
+
+      <main class="scroll">
+        <section class="content">
+          <!-- Account card -->
+          <article class="card account-card">
+            <div class="account-card__head">
+              <span class="ts-label-m-regular">Total Available</span>
+              <span class="account-card__actions">
+                <span class="icon-ph" style="--size: 24px"></span>
+                <span class="icon-ph" style="--size: 24px"></span>
+              </span>
+            </div>
+            <div class="account-card__amount ts-title-xl-bold">1 000.00 ₾</div>
+            <div class="account-card__row">
+              <span class="account-card__card-thumb photo-ph" aria-hidden="true"></span>
+              <div class="account-card__card-text">
+                <span class="title-sm ts-label-m-regular">Primary card</span>
+                <span class="subtitle-xs ts-label-s-regular">Secondary text</span>
+              </div>
+              <span class="amount ts-label-m-regular"
+                ><span class="amount__value">500.00</span> <span class="amount__currency">₾</span></span
+              >
+            </div>
+          </article>
+
+          <!-- Action buttons -->
+          <div class="action-buttons">
+            <button class="action-card">
+              <span class="icon-ph" style="--size: 20px"></span>
+              <span class="ts-label-s-medium">Transfer to others</span>
+            </button>
+            <button class="action-card">
+              <span class="icon-ph" style="--size: 20px"></span>
+              <span class="ts-label-s-medium">Between my account</span>
+            </button>
+            <button class="action-card">
+              <span class="icon-ph" style="--size: 20px"></span>
+              <span class="ts-label-s-medium">QR</span>
+            </button>
+            <button class="action-card action-card--icon-only" aria-label="Edit">
+              <span class="icon-ph" style="--size: 20px"></span>
+            </button>
+          </div>
+
+          <!-- Loyalty -->
+          <article class="card loyalty">
+            <span class="loyalty__logo" aria-hidden="true"></span>
+            <span class="loyalty__title ts-label-m-regular">Loyalty Reward</span>
+            <span class="amount ts-label-m-regular"
+              ><span class="amount__value">123.00</span> <span class="amount__currency">₾</span></span
+            >
+          </article>
+
+          <!-- Ad carousel 1: loan offers -->
+          <div class="ad-scroll" role="group" aria-label="Loan offers">
+            <article class="ad-card">
+              <span class="ad-card__photo photo-ph" aria-hidden="true"></span>
+              <div class="ad-card__body">
+                <span class="title-sm ts-label-m-medium">Consumer Loan</span>
+                <span class="badge badge--primary ts-button-s"
+                  ><span class="icon-ph" style="--size: 16px"></span>For You</span
+                >
+                <span class="ad-card__line ts-label-s-medium">10 000 ₾</span>
+                <span class="ad-card__line ts-label-s-medium">Effective: from 18%</span>
+              </div>
+              <button class="icon-btn icon-btn--ghost" aria-label="Dismiss">
+                <span class="icon-ph" style="--size: 20px"></span>
+              </button>
+            </article>
+            <article class="ad-card">
+              <span class="ad-card__photo photo-ph" aria-hidden="true"></span>
+              <div class="ad-card__body">
+                <span class="title-sm ts-label-m-medium">Mortgage Loan</span>
+                <span class="badge badge--tint ts-button-s"
+                  ><span class="icon-ph" style="--size: 16px"></span>For You</span
+                >
+                <span class="ad-card__line ts-label-s-medium">230 000 ₾</span>
+                <span class="ad-card__line ts-label-s-medium">Effective: from 16.2%</span>
+              </div>
+              <button class="icon-btn icon-btn--ghost" aria-label="Dismiss">
+                <span class="icon-ph" style="--size: 20px"></span>
+              </button>
+            </article>
+            <article class="ad-card">
+              <span class="ad-card__photo photo-ph" aria-hidden="true"></span>
+              <div class="ad-card__body">
+                <span class="title-sm ts-label-m-medium">Secured Loan</span>
+                <span class="badge badge--tint ts-button-s"
+                  ><span class="icon-ph" style="--size: 16px"></span>For You</span
+                >
+                <span class="ad-card__line ts-label-s-medium">230 000 ₾</span>
+                <span class="ad-card__line ts-label-s-medium">Effective: from 16.2%</span>
+              </div>
+              <button class="icon-btn icon-btn--ghost" aria-label="Dismiss">
+                <span class="icon-ph" style="--size: 20px"></span>
+              </button>
+            </article>
+          </div>
+
+          <!-- Ad carousel 2: savings products -->
+          <div class="ad-scroll" role="group" aria-label="Savings products">
+            <article class="ad-card">
+              <span class="ad-card__icon" aria-hidden="true"><span class="icon-ph" style="--size: 40px"></span></span>
+              <div class="ad-card__body">
+                <span class="title-sm ts-label-m-medium">My Goal</span>
+                <span class="badge badge--tint ts-button-s"
+                  ><span class="icon-ph" style="--size: 16px"></span>Start Saving</span
+                >
+                <span class="ad-card__line ts-label-s-medium">Interest rate: 10%</span>
+                <span class="ad-card__line ts-label-s-medium">Effective rate: 15%</span>
+              </div>
+              <button class="icon-btn icon-btn--ghost" aria-label="Dismiss">
+                <span class="icon-ph" style="--size: 20px"></span>
+              </button>
+            </article>
+            <article class="ad-card">
+              <span class="ad-card__icon" aria-hidden="true"><span class="icon-ph" style="--size: 40px"></span></span>
+              <div class="ad-card__body">
+                <span class="title-sm ts-label-m-medium">My Money Box</span>
+                <span class="badge badge--tint ts-button-s"
+                  ><span class="icon-ph" style="--size: 16px"></span>Start Saving</span
+                >
+                <span class="ad-card__line ts-label-s-medium">Interest rate: 10%</span>
+                <span class="ad-card__line ts-label-s-medium">Check the limit</span>
+              </div>
+              <button class="icon-btn icon-btn--ghost" aria-label="Dismiss">
+                <span class="icon-ph" style="--size: 20px"></span>
+              </button>
+            </article>
+            <article class="ad-card">
+              <span class="ad-card__icon" aria-hidden="true"><span class="icon-ph" style="--size: 40px"></span></span>
+              <div class="ad-card__body">
+                <span class="title-sm ts-label-m-medium">My Safe</span>
+                <span class="badge badge--tint ts-button-s"
+                  ><span class="icon-ph" style="--size: 16px"></span>Start Saving</span
+                >
+                <span class="ad-card__line ts-label-s-medium">Interest rate: 10%</span>
+                <span class="ad-card__line ts-label-s-medium">Check the limit</span>
+              </div>
+              <button class="icon-btn icon-btn--ghost" aria-label="Dismiss">
+                <span class="icon-ph" style="--size: 20px"></span>
+              </button>
+            </article>
+            <article class="ad-card">
+              <span class="ad-card__icon" aria-hidden="true"><span class="icon-ph" style="--size: 40px"></span></span>
+              <div class="ad-card__body">
+                <span class="title-sm ts-label-m-medium">Term Deposit</span>
+                <span class="badge badge--tint ts-button-s"
+                  ><span class="icon-ph" style="--size: 16px"></span>Start Saving</span
+                >
+                <span class="ad-card__line ts-label-s-medium">Interest rate: 10%</span>
+                <span class="ad-card__line ts-label-s-medium">Check the limit</span>
+              </div>
+              <button class="icon-btn icon-btn--ghost" aria-label="Dismiss">
+                <span class="icon-ph" style="--size: 20px"></span>
+              </button>
+            </article>
+          </div>
+
+          <!-- Transactions -->
+          <article class="card transactions">
+            <div class="transactions__head">
+              <h2 class="ts-label-m-regular">Transactions</h2>
+              <span class="transactions__date ts-body-xs-regular">3 January, 2025</span>
+            </div>
+            <ul class="tx-list">
+              <li class="tx-item">
+                <span class="tx-item__icon" style="--bg: #f181c4" aria-hidden="true"></span>
+                <div class="tx-item__text">
+                  <span class="title-sm ts-label-m-regular">Voulez vous</span>
+                  <span class="subtitle-xs ts-label-s-regular">Beauty</span>
+                </div>
+                <span class="amount-sm ts-label-s-regular"
+                  ><span class="amount__value">-567.11</span> <span class="amount__currency">₾</span></span
+                >
+              </li>
+              <li class="tx-item">
+                <span class="tx-item__icon" style="--bg: #4bb7b1" aria-hidden="true"></span>
+                <div class="tx-item__text">
+                  <span class="title-sm ts-label-m-regular">Wolt</span>
+                  <span class="subtitle-xs ts-label-s-regular">Delivery</span>
+                </div>
+                <span class="amount-sm ts-label-s-regular"
+                  ><span class="amount__value">-92.05</span> <span class="amount__currency">₾</span></span
+                >
+              </li>
+              <li class="tx-item">
+                <span class="tx-item__icon" style="--bg: #f94850" aria-hidden="true"></span>
+                <div class="tx-item__text">
+                  <span class="title-sm ts-label-m-regular">Entree</span>
+                  <span class="subtitle-xs ts-label-s-regular">Eating out</span>
+                </div>
+                <span class="amount-sm ts-label-s-regular"
+                  ><span class="amount__value">-34.00</span> <span class="amount__currency">₾</span></span
+                >
+              </li>
+              <li class="tx-item">
+                <span class="tx-item__icon" style="--bg: #e6c230" aria-hidden="true"></span>
+                <div class="tx-item__text">
+                  <span class="title-sm ts-label-m-regular">Silknet</span>
+                  <span class="subtitle-xs ts-label-s-regular">Bills</span>
+                </div>
+                <span class="amount-sm ts-label-s-regular"
+                  ><span class="amount__value">-48.00</span> <span class="amount__currency">₾</span></span
+                >
+              </li>
+              <li class="tx-item">
+                <span class="tx-item__icon" style="--bg: #8679f9" aria-hidden="true"></span>
+                <div class="tx-item__text">
+                  <span class="title-sm ts-label-m-regular">Pineo ecosystem</span>
+                  <span class="subtitle-xs ts-label-s-regular">healthcare</span>
+                </div>
+                <span class="amount-sm ts-label-s-regular"
+                  ><span class="amount__value">-1 200.00</span> <span class="amount__currency">₾</span></span
+                >
+              </li>
+            </ul>
+            <button class="btn-tertiary ts-button-l">All Transactions</button>
+          </article>
+        </section>
+      </main>
+
+      <nav class="tabbar" aria-label="Primary">
+        <div class="tabbar__bar">
+          <button class="tab tab--active">
+            <span class="icon-ph" style="--size: 24px"></span>
+            <span>Home</span>
+          </button>
+          <button class="tab">
+            <span class="icon-ph" style="--size: 24px"></span>
+            <span>Products</span>
+          </button>
+          <button class="tab">
+            <span class="icon-ph" style="--size: 24px"></span>
+            <span>Transfers</span>
+          </button>
+          <button class="tab">
+            <span class="icon-ph" style="--size: 24px"></span>
+            <span>Payment</span>
+          </button>
+          <button class="tab">
+            <span class="icon-ph" style="--size: 24px"></span>
+            <span>offers</span>
+          </button>
+        </div>
+        <div class="tabbar__home-indicator" aria-hidden="true"></div>
+      </nav>
+    </div>
+  </body>
+</html>
