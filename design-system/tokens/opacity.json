@@ -1,0 +1,42 @@
+{
+  "core.opacity.100": {
+    "percent": "100%",
+    "hex": "FF"
+  },
+  "core.opacity.90": {
+    "percent": "90%",
+    "hex": "E6"
+  },
+  "core.opacity.80": {
+    "percent": "80%",
+    "hex": "CC"
+  },
+  "core.opacity.70": {
+    "percent": "70%",
+    "hex": "B3"
+  },
+  "core.opacity.60": {
+    "percent": "60%",
+    "hex": "99"
+  },
+  "core.opacity.50": {
+    "percent": "50%",
+    "hex": "80"
+  },
+  "core.opacity.40": {
+    "percent": "40%",
+    "hex": "66"
+  },
+  "core.opacity.30": {
+    "percent": "30%",
+    "hex": "4D"
+  },
+  "core.opacity.20": {
+    "percent": "20%",
+    "hex": "33"
+  },
+  "core.opacity.10": {
+    "percent": "10%",
+    "hex": "1A"
+  }
+}

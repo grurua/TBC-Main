@@ -1,0 +1,74 @@
+{
+  "duration": {
+    "core.motion.duration.70": {
+      "value": "70ms",
+      "usage": "Micro interactions: text fields, toggles, buttons"
+    },
+    "core.motion.duration.110": {
+      "value": "110ms",
+      "usage": "Micro interactions: text fields, toggles, buttons"
+    },
+    "core.motion.duration.200": {
+      "value": "200ms",
+      "usage": "Small distance movements"
+    },
+    "core.motion.duration.300": {
+      "value": "300ms",
+      "usage": "Notifications, dropdowns, popovers"
+    },
+    "core.motion.duration.400": {
+      "value": "400ms",
+      "usage": "Page transitions, large object movements"
+    },
+    "core.motion.duration.500": {
+      "value": "500ms",
+      "usage": "Big expressive animations"
+    },
+    "core.motion.duration.600": {
+      "value": "600ms",
+      "usage": "Big expressive animations"
+    },
+    "core.motion.duration.800": {
+      "value": "800ms",
+      "usage": "Big expressive animations"
+    }
+  },
+  "easing": {
+    "core.motion.easing.linear": {
+      "cubicBezier": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "usage": "Opacity or color changes only"
+    },
+    "core.motion.easing.ease-in": {
+      "cubicBezier": [
+        0.4,
+        0,
+        0.1,
+        1
+      ],
+      "usage": "Object is in view before the animation starts, out of view after it ends"
+    },
+    "core.motion.easing.ease-out": {
+      "cubicBezier": [
+        0.5,
+        0.0,
+        0.2,
+        1.0
+      ],
+      "usage": "Object is out of view before the animation starts, in view after it ends"
+    },
+    "core.motion.easing.ease-in-out": {
+      "cubicBezier": [
+        0.6,
+        0.0,
+        0.4,
+        1.0
+      ],
+      "usage": "Object stays in view before and after the animation"
+    }
+  }
+}

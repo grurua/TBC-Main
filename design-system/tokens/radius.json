@@ -1,0 +1,9 @@
+{
+  "core.border.radius.2": "2px",
+  "core.border.radius.4": "4px",
+  "core.border.radius.6": "6px",
+  "core.border.radius.8": "8px",
+  "core.border.radius.10": "10px",
+  "core.border.radius.12": "12px",
+  "core.border.radius.round": "1000px"
+}

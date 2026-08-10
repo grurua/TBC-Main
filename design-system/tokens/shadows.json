@@ -1,0 +1,38 @@
+{
+  "light": {
+    "shadow/bottom/s": [
+      "0 0 1px 0 #001E2D33",
+      "0 2px 8px -1px #001E2D08"
+    ],
+    "shadow/bottom/m": [
+      "0 0 1px 0 #001E2D33",
+      "0 12px 12px -4px #001E2D14"
+    ],
+    "shadow/bottom/l": [
+      "0 0 1px 0 #001E2D33",
+      "0 21px 21px -5px #001E2D14"
+    ],
+    "shadow/top/s": [
+      "0 0 1px 0 #001E2D33",
+      "0 -2px 8px -1px #001E2D08"
+    ]
+  },
+  "dark": {
+    "shadow/bottom/s": [
+      "0 0 1px 0 #FFFFFF1F",
+      "0 2px 12px -1px #14171929"
+    ],
+    "shadow/bottom/m": [
+      "0 0 1px 0 #FFFFFF1F",
+      "0 12px 12px -4px #14171929"
+    ],
+    "shadow/bottom/l": [
+      "0 0 1px 0 #FFFFFF3D",
+      "0 21px 21px -2px #1417193D"
+    ],
+    "shadow/top/s": [
+      "0 0 1px 0 #FFFFFF1F",
+      "0 -2px 12px -1px #14171929"
+    ]
+  }
+}

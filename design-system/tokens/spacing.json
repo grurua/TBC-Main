@@ -1,0 +1,20 @@
+{
+  "core.spacing.2": "2px",
+  "core.spacing.4": "4px",
+  "core.spacing.8": "8px",
+  "core.spacing.12": "12px",
+  "core.spacing.16": "16px",
+  "core.spacing.24": "24px",
+  "core.spacing.32": "32px",
+  "core.spacing.40": "40px",
+  "core.spacing.48": "48px",
+  "core.spacing.56": "56px",
+  "core.spacing.64": "64px",
+  "core.spacing.72": "72px",
+  "core.spacing.80": "80px",
+  "core.spacing.96": "96px",
+  "core.spacing.120": "120px",
+  "core.spacing.160": "160px",
+  "core.spacing.200": "200px",
+  "core.spacing.240": "240px"
+}
