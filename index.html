@@ -751,6 +751,8 @@
           return action.label.replace(/\n/g, " ");
         }
 
+        const gripDots = '<span></span>'.repeat(6);
+
         function renderHomeList() {
           countEl.textContent = String(homeIds.length);
           homeListEl.innerHTML = homeIds
@@ -758,12 +760,12 @@
               (id) => `
             <div class="sheet-row" data-id="${id}">
               <button class="sheet-row__handle" aria-label="Reorder ${flatLabel(actionsById[id])}">
-                <svg class="icon" width="20" height="20"><use href="#i-grip" /></svg>
+                ${gripDots}
               </button>
               ${iconMarkup(actionsById[id])}
-              <span class="sheet-row__label ts-label-m-regular">${flatLabel(actionsById[id])}</span>
+              <span class="sheet-row__label ts-label-m-medium">${flatLabel(actionsById[id])}</span>
               <button class="sheet-row__btn sheet-row__btn--remove" data-remove="${id}" aria-label="Remove ${flatLabel(actionsById[id])}">
-                <svg class="icon" width="14" height="14"><use href="#i-minus" /></svg>
+                <svg class="icon" width="16" height="16"><use href="#i-minus" /></svg>
               </button>
             </div>`
             )
@@ -775,13 +777,13 @@
           moreListEl.innerHTML = ALL_ACTIONS.filter((a) => !homeIds.includes(a.id))
             .map(
               (a) => `
-            <div class="sheet-row" data-id="${a.id}">
+            <div class="sheet-row sheet-row--plain" data-id="${a.id}">
               ${iconMarkup(a)}
-              <span class="sheet-row__label ts-label-m-regular">${flatLabel(a)}</span>
+              <span class="sheet-row__label ts-label-m-medium">${flatLabel(a)}</span>
               <button class="sheet-row__btn sheet-row__btn--add" data-add="${a.id}" aria-label="Add ${flatLabel(a)}" ${
                 atMax ? "disabled" : ""
               }>
-                <svg class="icon" width="14" height="14"><use href="#i-plus-sign" /></svg>
+                <svg class="icon" width="16" height="16"><use href="#i-plus-sign" /></svg>
               </button>
             </div>`
             )
