@@ -382,15 +382,15 @@
                    these are just the initial state. -->
               <button class="action-card" data-action-id="send-money">
                 <svg class="icon" width="20" height="20"><use href="#i-arrow-up-right" /></svg>
-                <span class="ts-label-s-medium">Send money</span>
+                <span class="action-card__label ts-label-s-medium">Send<br />Money</span>
               </button>
               <button class="action-card" data-action-id="exchange-money">
                 <svg class="icon" width="20" height="20"><use href="#i-sync" /></svg>
-                <span class="ts-label-s-medium">Exchange money</span>
+                <span class="action-card__label ts-label-s-medium">Exchange<br />Money</span>
               </button>
               <button class="action-card" data-action-id="scan-qr">
                 <svg class="icon" width="20" height="20"><use href="#i-qr" /></svg>
-                <span class="ts-label-s-medium">Scan QR code</span>
+                <span class="action-card__label ts-label-s-medium">Scan<br />QR code</span>
               </button>
               <button class="action-card action-card--icon-only" id="edit-quick-actions" aria-label="Edit quick actions">
                 <svg class="icon" width="20" height="20"><use href="#i-edit" /></svg>
@@ -703,9 +703,9 @@
         const MAX_HOME_ACTIONS = 3;
 
         const ALL_ACTIONS = [
-          { id: "send-money", label: "Send money", icon: "i-arrow-up-right" },
-          { id: "exchange-money", label: "Exchange money", icon: "i-sync" },
-          { id: "scan-qr", label: "Scan QR code", icon: "i-qr" },
+          { id: "send-money", label: "Send\nMoney", icon: "i-arrow-up-right" },
+          { id: "exchange-money", label: "Exchange\nMoney", icon: "i-sync" },
+          { id: "scan-qr", label: "Scan\nQR code", icon: "i-qr" },
           { id: "card-details", label: "Card Details", icon: "i-card" },
           { id: "add-money", label: "Add money", icon: "i-plus-sign" },
           { id: "move-savings", label: "Move to savings", icon: "i-target" },
@@ -744,18 +744,25 @@
           return `<span class="sheet-row__icon"><svg class="icon" width="20" height="20"><use href="#${action.icon}" /></svg></span>`;
         }
 
+        // The 3 default action labels carry an explicit "\n" line-break
+        // (matching the Figma "Send / Money" two-line layout on the
+        // Home screen); flatten it to a space for the single-line sheet rows.
+        function flatLabel(action) {
+          return action.label.replace(/\n/g, " ");
+        }
+
         function renderHomeList() {
           countEl.textContent = String(homeIds.length);
           homeListEl.innerHTML = homeIds
             .map(
               (id) => `
             <div class="sheet-row" data-id="${id}">
-              <button class="sheet-row__handle" aria-label="Reorder ${actionsById[id].label}">
+              <button class="sheet-row__handle" aria-label="Reorder ${flatLabel(actionsById[id])}">
                 <svg class="icon" width="20" height="20"><use href="#i-grip" /></svg>
               </button>
               ${iconMarkup(actionsById[id])}
-              <span class="sheet-row__label ts-label-m-regular">${actionsById[id].label}</span>
-              <button class="sheet-row__btn sheet-row__btn--remove" data-remove="${id}" aria-label="Remove ${actionsById[id].label}">
+              <span class="sheet-row__label ts-label-m-regular">${flatLabel(actionsById[id])}</span>
+              <button class="sheet-row__btn sheet-row__btn--remove" data-remove="${id}" aria-label="Remove ${flatLabel(actionsById[id])}">
                 <svg class="icon" width="14" height="14"><use href="#i-minus" /></svg>
               </button>
             </div>`
@@ -770,8 +777,8 @@
               (a) => `
             <div class="sheet-row" data-id="${a.id}">
               ${iconMarkup(a)}
-              <span class="sheet-row__label ts-label-m-regular">${a.label}</span>
-              <button class="sheet-row__btn sheet-row__btn--add" data-add="${a.id}" aria-label="Add ${a.label}" ${
+              <span class="sheet-row__label ts-label-m-regular">${flatLabel(a)}</span>
+              <button class="sheet-row__btn sheet-row__btn--add" data-add="${a.id}" aria-label="Add ${flatLabel(a)}" ${
                 atMax ? "disabled" : ""
               }>
                 <svg class="icon" width="14" height="14"><use href="#i-plus-sign" /></svg>
@@ -806,7 +813,12 @@
             if (!btn) return;
             btn.dataset.actionId = id;
             btn.querySelector("use").setAttribute("href", "#" + action.icon);
-            btn.querySelector(".ts-label-s-medium").textContent = action.label;
+            const label = btn.querySelector(".action-card__label");
+            label.textContent = "";
+            action.label.split("\n").forEach((line, i) => {
+              if (i > 0) label.appendChild(document.createElement("br"));
+              label.appendChild(document.createTextNode(line));
+            });
           });
         }
 

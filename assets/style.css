@@ -563,11 +563,17 @@ body {
 
 .action-buttons {
   display: flex;
-  gap: var(--core-spacing-8);
+  align-items: stretch;
+  justify-content: space-between;
+  /* Figma bleeds this row 13.5px past the screen edge on each side
+     (wider than the normal 16px content margin) so 3 fixed 102px
+     content-sized cards + the 40px icon-only button fit with 8px
+     gaps via justify-between, instead of stretching to fill 343px. */
+  margin: 0 -13.5px;
+  padding: 0 16px;
 }
 .action-card {
-  flex: 1 1 0;
-  min-width: 0;
+  flex: 0 0 102px;
   background: var(--color-surface-high-initial);
   border: none;
   border-radius: var(--core-border-radius-12);
@@ -581,6 +587,9 @@ body {
   text-align: left;
   cursor: pointer;
   font-family: inherit;
+}
+.action-card__label {
+  width: 78px;
 }
 .action-card--icon-only {
   flex: 0 0 40px;
