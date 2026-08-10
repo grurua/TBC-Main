@@ -120,6 +120,43 @@
         <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.6Z" />
         </symbol>
+        <!-- Transaction category icons, matched to Foundation library's
+             Global icons: flower-outlined, moped-outlined,
+             restaurant-outlined, wifi-outlined, healthcare-outlined -->
+        <symbol id="i-flower" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="2.3" />
+          <path d="M12 9.7c0-2.4-1.4-3.9-2.9-4.4 0 2 .5 3.4 2.9 4.4Z" />
+          <path d="M12 9.7c0-2.4 1.4-3.9 2.9-4.4 0 2-.5 3.4-2.9 4.4Z" />
+          <path d="M14.3 12c2.4 0 3.9-1.4 4.4-2.9-2 0-3.4.5-4.4 2.9Z" />
+          <path d="M14.3 12c2.4 0 3.9 1.4 4.4 2.9-2 0-3.4-.5-4.4-2.9Z" />
+          <path d="M9.7 12c-2.4 0-3.9 1.4-4.4 2.9 2 0 3.4-.5 4.4-2.9Z" />
+          <path d="M9.7 12c-2.4 0-3.9-1.4-4.4-2.9 2 0 3.4.5 4.4 2.9Z" />
+          <path d="M12 14.3c0 2.4 1.4 3.9 2.9 4.4 0-2-.5-3.4-2.9-4.4Z" />
+          <path d="M12 14.3c0 2.4-1.4 3.9-2.9 4.4 0-2 .5-3.4 2.9-4.4Z" />
+        </symbol>
+        <symbol id="i-moped" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="5.5" cy="18" r="2.2" />
+          <circle cx="17.5" cy="18" r="2.2" />
+          <path d="M5.5 18h5.5l2-5h4.5" />
+          <path d="M11 13V9h3" />
+          <path d="M14.5 6h2.2l1.3 3.2" />
+          <path d="M17.5 15.8V18" />
+        </symbol>
+        <symbol id="i-restaurant" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 3v6a2 2 0 0 0 2 2v10" />
+          <path d="M7 3v5M10 3v5" />
+          <path d="M17 3c-1.4 0-2.5 1.6-2.5 4.2v3.3c0 1 .7 1.9 1.7 2.1v8.4" />
+        </symbol>
+        <symbol id="i-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19" />
+          <line x1="5" y1="12" x2="19" y2="12" />
+        </symbol>
+        <symbol id="i-wifi-solid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 8.5a14 14 0 0 1 20 0" />
+          <path d="M5.5 12.5a9 9 0 0 1 13 0" />
+          <path d="M9 16.5a4 4 0 0 1 6 0" />
+          <circle cx="12" cy="19.5" r="1" fill="currentColor" stroke="none" />
+        </symbol>
         <symbol id="i-cash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="9" />
           <path d="M9.3 15c0 1.24 1.21 2.25 2.7 2.25s2.7-.6 2.7-1.8-1.21-1.62-2.7-2.25-2.7-1.05-2.7-2.25S10.51 9 12 9s2.7.6 2.7 1.8" />
@@ -408,7 +445,9 @@
               <ul class="tx-list">
                 <li class="tx-item">
                   <button class="tx-item__btn">
-                  <span class="tx-item__icon" style="--bg: #f181c4" aria-hidden="true"></span>
+                  <span class="tx-item__icon" style="--bg: #f181c4" aria-hidden="true">
+                    <svg class="icon" width="20" height="20"><use href="#i-flower" /></svg>
+                  </span>
                   <div class="tx-item__text">
                     <span class="title-sm ts-label-m-regular">Voulez vous</span>
                     <span class="subtitle-xs ts-label-s-regular">Beauty</span>
@@ -420,7 +459,9 @@
                 </li>
                 <li class="tx-item">
                   <button class="tx-item__btn">
-                  <span class="tx-item__icon" style="--bg: #4bb7b1" aria-hidden="true"></span>
+                  <span class="tx-item__icon" style="--bg: #4bb7b1" aria-hidden="true">
+                    <svg class="icon" width="20" height="20"><use href="#i-moped" /></svg>
+                  </span>
                   <div class="tx-item__text">
                     <span class="title-sm ts-label-m-regular">Wolt</span>
                     <span class="subtitle-xs ts-label-s-regular">Delivery</span>
@@ -432,7 +473,9 @@
                 </li>
                 <li class="tx-item">
                   <button class="tx-item__btn">
-                  <span class="tx-item__icon" style="--bg: #f94850" aria-hidden="true"></span>
+                  <span class="tx-item__icon" style="--bg: #f94850" aria-hidden="true">
+                    <svg class="icon" width="20" height="20"><use href="#i-restaurant" /></svg>
+                  </span>
                   <div class="tx-item__text">
                     <span class="title-sm ts-label-m-regular">Entree</span>
                     <span class="subtitle-xs ts-label-s-regular">Eating out</span>
@@ -444,7 +487,9 @@
                 </li>
                 <li class="tx-item">
                   <button class="tx-item__btn">
-                  <span class="tx-item__icon" style="--bg: #e6c230" aria-hidden="true"></span>
+                  <span class="tx-item__icon" style="--bg: #e6c230" aria-hidden="true">
+                    <svg class="icon" width="20" height="20"><use href="#i-wifi-solid" /></svg>
+                  </span>
                   <div class="tx-item__text">
                     <span class="title-sm ts-label-m-regular">Silknet</span>
                     <span class="subtitle-xs ts-label-s-regular">Bills</span>
@@ -456,7 +501,9 @@
                 </li>
                 <li class="tx-item">
                   <button class="tx-item__btn">
-                  <span class="tx-item__icon" style="--bg: #8679f9" aria-hidden="true"></span>
+                  <span class="tx-item__icon" style="--bg: #8679f9" aria-hidden="true">
+                    <svg class="icon" width="20" height="20"><use href="#i-cross" /></svg>
+                  </span>
                   <div class="tx-item__text">
                     <span class="title-sm ts-label-m-regular">Pineo ecosystem</span>
                     <span class="subtitle-xs ts-label-s-regular">healthcare</span>
