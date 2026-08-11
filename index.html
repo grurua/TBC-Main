@@ -2301,6 +2301,17 @@
         homeInput.addEventListener("click", openSearch);
         cancelBtn.addEventListener("click", closeSearch);
 
+        // Dismiss the keyboard as soon as the results list starts
+        // scrolling, matching the native iOS "scroll to dismiss" feel.
+        const screenScroll = searchScreen.querySelector(".search-screen__scroll");
+        screenScroll.addEventListener(
+          "scroll",
+          () => {
+            if (document.activeElement === screenInput) screenInput.blur();
+          },
+          { passive: true }
+        );
+
         // Rotating placeholder ("Search Text Animation" in the source):
         // types out each example query, pauses, then deletes it before
         // moving to the next one, cycling forever while the field is empty.
