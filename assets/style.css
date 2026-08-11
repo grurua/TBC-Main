@@ -1593,10 +1593,15 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 20px;
   padding: 24px 12px;
   background: var(--color-surface-high-initial);
   border-radius: var(--core-border-radius-12);
   box-shadow: 0 2px 4px 0 rgba(0, 30, 45, 0.03), 0 0 0.5px 0 rgba(0, 30, 45, 0.2);
+}
+.most-used-item[hidden] {
+  display: none;
 }
 .most-used-item {
   display: flex;

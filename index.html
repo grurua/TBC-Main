@@ -307,6 +307,10 @@
           <line x1="17.5" y1="14.3" x2="17.5" y2="18.7" />
           <line x1="15.3" y1="16.5" x2="19.7" y2="16.5" />
         </symbol>
+        <symbol id="i-loyalty" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 12c0-1.4-.6-2.8-1.7-3.9-1.1-1.1-2.1-1.5-3.3-1.5-1.7 0-3 1.3-3 3s1.3 3 3 3" />
+          <path d="M12 12c0 1.4.6 2.8 1.7 3.9 1.1 1.1 2.1 1.5 3.3 1.5 1.7 0 3-1.3 3-3s-1.3-3-3-3" />
+        </symbol>
         <symbol id="i-globe-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="10" cy="13" r="7.5" />
           <path d="M2.5 13h15" />
@@ -1240,7 +1244,7 @@
                 <span class="ts-title-xs-bold">Most used</span>
                 <button class="search-link ts-label-m-medium" id="search-show-more">Show more</button>
               </div>
-              <div class="most-used-card">
+              <div class="most-used-card" id="most-used-card">
                 <button class="most-used-item" data-query="Transfer to someone">
                   <span class="most-used-item__icon"><svg class="icon" width="24" height="24"><use href="#i-user-arrow-out" /></svg></span>
                   <span class="most-used-item__label ts-body-xs-regular">Transfer to someone</span>
@@ -1256,6 +1260,22 @@
                 <button class="most-used-item" data-query="Auto comfort">
                   <span class="most-used-item__icon"><svg class="icon" width="24" height="24"><use href="#i-car" /></svg></span>
                   <span class="most-used-item__label ts-body-xs-regular">Auto comfort</span>
+                </button>
+                <button class="most-used-item" data-query="Currency exchange" hidden>
+                  <span class="most-used-item__icon"><svg class="icon" width="24" height="24"><use href="#i-sync" /></svg></span>
+                  <span class="most-used-item__label ts-body-xs-regular">Currency exchange</span>
+                </button>
+                <button class="most-used-item" data-query="Deposit" hidden>
+                  <span class="most-used-item__icon"><svg class="icon" width="24" height="24"><use href="#i-safe" /></svg></span>
+                  <span class="most-used-item__label ts-body-xs-regular">Deposit</span>
+                </button>
+                <button class="most-used-item" data-query="Credit card" hidden>
+                  <span class="most-used-item__icon"><svg class="icon" width="24" height="24"><use href="#i-card" /></svg></span>
+                  <span class="most-used-item__label ts-body-xs-regular">Credit card</span>
+                </button>
+                <button class="most-used-item" data-query="Loyalty program" hidden>
+                  <span class="most-used-item__icon"><svg class="icon" width="24" height="24"><use href="#i-loyalty" /></svg></span>
+                  <span class="most-used-item__label ts-body-xs-regular">Loyalty program</span>
                 </button>
               </div>
             </div>
@@ -2300,6 +2320,19 @@
         });
         homeInput.addEventListener("click", openSearch);
         cancelBtn.addEventListener("click", closeSearch);
+
+        // "Most used" Show more / Show less toggle (Figma node 5759:6207):
+        // reveals 4 extra shortcuts in a second row of the same card.
+        const mostUsedCard = document.getElementById("most-used-card");
+        const showMoreBtn = document.getElementById("search-show-more");
+        const mostUsedExtraItems = mostUsedCard.querySelectorAll(".most-used-item[hidden]");
+        showMoreBtn.addEventListener("click", () => {
+          const expand = showMoreBtn.textContent.trim() === "Show more";
+          mostUsedExtraItems.forEach((item) => {
+            item.hidden = !expand;
+          });
+          showMoreBtn.textContent = expand ? "Show less" : "Show more";
+        });
 
         // Dismiss the keyboard as soon as the results list starts
         // scrolling, matching the native iOS "scroll to dismiss" feel.
