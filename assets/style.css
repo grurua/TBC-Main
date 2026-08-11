@@ -1971,10 +1971,18 @@ body {
   color: var(--color-text-soft-default);
 }
 .exchange-card__amount {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
   font-family: var(--text-style-title-l-bold-font-family);
   font-size: 24px;
   font-weight: 700;
   color: var(--color-text-strong-default);
+}
+.exchange-card__amount::selection {
+  background: rgba(0, 173, 238, 0.2);
 }
 .exchange-card__currency {
   flex-shrink: 0;
@@ -2003,6 +2011,7 @@ body {
   flex-shrink: 0;
   width: 32px;
   height: 32px;
+  border: none;
   border-radius: 50%;
   background: var(--color-surface-high-initial);
   box-shadow: 0 0 0 1px var(--color-stroke-softer-initial);
@@ -2010,6 +2019,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s ease;
+}
+.exchange-card__swap:active {
+  transform: rotate(180deg) scale(0.92);
 }
 
 .currency-badge {

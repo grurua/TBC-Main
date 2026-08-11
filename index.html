@@ -327,6 +327,9 @@
         <symbol id="i-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="9.5 5.5 16 12 9.5 18.5" />
         </symbol>
+        <symbol id="i-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="5.5 9.5 12 16 18.5 9.5" />
+        </symbol>
         <symbol id="i-trend-up" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="3 13 8 8 11.5 11.5 17 6" />
           <polyline points="12.5 6 17 6 17 10.5" />
@@ -1686,16 +1689,36 @@
                 <div class="hero-card">
                   <div class="exchange-card">
                     <div class="exchange-card__row">
-                      <span class="exchange-card__col"><span class="exchange-card__label ts-body-xs-regular">Sell</span><span class="exchange-card__amount">256,335.05</span></span>
-                      <span class="exchange-card__currency ts-label-m-regular"><span class="avatar-initials" style="--bg:#eef1f1; --fg:#141719">GE</span>GEL<svg class="icon" width="16" height="16"><use href="#i-chevron-right" /></svg></span>
+                      <span class="exchange-card__col">
+                        <span class="exchange-card__label ts-body-xs-regular">Sell</span>
+                        <input class="exchange-card__amount" id="exchange-sell-amount" type="text" inputmode="decimal" value="256,335.05" aria-label="Sell amount" />
+                      </span>
+                      <span class="exchange-card__currency ts-label-m-regular">
+                        <span class="avatar-initials" id="exchange-sell-flag" style="--bg:#eef1f1; --fg:#141719">GE</span>
+                        <span id="exchange-sell-code">GEL</span>
+                        <svg class="icon" width="16" height="16"><use href="#i-chevron-down" /></svg>
+                      </span>
                     </div>
-                    <div class="exchange-card__divider"><span class="exchange-card__divider-line"></span><span class="exchange-card__swap"><svg class="icon" width="18" height="18"><use href="#i-swap" /></svg></span><span class="exchange-card__divider-line"></span></div>
+                    <div class="exchange-card__divider">
+                      <span class="exchange-card__divider-line"></span>
+                      <button class="exchange-card__swap" id="exchange-swap-btn" aria-label="Swap sell and buy">
+                        <svg class="icon" width="18" height="18"><use href="#i-swap" /></svg>
+                      </button>
+                      <span class="exchange-card__divider-line"></span>
+                    </div>
                     <div class="exchange-card__row">
-                      <span class="exchange-card__col"><span class="exchange-card__label ts-body-xs-regular">Buy</span><span class="exchange-card__amount">95,000</span></span>
-                      <span class="exchange-card__currency ts-label-m-regular"><span class="avatar-initials" style="--bg:#eef1f1; --fg:#141719">US</span>USD<svg class="icon" width="16" height="16"><use href="#i-chevron-right" /></svg></span>
+                      <span class="exchange-card__col">
+                        <span class="exchange-card__label ts-body-xs-regular">Buy</span>
+                        <input class="exchange-card__amount" id="exchange-buy-amount" type="text" inputmode="decimal" value="95,000" aria-label="Buy amount" />
+                      </span>
+                      <span class="exchange-card__currency ts-label-m-regular">
+                        <span class="avatar-initials" id="exchange-buy-flag" style="--bg:#eef1f1; --fg:#141719">US</span>
+                        <span id="exchange-buy-code">USD</span>
+                        <svg class="icon" width="16" height="16"><use href="#i-chevron-down" /></svg>
+                      </span>
                     </div>
                   </div>
-                  <button class="btn-primary ts-button-l">Review Exchange</button>
+                  <button class="btn-primary ts-button-l" id="exchange-review-btn">Review Exchange</button>
                 </div>
               </div>
               <div class="search-section">
@@ -2490,6 +2513,38 @@
           screenInput.value = "";
           screenInput.focus({ preventScroll: true });
           renderResults("");
+        });
+      })();
+
+      // ---------------------------------------------------------------
+      // Exchange calculator (Search "Exch" profile) - editable sell/buy
+      // amounts, a working swap button, and a pressable review button.
+      // ---------------------------------------------------------------
+      (() => {
+        const sellAmount = document.getElementById("exchange-sell-amount");
+        const buyAmount = document.getElementById("exchange-buy-amount");
+        const sellFlag = document.getElementById("exchange-sell-flag");
+        const buyFlag = document.getElementById("exchange-buy-flag");
+        const sellCode = document.getElementById("exchange-sell-code");
+        const buyCode = document.getElementById("exchange-buy-code");
+        const swapBtn = document.getElementById("exchange-swap-btn");
+        const reviewBtn = document.getElementById("exchange-review-btn");
+
+        swapBtn.addEventListener("click", () => {
+          [sellAmount.value, buyAmount.value] = [buyAmount.value, sellAmount.value];
+          [sellFlag.textContent, buyFlag.textContent] = [buyFlag.textContent, sellFlag.textContent];
+          [sellCode.textContent, buyCode.textContent] = [buyCode.textContent, sellCode.textContent];
+        });
+
+        const reviewLabel = reviewBtn.textContent;
+        reviewBtn.addEventListener("click", () => {
+          if (!sellAmount.value.trim() || !buyAmount.value.trim()) return;
+          reviewBtn.disabled = true;
+          reviewBtn.textContent = "Exchange requested";
+          setTimeout(() => {
+            reviewBtn.disabled = false;
+            reviewBtn.textContent = reviewLabel;
+          }, 1400);
         });
       })();
     </script>
