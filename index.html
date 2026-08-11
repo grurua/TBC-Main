@@ -2331,7 +2331,10 @@
         function runPlaceholderCycle() {
           let phraseIndex = 0;
           function typePhrase() {
-            if (document.activeElement === screenInput && screenInput.value) return;
+            if (document.activeElement === screenInput && screenInput.value) {
+              setTimeout(typePhrase, 300);
+              return;
+            }
             const phrase = PLACEHOLDER_PHRASES[phraseIndex % PLACEHOLDER_PHRASES.length];
             let charIndex = 0;
             clearInterval(placeholderTimer);
