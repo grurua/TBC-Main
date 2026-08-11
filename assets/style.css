@@ -813,6 +813,9 @@ body {
   color: var(--color-text-strong-default);
   white-space: nowrap;
 }
+.tx-item .amount-sm--negative {
+  color: var(--color-text-negative-initial);
+}
 
 .btn-tertiary {
   align-self: stretch;
@@ -1542,6 +1545,19 @@ body {
   gap: 24px;
 }
 
+#search-start,
+#search-results,
+#profile-card,
+#profile-user,
+#profile-exchange,
+#profile-atm,
+#profile-stock,
+#profile-deposit {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .search-section {
   display: flex;
   flex-direction: column;
@@ -1549,6 +1565,9 @@ body {
 }
 .search-section[hidden] {
   display: none;
+}
+.search-section--bare-list {
+  gap: 12px;
 }
 .search-section__head {
   display: flex;
@@ -1700,7 +1719,13 @@ body {
 /* Search results — shown once the query matches something, in place
    of the Most used / Resent searches start screen. */
 #search-results[hidden],
-#search-start[hidden] {
+#search-start[hidden],
+#profile-card[hidden],
+#profile-user[hidden],
+#profile-exchange[hidden],
+#profile-atm[hidden],
+#profile-stock[hidden],
+#profile-deposit[hidden] {
   display: none;
 }
 
@@ -1770,6 +1795,11 @@ body {
 }
 .result-row--help {
   gap: 8px;
+}
+.result-row--help .result-row__title {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
 }
 .result-row--help .icon {
   flex-shrink: 0;
@@ -1923,7 +1953,7 @@ body {
 .stock-hero__meta span {
   color: var(--color-text-softer-default);
 }
-.stock-hero__trend {
+.stock-hero__meta .stock-hero__trend {
   display: inline-flex;
   align-items: center;
   gap: 2px;
@@ -1940,6 +1970,10 @@ body {
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+.stock-hero__chart path.stock-hero__chart-fill {
+  fill: url(#stock-hero-chart-fill);
+  stroke: none;
 }
 .stock-hero__chart circle {
   fill: currentColor;

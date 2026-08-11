@@ -1260,7 +1260,7 @@
               </div>
             </div>
 
-            <div class="search-section">
+            <div class="search-section search-section--bare-list">
               <div class="search-section__head">
                 <span class="ts-title-xs-bold">Resent searches</span>
                 <button class="search-link ts-label-m-medium" id="search-clear-all">Clear all</button>
@@ -1515,7 +1515,7 @@
                 </div>
                 <div class="most-used-card most-used-card--list">
                   <button class="result-row invest-row" data-result-row data-match-title="TRON">
-                    <span class="result-row__icon result-row__icon--letter" style="--bg: #e6c230">T</span>
+                    <span class="result-row__icon result-row__icon--letter" style="--bg: #eb0029">T</span>
                     <span class="result-row__text">
                       <span class="result-row__title ts-label-m-regular" data-title></span>
                       <span class="result-row__subtitle ts-body-xs-regular">TRX / 0.98298127</span>
@@ -1730,7 +1730,7 @@
                 </div>
               </div>
               <div class="search-section">
-                <div class="search-section__head"><span class="ts-title-xs-bold">Quick actions</span><button class="search-link ts-label-m-medium">Show more</button></div>
+                <div class="search-section__head"><span class="ts-title-xs-bold">Quick actions</span></div>
                 <div class="most-used-card most-used-card--list">
                   <button class="result-row" data-title="Exchange" data-subtitle="Convert currencies" data-icon="i-sync"></button>
                   <button class="result-row" data-title="Between my accounts" data-subtitle="Transfer money to you account" data-icon="i-card-arrows"></button>
@@ -1794,6 +1794,13 @@
                     <span class="stock-hero__trend"><svg class="icon" width="14" height="14"><use href="#i-trend-up" /></svg>2.05 %</span>
                   </div>
                   <svg class="stock-hero__chart" viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="stock-hero-chart-fill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="currentColor" stop-opacity="0.25" />
+                        <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
+                      </linearGradient>
+                    </defs>
+                    <path class="stock-hero__chart-fill" d="M0 40 Q 40 48 70 34 T 140 30 T 210 14 T 300 6 L300 56 L0 56 Z" fill="url(#stock-hero-chart-fill)" />
                     <path d="M0 40 Q 40 48 70 34 T 140 30 T 210 14 T 300 6" />
                     <circle cx="298" cy="7" r="4" />
                   </svg>
