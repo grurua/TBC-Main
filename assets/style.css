@@ -1758,7 +1758,7 @@ body {
   white-space: nowrap;
   color: var(--color-text-strong-default);
 }
-.result-row__title mark {
+.search-screen__scroll mark {
   background: none;
   color: var(--color-text-primary-initial);
 }
@@ -1811,4 +1811,213 @@ body {
   color: var(--color-icon-positive-initial, #008043);
   background: var(--color-surface-high-initial);
   border-radius: 50%;
+}
+
+/* ---------------------------------------------------------------- */
+/* Per-keyword profile screens (Card / By User / Exchange / ATM /    */
+/* Stock / Deposit) — shown in place of the generic results when the */
+/* typed query matches one of these profiles' trigger word.          */
+/* ---------------------------------------------------------------- */
+
+.amount-sm--negative {
+  color: var(--color-text-negative-initial);
+}
+
+.avatar-initials {
+  --bg: var(--color-surface-higher-initial);
+  --fg: var(--color-text-strong-default);
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--core-border-radius-round);
+  background: var(--bg);
+  color: var(--fg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--text-style-label-m-medium-font-family);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.mini-card-thumb {
+  width: 56px;
+  height: 36px;
+  border-radius: var(--core-border-radius-4);
+  flex-shrink: 0;
+  background: var(--color-surface-highest-initial);
+}
+.mini-card-thumb--navy {
+  background: linear-gradient(135deg, #3a4a5c 0%, #141c26 100%);
+}
+.mini-card-thumb--silver {
+  background: linear-gradient(135deg, #e4e8eb 0%, #a7b0b8 100%);
+}
+.mini-card-thumb--red {
+  background: linear-gradient(135deg, #f77 0%, #c92030 100%);
+}
+
+/* Hero card: contact-transfer / stock-detail widgets that replace the
+   Quick actions section on the By User and Stock profile screens. */
+.hero-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--color-surface-high-initial);
+  border-radius: var(--core-border-radius-12);
+  box-shadow: 0 2px 4px 0 rgba(0, 30, 45, 0.03), 0 0 0.5px 0 rgba(0, 30, 45, 0.2);
+}
+.hero-card__row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+.hero-card__name {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.hero-card__amount {
+  font-family: var(--text-style-title-l-bold-font-family);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text-strong-default);
+}
+
+/* Stock detail hero */
+.stock-hero {
+  align-items: stretch;
+}
+.stock-hero__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.stock-hero__price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: var(--text-style-title-l-bold-font-family);
+  font-weight: 700;
+  color: var(--color-text-strong-default);
+}
+.stock-hero__price .stock-hero__price-main {
+  font-size: 28px;
+}
+.stock-hero__price .stock-hero__price-currency {
+  font-size: 18px;
+  color: var(--color-text-softer-default);
+  font-weight: 400;
+}
+.stock-hero__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.stock-hero__meta span {
+  color: var(--color-text-softer-default);
+}
+.stock-hero__trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--color-text-positive-initial);
+}
+.stock-hero__chart {
+  width: 100%;
+  height: 56px;
+  color: var(--color-icon-primary-initial);
+}
+.stock-hero__chart path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.stock-hero__chart circle {
+  fill: currentColor;
+}
+
+/* Exchange calculator hero */
+.exchange-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  width: 100%;
+  background: var(--color-surface-high-initial);
+  border: 1px solid var(--color-stroke-softer-initial);
+  border-radius: var(--core-border-radius-8);
+}
+.exchange-card__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.exchange-card__col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.exchange-card__label {
+  color: var(--color-text-soft-default);
+}
+.exchange-card__amount {
+  font-family: var(--text-style-title-l-bold-font-family);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text-strong-default);
+}
+.exchange-card__currency {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-text-strong-default);
+}
+.exchange-card__currency .avatar-initials {
+  width: 20px;
+  height: 20px;
+  font-size: 9px;
+}
+.exchange-card__divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+}
+.exchange-card__divider-line {
+  flex: 1 1 0;
+  height: 1px;
+  background: var(--color-stroke-softer-initial);
+}
+.exchange-card__swap {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-surface-high-initial);
+  box-shadow: 0 0 0 1px var(--color-stroke-softer-initial);
+  color: var(--color-icon-strong-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.currency-badge {
+  flex-shrink: 0;
+  height: 24px;
+  padding: 0 16px;
+  border: none;
+  border-radius: var(--core-border-radius-round);
+  background: rgba(0, 173, 238, 0.1);
+  color: var(--color-text-primary-initial);
 }

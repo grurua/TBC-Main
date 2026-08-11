@@ -335,6 +335,29 @@
           <polyline points="3 7 8 12 11.5 8.5 17 14" />
           <polyline points="12.5 14 17 14 17 9.5" />
         </symbol>
+        <symbol id="i-card-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="1.5" y="4.5" width="15" height="12" rx="2" />
+          <line x1="1.5" y1="8.5" x2="16.5" y2="8.5" />
+          <rect x="14.5" y="12.5" width="8" height="6.5" rx="1.3" />
+          <path d="M16.3 12.5v-1.8a2.2 2.2 0 0 1 4.4 0v1.8" />
+        </symbol>
+        <symbol id="i-pincode" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="8" width="20" height="13" rx="2" />
+          <path d="M7 8V6a5 5 0 0 1 10 0v2" />
+          <circle cx="8.2" cy="14.5" r="1" fill="currentColor" stroke="none" />
+          <circle cx="12" cy="14.5" r="1" fill="currentColor" stroke="none" />
+          <circle cx="15.8" cy="14.5" r="1" fill="currentColor" stroke="none" />
+        </symbol>
+        <symbol id="i-location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21.5c-4.5-4.3-7.5-8.2-7.5-11.8a7.5 7.5 0 0 1 15 0c0 3.6-3 7.5-7.5 11.8Z" />
+          <circle cx="12" cy="9.7" r="2.6" />
+        </symbol>
+        <symbol id="i-piggy-bank" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3.5 13.5c0-3.6 3.4-6.3 7.7-6.3 3 0 5.6 1.3 6.9 3.3h1.9a1 1 0 0 1 1 1v2.4a1 1 0 0 1-1 1h-1.3a6 6 0 0 1-1.7 2.3V19a1 1 0 0 1-1 1H14a1 1 0 0 1-1-1v-.6a11 11 0 0 1-3.3 0V19a1 1 0 0 1-1 1H7.2a1 1 0 0 1-1-1v-2c-1.6-1.2-2.7-2.9-2.7-3.5Z" />
+          <circle cx="15.5" cy="12.3" r="0.15" fill="currentColor" stroke="currentColor" stroke-width="1.6" />
+          <path d="M8.5 7.2 7.2 4.8" />
+          <path d="M3.5 12.5H1.8" />
+        </symbol>
         <symbol id="i-wifi" viewBox="0 0 16 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <path d="M1 5a11 11 0 0 1 14 0" />
           <path d="M3.5 8a7 7 0 0 1 9 0" />
@@ -1559,6 +1582,253 @@
 
               <p class="search-recent__empty ts-body-xs-regular" id="search-no-results" hidden>No results found</p>
             </div>
+
+            <!-- Card ("Car") -->
+            <div id="profile-card" hidden>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Quick actions</span><button class="search-link ts-label-m-medium">Show more</button></div>
+                <div class="most-used-card most-used-card--list">
+                  <button class="result-row" data-title="Card details" data-subtitle="View your card details" data-icon="i-card"></button>
+                  <button class="result-row" data-title="Block card" data-subtitle="Block your card temporarily or permanently" data-icon="i-card-lock"></button>
+                  <button class="result-row" data-title="Change PIN" data-subtitle="Change the PIN code on your card" data-icon="i-pincode"></button>
+                </div>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">My cards</span><button class="search-link ts-label-m-medium">See all</button></div>
+                <div class="most-used-card most-used-card--list">
+                  <div class="result-row"><span class="mini-card-thumb mini-card-thumb--navy" aria-hidden="true"></span><span class="result-row__text"><span class="result-row__title ts-label-m-regular">Concept 360</span><span class="result-row__subtitle ts-body-xs-regular">**** 4169</span></span></div>
+                  <div class="result-row"><span class="mini-card-thumb mini-card-thumb--silver" aria-hidden="true"></span><span class="result-row__text"><span class="result-row__title ts-label-m-regular">Visa Platinum</span><span class="result-row__subtitle ts-body-xs-regular">**** 6635</span></span></div>
+                  <div class="result-row"><span class="mini-card-thumb mini-card-thumb--red" aria-hidden="true"></span><span class="result-row__text"><span class="result-row__title ts-label-m-regular">Ertguli</span><span class="result-row__subtitle ts-body-xs-regular">**** 9866</span></span></div>
+                </div>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Products</span><button class="search-link ts-label-m-medium">Show more</button></div>
+                <div class="most-used-card most-used-card--list">
+                  <button class="result-row" data-title="Autocomfort" data-icon="i-car"></button>
+                  <button class="result-row" data-title="Credit card" data-icon="i-card"></button>
+                </div>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Transactions</span><button class="search-link ts-label-m-medium">See all</button></div>
+                <ul class="tx-list most-used-card most-used-card--list">
+                  <li class="tx-item"><button class="tx-item__btn"><span class="tx-item__icon tx-item__icon--avatar" style="--bg: #d9a98a">CR</span><div class="tx-item__text"><span class="title-sm ts-label-m-regular" data-title="Carlos Rivera"></span><span class="subtitle-xs ts-label-s-regular">13 Aug, 12:45</span></div><span class="amount-sm ts-label-s-regular"><span class="amount__value">130.00</span> <span class="amount__currency">₾</span></span></button></li>
+                  <li class="tx-item"><button class="tx-item__btn"><span class="tx-item__icon" style="--bg: #8679f9"><svg class="icon" width="20" height="20"><use href="#i-card" /></svg><svg class="icon tx-item__badge" width="14" height="14"><use href="#i-check-circle-filled" /></svg></span><div class="tx-item__text"><span class="title-sm ts-label-m-regular" data-title="Credit card"></span><span class="subtitle-xs ts-label-s-regular">9 Aug, 13:00</span></div><span class="amount-sm ts-label-s-regular"><span class="amount__value">230.59</span> <span class="amount__currency">₾</span></span></button></li>
+                  <li class="tx-item"><button class="tx-item__btn"><span class="tx-item__icon" style="--bg: #2b9994"><svg class="icon" width="20" height="20"><use href="#i-car" /></svg></span><div class="tx-item__text"><span class="title-sm ts-label-m-regular" data-title="Autocomfort"></span><span class="subtitle-xs ts-label-s-regular">25 Aug, 15:30</span></div><span class="amount-sm ts-label-s-regular"><span class="amount__value">134.15</span> <span class="amount__currency">₾</span></span></button></li>
+                </ul>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Payments</span><button class="search-link ts-label-m-medium">See all</button></div>
+                <ul class="tx-list most-used-card most-used-card--list">
+                  <li class="tx-item"><button class="tx-item__btn"><span class="avatar-initials" style="--bg:#fdecea; --fg:#c1272d">S</span><div class="tx-item__text"><span class="title-sm ts-label-m-regular" data-title="Socar Georgia"></span><span class="subtitle-xs ts-label-s-regular">ID: 3573584</span></div><span class="amount-sm amount-sm--negative ts-label-s-regular"><span class="amount__value">-25.00</span> <span class="amount__currency">₾</span></span></button></li>
+                  <li class="tx-item"><button class="tx-item__btn"><span class="avatar-initials" style="--bg:#e7f2fd; --fg:#00adee">S</span><div class="tx-item__text"><span class="title-sm ts-label-m-regular">Silknet</span><span class="subtitle-xs ts-label-s-regular">ID: 3573584</span></div><span class="amount-sm amount-sm--negative ts-label-s-regular"><span class="amount__value">-85.00</span> <span class="amount__currency">₾</span></span></button></li>
+                  <li class="tx-item"><button class="tx-item__btn"><span class="avatar-initials" style="--bg:#141719; --fg:#fff">U</span><div class="tx-item__text"><span class="title-sm ts-label-m-regular">USA2Georgia</span><span class="subtitle-xs ts-label-s-regular">ID: 3573584</span></div><span class="amount-sm ts-label-s-regular"><span class="amount__value">0.00</span> <span class="amount__currency">₾</span></span></button></li>
+                </ul>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Help on the topic</span><button class="search-link ts-label-m-medium">See all</button></div>
+                <div class="most-used-card most-used-card--list">
+                  <button class="result-row result-row--help"><span class="result-row__text"><span class="result-row__title ts-label-m-regular">Payment card was declined</span></span><svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg></button>
+                  <button class="result-row result-row--help"><span class="result-row__text"><span class="result-row__title ts-label-m-regular">What are the credit card limits?</span></span><svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg></button>
+                  <button class="result-row result-row--help"><span class="result-row__text"><span class="result-row__title ts-label-m-regular">What are the transfer timeframes?</span></span><svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- By User ("Gio") -->
+            <div id="profile-user" hidden>
+              <div class="search-section">
+                <div class="hero-card">
+                  <div class="hero-card__row">
+                    <span class="avatar-initials" style="--bg:#f3eefa; --fg:#a49df5">GM</span>
+                    <span class="hero-card__name"><span class="result-row__title ts-label-m-regular" data-title="Giorgi Mikeladze"></span><span class="result-row__subtitle ts-body-xs-regular">+995 599 704 230</span></span>
+                  </div>
+                  <span class="hero-card__amount">0.00 ₾</span>
+                  <button class="btn-primary ts-button-l">Transfer</button>
+                </div>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Recipients</span><button class="search-link ts-label-m-medium">Show more</button></div>
+                <div class="most-used-card most-used-card--list">
+                  <div class="result-row"><span class="avatar-initials" style="--bg:#f3eefa; --fg:#a49df5">GM</span><span class="result-row__text"><span class="result-row__title ts-label-m-regular" data-title="Giorgi Mikeladze"></span><span class="result-row__subtitle ts-body-xs-regular">+995 599 704 230</span></span></div>
+                  <div class="result-row"><span class="avatar-initials" style="--bg:#ddf8df; --fg:#1abe6a">NG</span><span class="result-row__text"><span class="result-row__title ts-label-m-regular" data-title="Nino Giorgadze"></span><span class="result-row__subtitle ts-body-xs-regular">GE05TB****0128 ₾</span></span></div>
+                  <div class="result-row"><span class="avatar-initials" style="--bg:#f0d9c8; --fg:#a56a3a">KG</span><span class="result-row__text"><span class="result-row__title ts-label-m-regular" data-title="Keti Gilauri"></span><span class="result-row__subtitle ts-body-xs-regular">+995 599 310 452</span></span></div>
+                </div>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Transactions</span><button class="search-link ts-label-m-medium">See all</button></div>
+                <ul class="tx-list most-used-card most-used-card--list">
+                  <li class="tx-item"><button class="tx-item__btn"><span class="tx-item__icon tx-item__icon--avatar" style="--bg:#85a3ff">GS</span><div class="tx-item__text"><span class="title-sm ts-label-m-regular" data-title="Giovani Santos"></span><span class="subtitle-xs ts-label-s-regular">13 Aug, 12:45</span></div><span class="amount-sm ts-label-s-regular"><span class="amount__value">45.00</span> <span class="amount__currency">₾</span></span></button></li>
+                  <li class="tx-item"><button class="tx-item__btn"><span class="tx-item__icon tx-item__icon--avatar" style="--bg:#c9a35c">GD</span><div class="tx-item__text"><span class="title-sm ts-label-m-regular" data-title="Gigi Danelia"></span><span class="subtitle-xs ts-label-s-regular">13 Aug, 12:45</span></div><span class="amount-sm ts-label-s-regular"><span class="amount__value">130.00</span> <span class="amount__currency">₾</span></span></button></li>
+                  <li class="tx-item"><button class="tx-item__btn"><span class="tx-item__icon tx-item__icon--avatar" style="--bg:#00afcf">GM</span><div class="tx-item__text"><span class="title-sm ts-label-m-regular" data-title="Guram Machavariani"></span><span class="subtitle-xs ts-label-s-regular">13 Aug, 12:45</span></div><span class="amount-sm ts-label-s-regular"><span class="amount__value">240.94</span> <span class="amount__currency">₾</span></span></button></li>
+                </ul>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Payments</span><button class="search-link ts-label-m-medium">See all</button></div>
+                <ul class="tx-list most-used-card most-used-card--list">
+                  <li class="tx-item"><button class="tx-item__btn"><span class="avatar-initials" style="--bg:#141719; --fg:#fff">U</span><div class="tx-item__text"><span class="title-sm ts-label-m-regular" data-title="USA2Georgia"></span><span class="subtitle-xs ts-label-s-regular">ID: 3573584</span></div><span class="amount-sm ts-label-s-regular"><span class="amount__value">0.00</span> <span class="amount__currency">₾</span></span></button></li>
+                  <li class="tx-item"><button class="tx-item__btn"><span class="avatar-initials" style="--bg:#fdecea; --fg:#c1272d">S</span><div class="tx-item__text"><span class="title-sm ts-label-m-regular" data-title="Socar Georgia"></span><span class="subtitle-xs ts-label-s-regular">ID: 3573584</span></div><span class="amount-sm amount-sm--negative ts-label-s-regular"><span class="amount__value">-25.00</span> <span class="amount__currency">₾</span></span></button></li>
+                  <li class="tx-item"><button class="tx-item__btn"><span class="avatar-initials" style="--bg:#e7f2fd; --fg:#00adee">S</span><div class="tx-item__text"><span class="title-sm ts-label-m-regular">Silknet</span><span class="subtitle-xs ts-label-s-regular">ID: 3573584</span></div><span class="amount-sm amount-sm--negative ts-label-s-regular"><span class="amount__value">-85.00</span> <span class="amount__currency">₾</span></span></button></li>
+                </ul>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Help on the topic</span><button class="search-link ts-label-m-medium">See all</button></div>
+                <div class="most-used-card most-used-card--list">
+                  <button class="result-row result-row--help"><span class="result-row__text"><span class="result-row__title ts-label-m-regular">Sending money from TBC bank to other Georgian bank</span></span><svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg></button>
+                  <button class="result-row result-row--help"><span class="result-row__text"><span class="result-row__title ts-label-m-regular">What are bank transfer fees?</span></span><svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg></button>
+                  <button class="result-row result-row--help"><span class="result-row__text"><span class="result-row__title ts-label-m-regular">What are the transfer timeframes?</span></span><svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Exchange ("Exch") -->
+            <div id="profile-exchange" hidden>
+              <div class="search-section">
+                <div class="hero-card">
+                  <div class="exchange-card">
+                    <div class="exchange-card__row">
+                      <span class="exchange-card__col"><span class="exchange-card__label ts-body-xs-regular">Sell</span><span class="exchange-card__amount">256,335.05</span></span>
+                      <span class="exchange-card__currency ts-label-m-regular"><span class="avatar-initials" style="--bg:#eef1f1; --fg:#141719">GE</span>GEL<svg class="icon" width="16" height="16"><use href="#i-chevron-right" /></svg></span>
+                    </div>
+                    <div class="exchange-card__divider"><span class="exchange-card__divider-line"></span><span class="exchange-card__swap"><svg class="icon" width="18" height="18"><use href="#i-swap" /></svg></span><span class="exchange-card__divider-line"></span></div>
+                    <div class="exchange-card__row">
+                      <span class="exchange-card__col"><span class="exchange-card__label ts-body-xs-regular">Buy</span><span class="exchange-card__amount">95,000</span></span>
+                      <span class="exchange-card__currency ts-label-m-regular"><span class="avatar-initials" style="--bg:#eef1f1; --fg:#141719">US</span>USD<svg class="icon" width="16" height="16"><use href="#i-chevron-right" /></svg></span>
+                    </div>
+                  </div>
+                  <button class="btn-primary ts-button-l">Review Exchange</button>
+                </div>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Account currencies</span><button class="search-link ts-label-m-medium">Show more</button></div>
+                <div class="most-used-card most-used-card--list">
+                  <div class="result-row"><span class="avatar-initials" style="--bg:#eef1f1; --fg:#141719">US</span><span class="result-row__text"><span class="result-row__title ts-label-m-regular">US Dollar</span><span class="result-row__subtitle ts-body-xs-regular">USD</span></span><span class="currency-badge ts-label-s-medium">Exchange</span></div>
+                  <div class="result-row"><span class="avatar-initials" style="--bg:#eef1f1; --fg:#141719">EU</span><span class="result-row__text"><span class="result-row__title ts-label-m-regular">Europien Euro</span><span class="result-row__subtitle ts-body-xs-regular">EUR</span></span><span class="currency-badge ts-label-s-medium">Exchange</span></div>
+                  <div class="result-row"><span class="avatar-initials" style="--bg:#eef1f1; --fg:#141719">GB</span><span class="result-row__text"><span class="result-row__title ts-label-m-regular">British Pound</span><span class="result-row__subtitle ts-body-xs-regular">GBP</span></span><span class="currency-badge ts-label-s-medium">Exchange</span></div>
+                </div>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Quick actions</span><button class="search-link ts-label-m-medium">Show more</button></div>
+                <div class="most-used-card most-used-card--list">
+                  <button class="result-row" data-title="Exchange" data-subtitle="Convert currencies" data-icon="i-sync"></button>
+                  <button class="result-row" data-title="Between my accounts" data-subtitle="Transfer money to you account" data-icon="i-card-arrows"></button>
+                </div>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Transactions</span><button class="search-link ts-label-m-medium">Show more</button></div>
+                <div class="most-used-card most-used-card--list">
+                  <div class="result-row"><span class="avatar-initials" style="--bg:#eef1f1; --fg:#141719">US</span><span class="result-row__text"><span class="result-row__title ts-label-m-regular">USD → GEL</span><span class="result-row__subtitle ts-body-xs-regular">13 Aug, 12:45</span></span><span class="invest-row__figures"><span class="ts-label-s-medium" style="color:var(--color-text-positive-initial)">+260.00 ₾</span><span class="ts-label-s-medium" style="color:var(--color-text-softer-default)">-100.00$</span></span></div>
+                  <div class="result-row"><span class="avatar-initials" style="--bg:#eef1f1; --fg:#141719">GE</span><span class="result-row__text"><span class="result-row__title ts-label-m-regular">GEL → GBP</span><span class="result-row__subtitle ts-body-xs-regular">13 Aug, 12:45</span></span><span class="invest-row__figures"><span class="ts-label-s-medium" style="color:var(--color-text-positive-initial)">+100.00 £</span><span class="ts-label-s-medium" style="color:var(--color-text-softer-default)">-350.00₾</span></span></div>
+                  <div class="result-row"><span class="avatar-initials" style="--bg:#eef1f1; --fg:#141719">GE</span><span class="result-row__text"><span class="result-row__title ts-label-m-regular">GEL → EUR</span><span class="result-row__subtitle ts-body-xs-regular">13 Aug, 12:45</span></span><span class="invest-row__figures"><span class="ts-label-s-medium" style="color:var(--color-text-positive-initial)">+150.00 €</span><span class="ts-label-s-medium" style="color:var(--color-text-softer-default)">-450.00₾</span></span></div>
+                </div>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Help on the topic</span><button class="search-link ts-label-m-medium">See all</button></div>
+                <div class="most-used-card most-used-card--list">
+                  <button class="result-row result-row--help"><span class="result-row__text"><span class="result-row__title ts-label-m-regular">How to exchange currency in TBC app</span></span><svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg></button>
+                  <button class="result-row result-row--help"><span class="result-row__text"><span class="result-row__title ts-label-m-regular">What are the exchange rates?</span></span><svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg></button>
+                  <button class="result-row result-row--help"><span class="result-row__text"><span class="result-row__title ts-label-m-regular">What are the exchange fees?</span></span><svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- ATM ("Atm") -->
+            <div id="profile-atm" hidden>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Products</span></div>
+                <div class="most-used-card most-used-card--list">
+                  <button class="result-row" data-title="ATM" data-subtitle="TBC ATM locations" data-icon="i-location-pin" data-title-color="primary"></button>
+                </div>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Transactions</span><button class="search-link ts-label-m-medium">See all</button></div>
+                <ul class="tx-list most-used-card most-used-card--list">
+                  <li class="tx-item"><button class="tx-item__btn"><span class="tx-item__icon" style="--bg: #8679f9"><svg class="icon" width="20" height="20"><use href="#i-card" /></svg><svg class="icon tx-item__badge" width="14" height="14"><use href="#i-check-circle-filled" /></svg></span><div class="tx-item__text"><span class="title-sm ts-label-m-regular" data-title="ATM withdrawal"></span><span class="subtitle-xs ts-label-s-regular">9 Aug, 13:00</span></div><span class="amount-sm ts-label-s-regular"><span class="amount__value">230.59</span> <span class="amount__currency">₾</span></span></button></li>
+                  <li class="tx-item"><button class="tx-item__btn"><span class="tx-item__icon" style="--bg: #2b9994"><svg class="icon" width="20" height="20"><use href="#i-car" /></svg></span><div class="tx-item__text"><span class="title-sm ts-label-m-regular" data-title="Autocomfort"></span><span class="subtitle-xs ts-label-s-regular">25 Aug, 15:30</span></div><span class="amount-sm ts-label-s-regular"><span class="amount__value">134.15</span> <span class="amount__currency">₾</span></span></button></li>
+                  <li class="tx-item"><button class="tx-item__btn"><span class="tx-item__icon tx-item__icon--avatar" style="--bg:#e7f2fd; color:#00adee">AB</span><div class="tx-item__text"><span class="title-sm ts-label-m-regular" data-title="Anano Beridze"></span><span class="subtitle-xs ts-label-s-regular">13 Aug, 12:45</span></div><span class="amount-sm ts-label-s-regular"><span class="amount__value">130.00</span> <span class="amount__currency">₾</span></span></button></li>
+                </ul>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Help on the topic</span><button class="search-link ts-label-m-medium">See all</button></div>
+                <div class="most-used-card most-used-card--list">
+                  <button class="result-row result-row--help"><span class="result-row__text"><span class="result-row__title ts-label-m-regular">How to find ATMs near me?</span></span><svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg></button>
+                  <button class="result-row result-row--help"><span class="result-row__text"><span class="result-row__title ts-label-m-regular">What are the ATM withdrawal limits?</span></span><svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg></button>
+                  <button class="result-row result-row--help"><span class="result-row__text"><span class="result-row__title ts-label-m-regular">What are the ATM fees?</span></span><svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stock ("Nike") -->
+            <div id="profile-stock" hidden>
+              <div class="search-section">
+                <div class="hero-card stock-hero">
+                  <div class="hero-card__row">
+                    <span class="avatar-initials" style="--bg:#141719; --fg:#fff">N</span>
+                    <span class="result-row__title ts-label-m-regular" data-title="Nike"></span>
+                  </div>
+                  <div class="stock-hero__price"><span class="stock-hero__price-main">12,000.00</span><span class="stock-hero__price-currency">$</span></div>
+                  <div class="stock-hero__meta ts-label-s-medium">
+                    <span>Week: + 8.97 $</span>
+                    <span class="stock-hero__trend"><svg class="icon" width="14" height="14"><use href="#i-trend-up" /></svg>2.05 %</span>
+                  </div>
+                  <svg class="stock-hero__chart" viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M0 40 Q 40 48 70 34 T 140 30 T 210 14 T 300 6" />
+                    <circle cx="298" cy="7" r="4" />
+                  </svg>
+                </div>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Investments</span><button class="search-link ts-label-m-medium">Show more</button></div>
+                <div class="most-used-card most-used-card--list">
+                  <div class="result-row invest-row"><span class="avatar-initials" style="--bg:#c92030; --fg:#fff">T</span><span class="result-row__text"><span class="result-row__title ts-label-m-regular">Tesla</span><span class="result-row__subtitle ts-body-xs-regular">TSLA / 0.98298127</span></span><span class="invest-row__figures"><span class="ts-label-s-medium">2304.55 $</span><span class="invest-row__trend invest-row__trend--up ts-label-s-medium"><svg class="icon" width="14" height="14"><use href="#i-trend-up" /></svg>12.39 %</span></span></div>
+                  <div class="result-row invest-row"><span class="avatar-initials" style="--bg:#141719; --fg:#fff">A</span><span class="result-row__text"><span class="result-row__title ts-label-m-regular">Apple</span><span class="result-row__subtitle ts-body-xs-regular">AAPL / 0.98298127</span></span><span class="invest-row__figures"><span class="ts-label-s-medium">246.89 $</span><span class="invest-row__trend invest-row__trend--down ts-label-s-medium"><svg class="icon" width="14" height="14"><use href="#i-trend-down" /></svg>9.42 %</span></span></div>
+                  <div class="result-row invest-row"><span class="avatar-initials" style="--bg:#0866ff; --fg:#fff">M</span><span class="result-row__text"><span class="result-row__title ts-label-m-regular">Meta</span><span class="result-row__subtitle ts-body-xs-regular">META / 0.98298127</span></span><span class="invest-row__figures"><span class="ts-label-s-medium">720.45 $</span><span class="invest-row__trend invest-row__trend--down ts-label-s-medium"><svg class="icon" width="14" height="14"><use href="#i-trend-down" /></svg>0.12 %</span></span></div>
+                </div>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Transactions</span><button class="search-link ts-label-m-medium">See all</button></div>
+                <ul class="tx-list most-used-card most-used-card--list">
+                  <li class="tx-item"><button class="tx-item__btn"><span class="tx-item__icon tx-item__icon--avatar" style="--bg:#d9a98a">NJ</span><div class="tx-item__text"><span class="title-sm ts-label-m-regular" data-title="Nikolas Johnson"></span><span class="subtitle-xs ts-label-s-regular">13 Aug, 12:45</span></div><span class="amount-sm ts-label-s-regular"><span class="amount__value">50.00</span> <span class="amount__currency">₾</span></span></button></li>
+                  <li class="tx-item"><button class="tx-item__btn"><span class="tx-item__icon tx-item__icon--avatar" style="--bg:#c9a35c">NG</span><div class="tx-item__text"><span class="title-sm ts-label-m-regular" data-title="Nino Giorgadze"></span><span class="subtitle-xs ts-label-s-regular">13 Aug, 12:45</span></div><span class="amount-sm ts-label-s-regular"><span class="amount__value">130.00</span> <span class="amount__currency">₾</span></span></button></li>
+                  <li class="tx-item"><button class="tx-item__btn"><span class="tx-item__icon tx-item__icon--avatar" style="--bg:#e7f2fd; color:#00adee">ND</span><div class="tx-item__text"><span class="title-sm ts-label-m-regular" data-title="Nathan Drake"></span><span class="subtitle-xs ts-label-s-regular">13 Aug, 12:45</span></div><span class="amount-sm ts-label-s-regular"><span class="amount__value">270.00</span> <span class="amount__currency">₾</span></span></button></li>
+                </ul>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Help on the topic</span><button class="search-link ts-label-m-medium">See all</button></div>
+                <div class="most-used-card most-used-card--list">
+                  <button class="result-row result-row--help"><span class="result-row__text"><span class="result-row__title ts-label-m-regular">How to start investing in stocks?</span></span><svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg></button>
+                  <button class="result-row result-row--help"><span class="result-row__text"><span class="result-row__title ts-label-m-regular">What are stock market dividends?</span></span><svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg></button>
+                  <button class="result-row result-row--help"><span class="result-row__text"><span class="result-row__title ts-label-m-regular">How to read a stock chart?</span></span><svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Deposit ("Depo") -->
+            <div id="profile-deposit" hidden>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Products</span><button class="search-link ts-label-m-medium">Show more</button></div>
+                <div class="most-used-card most-used-card--list">
+                  <button class="result-row" data-title="Term Deposit" data-subtitle="Choose when to receive our high interest" data-icon="i-safe"></button>
+                  <button class="result-row" data-title="My Goal" data-subtitle="Open a deposit for 3 to 24 months" data-icon="i-piggy-bank"></button>
+                  <button class="result-row" data-title="My Safe" data-subtitle="Open a deposit with flexible terms" data-icon="i-safe"></button>
+                </div>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Transactions</span><button class="search-link ts-label-m-medium">See all</button></div>
+                <ul class="tx-list most-used-card most-used-card--list">
+                  <li class="tx-item"><button class="tx-item__btn"><span class="tx-item__icon" style="--bg: rgba(0,173,238,0.1); color: var(--color-icon-primary-initial)"><svg class="icon" width="20" height="20"><use href="#i-safe" /></svg></span><div class="tx-item__text"><span class="title-sm ts-label-m-regular">My Safe</span><span class="subtitle-xs ts-label-s-regular">25 Aug, 10:00</span></div><span class="amount-sm ts-label-s-regular"><span class="amount__value">150.00</span> <span class="amount__currency">₾</span></span></button></li>
+                  <li class="tx-item"><button class="tx-item__btn"><span class="tx-item__icon" style="--bg: rgba(0,173,238,0.1); color: var(--color-icon-primary-initial)"><svg class="icon" width="20" height="20"><use href="#i-safe" /></svg></span><div class="tx-item__text"><span class="title-sm ts-label-m-regular">My Safe</span><span class="subtitle-xs ts-label-s-regular">25 Jul, 10:00</span></div><span class="amount-sm ts-label-s-regular"><span class="amount__value">150.00</span> <span class="amount__currency">₾</span></span></button></li>
+                  <li class="tx-item"><button class="tx-item__btn"><span class="tx-item__icon" style="--bg: rgba(0,173,238,0.1); color: var(--color-icon-primary-initial)"><svg class="icon" width="20" height="20"><use href="#i-safe" /></svg></span><div class="tx-item__text"><span class="title-sm ts-label-m-regular">My Safe</span><span class="subtitle-xs ts-label-s-regular">25 Jun, 10:00</span></div><span class="amount-sm ts-label-s-regular"><span class="amount__value">150.00</span> <span class="amount__currency">₾</span></span></button></li>
+                </ul>
+              </div>
+              <div class="search-section">
+                <div class="search-section__head"><span class="ts-title-xs-bold">Help on the topic</span><button class="search-link ts-label-m-medium">See all</button></div>
+                <div class="most-used-card most-used-card--list">
+                  <button class="result-row result-row--help"><span class="result-row__text"><span class="result-row__title ts-label-m-regular">How do I deposit a check?</span></span><svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg></button>
+                  <button class="result-row result-row--help"><span class="result-row__text"><span class="result-row__title ts-label-m-regular">What are the deposit limits?</span></span><svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg></button>
+                  <button class="result-row result-row--help"><span class="result-row__text"><span class="result-row__title ts-label-m-regular">How long do deposits take to process?</span></span><svg class="icon" width="24" height="24"><use href="#i-chevron-right" /></svg></button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -2107,13 +2377,75 @@
           return frag;
         }
 
+        // ---------------------------------------------------------------
+        // Per-keyword profile screens (Card / By User / Exchange / ATM /
+        // Stock / Deposit) - each is its own curated page pulled from its
+        // own Figma node, matching the exact query that page was designed
+        // around ("Car", "Gio", "Exch", "Atm", "Nike", "Depo"). A profile
+        // activates once the typed query is a substring of its trigger
+        // word (so typing progressively - "c", "ca", "car" - activates
+        // the Card profile the same way the source shows). All rows in a
+        // profile stay visible; only matching title/subtitle text gets
+        // the highlight, mirroring what each source page actually shows.
+        const PROFILES = [
+          { trigger: "car", containerId: "profile-card" },
+          { trigger: "gio", containerId: "profile-user" },
+          { trigger: "exch", containerId: "profile-exchange" },
+          { trigger: "atm", containerId: "profile-atm" },
+          { trigger: "nike", containerId: "profile-stock" },
+          { trigger: "depo", containerId: "profile-deposit" },
+        ].map((p) => ({ ...p, el: document.getElementById(p.containerId) }));
+
+        // Shorthand rows (data-title/data-subtitle/data-icon on the row
+        // itself, no children yet) get built into full markup once.
+        document.querySelectorAll(".result-row[data-icon]").forEach((row) => {
+          const icon = row.dataset.icon;
+          const title = row.dataset.title;
+          const subtitle = row.dataset.subtitle;
+          const isTag = row.tagName === "BUTTON";
+          const titleStyle = row.dataset.titleColor ? ' style="color:var(--color-text-primary-initial)"' : "";
+          row.innerHTML =
+            `<span class="result-row__icon"><svg class="icon" width="24" height="24"><use href="#${icon}" /></svg></span>` +
+            `<span class="result-row__text">` +
+            `<span class="result-row__title ts-label-m-regular"${titleStyle} data-title="${title.replace(/"/g, "&quot;")}"></span>` +
+            (subtitle ? `<span class="result-row__subtitle ts-body-xs-regular" data-subtitle="${subtitle.replace(/"/g, "&quot;")}"></span>` : "") +
+            `</span>`;
+          row.removeAttribute("data-icon");
+          row.removeAttribute("data-title");
+          row.removeAttribute("data-subtitle");
+          row.removeAttribute("data-title-color");
+        });
+
+        function renderProfileHighlights(root, query) {
+          root.querySelectorAll("[data-title]").forEach((el) => {
+            const text = el.dataset.title;
+            el.textContent = "";
+            el.appendChild(query ? highlight(text, query) : document.createTextNode(text));
+          });
+          root.querySelectorAll("[data-subtitle]").forEach((el) => {
+            const text = el.dataset.subtitle;
+            el.textContent = "";
+            el.appendChild(query ? highlight(text, query) : document.createTextNode(text));
+          });
+        }
+
         function renderResults(rawQuery) {
           const query = rawQuery.trim();
           inlineClear.hidden = !query;
+          PROFILES.forEach((p) => (p.el.hidden = true));
 
           if (!query) {
             searchStart.hidden = false;
             searchResults.hidden = true;
+            return;
+          }
+
+          const activeProfile = PROFILES.find((p) => p.trigger.includes(query.toLowerCase()));
+          if (activeProfile) {
+            searchStart.hidden = true;
+            searchResults.hidden = true;
+            activeProfile.el.hidden = false;
+            renderProfileHighlights(activeProfile.el, query);
             return;
           }
 
