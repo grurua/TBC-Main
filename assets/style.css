@@ -2194,3 +2194,269 @@ body {
   border-radius: var(--core-border-radius-round);
   background: var(--color-surface-primary-initial);
 }
+
+/* ---------------------------------------------------------------- */
+/* Side-menu drawer — opens from the Menu/burger icon                */
+/* ---------------------------------------------------------------- */
+
+#drawer-backdrop {
+  z-index: 19;
+}
+.drawer {
+  position: absolute;
+  inset: 0;
+  right: 57px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: var(--color-surface-high-initial);
+  padding: 60px 24px 24px;
+  transform: translateX(-100%);
+  transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.drawer.is-open {
+  transform: translateX(0);
+}
+
+.drawer__profile {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: none;
+  background: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  color: var(--color-icon-softer-default);
+  -webkit-tap-highlight-color: transparent;
+}
+.drawer__profile:active {
+  opacity: 0.7;
+}
+.drawer__avatar {
+  width: 48px;
+  height: 48px;
+  font-size: 16px;
+}
+.drawer__profile-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.drawer__name {
+  color: var(--color-text-strong-default);
+}
+.drawer__email {
+  color: var(--color-text-softer-default);
+}
+
+.drawer__nav {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.drawer__item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  color: var(--color-text-strong-default);
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.drawer__item:active {
+  opacity: 0.7;
+}
+.drawer__item--active {
+  color: var(--color-text-primary-initial);
+}
+.drawer__item--active .icon {
+  color: var(--color-icon-primary-initial);
+}
+.drawer__divider {
+  flex-shrink: 0;
+  height: 1px;
+  background: var(--color-stroke-softer-initial);
+}
+.drawer__logout {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* ---------------------------------------------------------------- */
+/* App Settings screen — opened by tapping the profile row in the    */
+/* side-menu drawer.                                                 */
+/* ---------------------------------------------------------------- */
+
+.app-settings-profile {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+}
+.app-settings-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+.app-settings-avatar {
+  width: 78px;
+  height: 78px;
+  font-size: 24px;
+}
+.app-settings-avatar-badge {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: var(--core-border-radius-round);
+  background: var(--color-surface-primary-initial);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-surface-high-initial);
+}
+.app-settings-profile-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.app-settings-email-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  padding: 5px 10px;
+  border-radius: var(--core-border-radius-round);
+  background: rgba(0, 173, 238, 0.1);
+  color: var(--color-text-primary-initial);
+}
+
+.app-settings-list {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.app-settings-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--color-icon-softer-default);
+  -webkit-tap-highlight-color: transparent;
+}
+.app-settings-row__title {
+  flex: 1 1 auto;
+  color: var(--color-text-strong-default);
+}
+.app-settings-row__mark {
+  flex-shrink: 0;
+}
+
+.app-settings-divider {
+  flex-shrink: 0;
+  height: 1px;
+  background: var(--color-stroke-softer-initial);
+}
+
+.app-settings-lang {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+.app-settings-lang__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  background: none;
+  padding: 12px 0;
+  text-align: left;
+  cursor: pointer;
+  color: var(--color-text-strong-default);
+  -webkit-tap-highlight-color: transparent;
+}
+.app-settings-lang__row--inactive {
+  color: var(--color-text-soft-default);
+}
+.app-settings-lang__check {
+  color: var(--color-text-primary-initial);
+}
+
+.app-settings-app {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.app-settings-app__logo {
+  flex-shrink: 0;
+  width: 40px;
+  height: 36px;
+  background: var(--color-surface-primary-initial);
+  border-radius: var(--core-border-radius-12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.app-settings-app__logo::before {
+  content: "";
+  width: 14px;
+  height: 13px;
+  background: #fff;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+.app-settings-app__text {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+.app-settings-app__text span:first-child {
+  color: var(--color-text-strong-default);
+}
+.app-settings-app__text span:last-child {
+  color: var(--color-text-soft-default);
+}
+.btn-secondary {
+  flex-shrink: 0;
+  height: 36px;
+  padding: 0 16px;
+  border: none;
+  border-radius: var(--core-border-radius-12);
+  background: rgba(0, 173, 238, 0.1);
+  color: var(--color-text-primary-initial);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-secondary:active {
+  opacity: 0.7;
+}
+
+.app-settings-privacy {
+  flex-shrink: 0;
+  text-align: center;
+  color: var(--color-text-soft-default);
+}
+
+#settings-screen .tabbar {
+  position: relative;
+  flex-shrink: 0;
+}
