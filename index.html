@@ -496,6 +496,25 @@
           <path d="M3 8.5a1.5 1.5 0 0 1 1.5-1.5h1.8l1-1.7A1.5 1.5 0 0 1 8.6 4.5h6.8a1.5 1.5 0 0 1 1.3.8l1 1.7h1.8A1.5 1.5 0 0 1 21 8.5V18a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18Z" />
           <circle cx="12" cy="13" r="3.3" />
         </symbol>
+
+        <!-- Investments screen icons -->
+        <symbol id="i-add-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9.5" />
+          <line x1="12" y1="8" x2="12" y2="16" />
+          <line x1="8" y1="12" x2="16" y2="12" />
+        </symbol>
+        <symbol id="i-arrow-corner-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 4v9a3 3 0 0 0 3 3h9" />
+          <polyline points="13.5 11 18 16 13.5 21" />
+        </symbol>
+        <symbol id="i-kebab" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+          <circle cx="12" cy="5.5" r="1.9" />
+          <circle cx="12" cy="12" r="1.9" />
+          <circle cx="12" cy="18.5" r="1.9" />
+        </symbol>
+        <symbol id="i-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3.5 5h17L14 13.2V19l-4 2v-7.8Z" />
+        </symbol>
       </defs>
     </svg>
 
@@ -572,6 +591,16 @@
           <h1 class="products-topbar__title ts-title-s-bold">Products</h1>
           <button class="icon-btn" id="products-view-toggle" aria-label="Switch to list view">
             <svg class="icon" width="24" height="24"><use href="#i-list-view" /></svg>
+          </button>
+        </div>
+
+        <div class="products-topbar" id="investments-topbar" hidden>
+          <button class="icon-btn" id="investments-menu-open" aria-label="Menu">
+            <svg class="icon" width="24" height="24"><use href="#i-menu" /></svg>
+          </button>
+          <h1 class="products-topbar__title ts-title-s-bold">Investments</h1>
+          <button class="icon-btn" aria-label="Search">
+            <svg class="icon" width="24" height="24"><use href="#i-search" /></svg>
           </button>
         </div>
 
@@ -886,7 +915,7 @@
                   <span class="product-tile__amount ts-label-m-regular">150.00 ₾</span>
                 </span>
               </button>
-              <button class="product-tile" data-query="Investments">
+              <button class="product-tile" id="products-tile-investments" data-query="Investments">
                 <span class="product-tile__icon" style="color:#4bb7b1"><svg class="icon" width="24" height="24"><use href="#i-trend-up" /></svg></span>
                 <span class="product-tile__text">
                   <span class="product-tile__title ts-label-m-medium">Investments</span>
@@ -926,6 +955,483 @@
               <svg class="icon" width="20" height="20"><use href="#i-plus-sign" /></svg>
               new product
             </button>
+          </div>
+        </main>
+
+        <main class="scroll" id="investments-main" hidden>
+          <div class="investments-scroll">
+            <div class="seg-tabs" id="investments-tabs">
+              <button class="seg-tabs__btn seg-tabs__btn--active" data-invest-tab="portfolio">Portfolio</button>
+              <button class="seg-tabs__btn" data-invest-tab="discovery">Discovery</button>
+            </div>
+
+            <!-- Portfolio tab -->
+            <div class="investments-panel" id="investments-panel-portfolio">
+              <div class="portfolio-total">
+                <span class="ts-label-m-regular">Total Portfolio</span>
+                <span class="portfolio-total__amount">322.40<span class="portfolio-total__currency">$</span></span>
+                <span class="portfolio-total__change ts-label-s-medium">
+                  Daily change:
+                  <span class="portfolio-total__change-value">+ 10.97 $</span>
+                  <svg class="icon" width="16" height="16"><use href="#i-trend-up" /></svg>
+                  <span class="portfolio-total__change-pct">1.39 %</span>
+                </span>
+              </div>
+
+              <div class="portfolio-chart-wrap">
+                <div class="portfolio-chart-axis">
+                  <span>16,000</span>
+                  <span>14,000</span>
+                  <span>12,000</span>
+                </div>
+                <svg class="portfolio-chart" id="portfolio-chart" viewBox="0 0 311 130" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="portfolio-chart-fill" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="currentColor" stop-opacity="0.2" />
+                      <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <path class="portfolio-chart__fill" id="portfolio-chart-fill-path" fill="url(#portfolio-chart-fill)" />
+                  <path class="portfolio-chart__line" id="portfolio-chart-line-path" />
+                </svg>
+                <div class="portfolio-chart-dates" id="portfolio-chart-dates">
+                  <span>14:00</span>
+                  <span>15:00</span>
+                  <span>16:00</span>
+                  <span>17:00</span>
+                  <span>Now</span>
+                </div>
+              </div>
+
+              <div class="pill-switcher" id="portfolio-range">
+                <button class="pill-switcher__btn pill-switcher__btn--active" data-range="1D">1D</button>
+                <button class="pill-switcher__btn" data-range="1W">1W</button>
+                <button class="pill-switcher__btn" data-range="1M">1M</button>
+                <button class="pill-switcher__btn" data-range="6M">6M</button>
+                <button class="pill-switcher__btn" data-range="YTD">YTD</button>
+                <button class="pill-switcher__btn" data-range="1Y">1Y</button>
+                <button class="pill-switcher__btn" data-range="All">All</button>
+              </div>
+
+              <div class="invest-actions">
+                <button class="invest-actions__btn" data-action="Buy">
+                  <span class="invest-actions__icon"><svg class="icon" width="24" height="24"><use href="#i-add-circle" /></svg></span>
+                  <span class="ts-body-xs-regular">Buy</span>
+                </button>
+                <button class="invest-actions__btn" data-action="Deposit">
+                  <span class="invest-actions__icon"><svg class="icon" width="24" height="24"><use href="#i-cash" /></svg></span>
+                  <span class="ts-body-xs-regular">Deposit</span>
+                </button>
+                <button class="invest-actions__btn" data-action="Withdraw">
+                  <span class="invest-actions__icon"><svg class="icon" width="24" height="24"><use href="#i-arrow-corner-right" /></svg></span>
+                  <span class="ts-body-xs-regular">Withdraw</span>
+                </button>
+                <button class="invest-actions__btn" data-action="Other">
+                  <span class="invest-actions__icon"><svg class="icon" width="24" height="24"><use href="#i-kebab" /></svg></span>
+                  <span class="ts-body-xs-regular">Other</span>
+                </button>
+              </div>
+
+              <button class="invest-card invest-cash" id="invest-cash-account">
+                <span class="invest-cash__icon"><svg class="icon" width="24" height="24"><use href="#i-cash" /></svg></span>
+                <span class="invest-cash__text">
+                  <span class="ts-label-s-regular">Cash Account</span>
+                  <span class="ts-label-m-regular">00.00 $</span>
+                </span>
+              </button>
+
+              <div class="invest-card invest-holdings">
+                <div class="invest-holdings__head">
+                  <span class="invest-cash__icon" style="background:#2b9994; color:#fff"><svg class="icon" width="24" height="24"><use href="#i-trend-up" /></svg></span>
+                  <span class="invest-cash__text">
+                    <span class="ts-label-s-regular">My investment</span>
+                    <span class="ts-label-m-regular" id="holdings-total">322.40 $</span>
+                  </span>
+                  <div class="pill-switcher" id="holdings-period">
+                    <button class="pill-switcher__btn" data-period="All">All</button>
+                    <button class="pill-switcher__btn pill-switcher__btn--active" data-period="Day">Day</button>
+                  </div>
+                </div>
+                <div class="invest-holdings__toolbar">
+                  <button class="invest-filter" id="holdings-sort">
+                    <span class="ts-label-s-medium">By Alphabet</span>
+                    <svg class="icon" width="16" height="16"><use href="#i-filter" /></svg>
+                  </button>
+                  <div class="invest-holdings__change">
+                    <span class="ts-body-xs-regular">Daily Change</span>
+                    <span class="invest-holdings__change-value" id="holdings-change">
+                      <span class="ts-label-m-medium">+9.97 $</span>
+                      <svg class="icon" width="20" height="20"><use href="#i-trend-up" /></svg>
+                      <span class="ts-label-m-medium">2.05%</span>
+                    </span>
+                  </div>
+                </div>
+                <div class="invest-holdings__divider"></div>
+                <ul class="invest-holdings__list" id="holdings-list">
+                  <li class="invest-holding" data-name="Google inc.">
+                    <span class="avatar-initials invest-holding__logo" style="--bg:#4285f4; --fg:#fff">G</span>
+                    <span class="invest-holding__text">
+                      <span class="ts-label-l-regular">Google inc.</span>
+                      <span class="ts-label-m-regular invest-holding__ticker">GOOG</span>
+                    </span>
+                    <span class="invest-holding__figures">
+                      <span class="invest-holding__price"><span class="ts-label-l-regular">186.20</span> <span class="ts-label-l-regular invest-holding__currency">$</span></span>
+                      <span class="invest-holding__trend">
+                        <span class="ts-label-m-regular invest-holding__trend-abs">+5.81 $</span>
+                        <svg class="icon" width="20" height="20"><use href="#i-trend-up" /></svg>
+                        <span class="ts-label-m-medium invest-holding__trend-pct">1.39 %</span>
+                      </span>
+                    </span>
+                  </li>
+                  <li class="invest-holding" data-name="NVDA">
+                    <span class="avatar-initials invest-holding__logo" style="--bg:#76b900; --fg:#fff">N</span>
+                    <span class="invest-holding__text">
+                      <span class="ts-label-l-regular">NVDA</span>
+                      <span class="ts-label-m-regular invest-holding__ticker">Nvidia</span>
+                    </span>
+                    <span class="invest-holding__figures">
+                      <span class="invest-holding__price"><span class="ts-label-l-regular">50.00</span> <span class="ts-label-l-regular invest-holding__currency">$</span></span>
+                      <span class="invest-holding__trend">
+                        <span class="ts-label-m-regular invest-holding__trend-abs">+18.11 $</span>
+                        <svg class="icon" width="20" height="20"><use href="#i-trend-up" /></svg>
+                        <span class="ts-label-m-medium invest-holding__trend-pct">12.39 %</span>
+                      </span>
+                    </span>
+                  </li>
+                  <li class="invest-holding" data-name="MSFT">
+                    <span class="avatar-initials invest-holding__logo" style="--bg:#00a4ef; --fg:#fff">M</span>
+                    <span class="invest-holding__text">
+                      <span class="ts-label-l-regular">MSFT</span>
+                      <span class="ts-label-m-regular invest-holding__ticker">Microsoft Inc</span>
+                    </span>
+                    <span class="invest-holding__figures">
+                      <span class="invest-holding__price"><span class="ts-label-l-regular">86.20</span> <span class="ts-label-l-regular invest-holding__currency">$</span></span>
+                      <span class="invest-holding__trend">
+                        <span class="ts-label-m-regular invest-holding__trend-abs">+3.11 $</span>
+                        <svg class="icon" width="20" height="20"><use href="#i-trend-up" /></svg>
+                        <span class="ts-label-m-medium invest-holding__trend-pct">2.54 %</span>
+                      </span>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="invest-card invest-widget">
+                <div class="invest-widget__head">
+                  <span class="ts-title-xs-bold">Autopilot</span>
+                  <button class="invest-widget__link ts-label-m-medium" data-toggle-info="autopilot">How it works?</button>
+                </div>
+                <div class="invest-widget__divider"></div>
+                <p class="invest-widget__helper ts-label-m-regular" id="autopilot-helper">Some helper text for the autopilot widget that describes feature a little.</p>
+                <button class="invest-widget__cta ts-label-m-medium" data-action="Invest now">
+                  <svg class="icon" width="20" height="20"><use href="#i-plus-sign" /></svg>
+                  Invest now
+                </button>
+              </div>
+
+              <div class="invest-card invest-widget">
+                <div class="invest-widget__head">
+                  <span class="ts-title-xs-bold">Favorites</span>
+                </div>
+                <div class="invest-widget__divider"></div>
+                <p class="invest-widget__helper ts-label-m-regular">Add your favorite stocks and funds to track their performance easily</p>
+                <button class="invest-widget__cta ts-label-m-medium" data-action="Add stocks">
+                  <svg class="icon" width="20" height="20"><use href="#i-plus-sign" /></svg>
+                  Add stocks
+                </button>
+              </div>
+
+              <div class="invest-card invest-transactions">
+                <div class="invest-widget__head">
+                  <span class="ts-title-xs-bold">Transactions</span>
+                </div>
+                <div class="seg-tabs" id="transactions-tabs">
+                  <button class="seg-tabs__btn" data-tx-tab="completed">Completed</button>
+                  <button class="seg-tabs__btn seg-tabs__btn--active" data-tx-tab="pending">
+                    Pending
+                    <span class="seg-tabs__badge">2</span>
+                  </button>
+                </div>
+                <p class="invest-transactions__note ts-body-xs-regular" id="transactions-note">Price may change while completing the transaction, it will be completed during open hours of US exchange market</p>
+                <span class="invest-transactions__date ts-body-xs-regular" id="transactions-date">24 აგვ, 2024</span>
+                <ul class="invest-transactions__list" id="transactions-list">
+                  <li class="invest-transaction">
+                    <span class="avatar-initials invest-holding__logo" style="--bg:#4285f4; --fg:#fff">G</span>
+                    <span class="invest-transaction__text">
+                      <span class="ts-label-m-regular">19,82371 Stocks Bought</span>
+                      <span class="ts-label-s-regular invest-transaction__sub">Google (GOOG)</span>
+                    </span>
+                    <span class="ts-label-m-regular invest-transaction__amount">-140.30 $</span>
+                  </li>
+                  <li class="invest-transaction">
+                    <span class="avatar-initials invest-holding__logo" style="--bg:#4285f4; --fg:#fff">G</span>
+                    <span class="invest-transaction__text">
+                      <span class="ts-label-m-regular">19,82371 Stocks Bought</span>
+                      <span class="ts-label-s-regular invest-transaction__sub">Google (GOOG)</span>
+                    </span>
+                    <span class="ts-label-m-regular invest-transaction__amount">-140.30 $</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Discovery tab -->
+            <div class="investments-panel" id="investments-panel-discovery" hidden>
+              <div class="discovery-news-head">
+                <span class="ts-title-xs-bold">Investment News</span>
+              </div>
+              <div class="discovery-news" id="discovery-news">
+                <article class="discovery-news__card">
+                  <div class="discovery-news__top">
+                    <span class="discovery-news__left">
+                      <span class="discovery-news__badge">
+                        <span class="discovery-news__badge-icon">a</span>
+                        <span class="ts-label-s-medium">AMZN</span>
+                      </span>
+                      <span class="ts-label-s-regular discovery-news__date">11 June, 2025</span>
+                    </span>
+                    <span class="discovery-news__new ts-label-s-regular">New Article</span>
+                  </div>
+                  <p class="ts-label-m-medium discovery-news__title"><b>Amazon-ის</b> Nasdaq rose 2.3% this week, led by gains in Google and Nvidia after new AI product announcements</p>
+                  <p class="ts-label-s-regular discovery-news__source">BARCLAYS: ROSS SANDLER, TREVOR YOUNG - ის</p>
+                  <div class="discovery-news__row">
+                    <span class="ts-label-s-regular">Target PriceL</span>
+                    <span class="discovery-news__price">
+                      <span class="ts-label-s-medium">$903.35</span>
+                      <svg class="icon" width="16" height="16"><use href="#i-trend-up" /></svg>
+                      <span class="ts-label-s-medium">2.05%</span>
+                    </span>
+                  </div>
+                  <div class="discovery-news__row">
+                    <span class="ts-label-s-regular">Recommendation :</span>
+                    <span class="discovery-news__rec">
+                      <svg class="icon" width="16" height="16"><use href="#i-add-circle" /></svg>
+                      <span class="ts-label-s-medium">ყიდვა</span>
+                    </span>
+                  </div>
+                </article>
+                <article class="discovery-news__card">
+                  <div class="discovery-news__top">
+                    <span class="discovery-news__left">
+                      <span class="discovery-news__badge">
+                        <span class="discovery-news__badge-icon" style="background:#000">n</span>
+                        <span class="ts-label-s-medium">NVDA</span>
+                      </span>
+                      <span class="ts-label-s-regular discovery-news__date">10 June, 2025</span>
+                    </span>
+                    <span class="discovery-news__new ts-label-s-regular">New Article</span>
+                  </div>
+                  <p class="ts-label-m-medium discovery-news__title">Nvidia unveils next-gen AI chips, shares climb on strong datacenter demand outlook</p>
+                  <p class="ts-label-s-regular discovery-news__source">MORGAN STANLEY: JOSEPH MOORE</p>
+                  <div class="discovery-news__row">
+                    <span class="ts-label-s-regular">Target PriceL</span>
+                    <span class="discovery-news__price">
+                      <span class="ts-label-s-medium">$142.10</span>
+                      <svg class="icon" width="16" height="16"><use href="#i-trend-up" /></svg>
+                      <span class="ts-label-s-medium">3.40%</span>
+                    </span>
+                  </div>
+                  <div class="discovery-news__row">
+                    <span class="ts-label-s-regular">Recommendation :</span>
+                    <span class="discovery-news__rec">
+                      <svg class="icon" width="16" height="16"><use href="#i-add-circle" /></svg>
+                      <span class="ts-label-s-medium">ყიდვა</span>
+                    </span>
+                  </div>
+                </article>
+                <article class="discovery-news__card">
+                  <div class="discovery-news__top">
+                    <span class="discovery-news__left">
+                      <span class="discovery-news__badge">
+                        <span class="discovery-news__badge-icon" style="background:#4285f4">g</span>
+                        <span class="ts-label-s-medium">GOOG</span>
+                      </span>
+                      <span class="ts-label-s-regular discovery-news__date">9 June, 2025</span>
+                    </span>
+                    <span class="discovery-news__new ts-label-s-regular">New Article</span>
+                  </div>
+                  <p class="ts-label-m-medium discovery-news__title">Google announces new Gemini model, analysts raise price targets across the board</p>
+                  <p class="ts-label-s-regular discovery-news__source">GOLDMAN SACHS: ERIC SHERIDAN</p>
+                  <div class="discovery-news__row">
+                    <span class="ts-label-s-regular">Target PriceL</span>
+                    <span class="discovery-news__price">
+                      <span class="ts-label-s-medium">$210.00</span>
+                      <svg class="icon" width="16" height="16"><use href="#i-trend-up" /></svg>
+                      <span class="ts-label-s-medium">4.55%</span>
+                    </span>
+                  </div>
+                  <div class="discovery-news__row">
+                    <span class="ts-label-s-regular">Recommendation :</span>
+                    <span class="discovery-news__rec">
+                      <svg class="icon" width="16" height="16"><use href="#i-add-circle" /></svg>
+                      <span class="ts-label-s-medium">ყიდვა</span>
+                    </span>
+                  </div>
+                </article>
+              </div>
+              <div class="discovery-dots" id="discovery-news-dots">
+                <button class="discovery-dots__dot discovery-dots__dot--active" data-news-index="0" aria-label="News 1"></button>
+                <button class="discovery-dots__dot" data-news-index="1" aria-label="News 2"></button>
+                <button class="discovery-dots__dot" data-news-index="2" aria-label="News 3"></button>
+              </div>
+
+              <div class="discovery-section">
+                <div class="discovery-section__head">
+                  <span class="ts-title-xs-bold">Non-Cyclical Stocks</span>
+                  <span class="ts-body-xs-regular discovery-section__sub">Companies with stable earnings</span>
+                </div>
+                <div class="discovery-scroller">
+                  <button class="stock-card" data-name="Personalis, Inc.">
+                    <div class="stock-card__head">
+                      <span class="avatar-initials stock-card__logo" style="--bg:#6a3fb5; --fg:#fff">P</span>
+                      <span class="stock-card__trend">
+                        <span class="ts-label-s-regular">12.13 $</span>
+                        <span class="stock-card__pct"><svg class="icon" width="20" height="20"><use href="#i-trend-up" /></svg>10.72%</span>
+                      </span>
+                    </div>
+                    <span class="ts-label-s-medium stock-card__ticker">PSNL</span>
+                    <span class="ts-body-xs-regular stock-card__name">Personalis, Inc.</span>
+                  </button>
+                  <button class="stock-card" data-name="Serve Robotics Inc.">
+                    <div class="stock-card__head">
+                      <span class="avatar-initials stock-card__logo" style="--bg:#1fae6b; --fg:#fff">S</span>
+                      <span class="stock-card__trend">
+                        <span class="ts-label-s-regular">1143.55 $</span>
+                        <span class="stock-card__pct"><svg class="icon" width="20" height="20"><use href="#i-trend-up" /></svg>5.84%</span>
+                      </span>
+                    </div>
+                    <span class="ts-label-s-medium stock-card__ticker">SERV</span>
+                    <span class="ts-body-xs-regular stock-card__name">Serve Robotics Inc.</span>
+                  </button>
+                  <button class="stock-card" data-name="SunPower Corporation">
+                    <div class="stock-card__head">
+                      <span class="avatar-initials stock-card__logo" style="--bg:#0a4fa0; --fg:#fff">S</span>
+                      <span class="stock-card__trend">
+                        <span class="ts-label-s-regular">65.62 $</span>
+                        <span class="stock-card__pct"><svg class="icon" width="20" height="20"><use href="#i-trend-up" /></svg>33.26%</span>
+                      </span>
+                    </div>
+                    <span class="ts-label-s-medium stock-card__ticker">SPWR</span>
+                    <span class="ts-body-xs-regular stock-card__name">SunPower Corporation</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="discovery-section">
+                <div class="discovery-section__head">
+                  <span class="ts-title-xs-bold">Analyst Picks</span>
+                  <span class="ts-body-xs-regular discovery-section__sub">Stocks with a buy rating from Wall Street's analysts</span>
+                </div>
+                <div class="discovery-scroller">
+                  <button class="stock-card" data-name="NVIDIA">
+                    <div class="stock-card__head">
+                      <span class="avatar-initials stock-card__logo" style="--bg:#76b900; --fg:#fff">N</span>
+                      <span class="stock-card__trend">
+                        <span class="ts-label-s-regular">117.93 $</span>
+                        <span class="stock-card__pct"><svg class="icon" width="20" height="20"><use href="#i-trend-up" /></svg>2.39%</span>
+                      </span>
+                    </div>
+                    <span class="ts-label-s-medium stock-card__ticker">NVDA</span>
+                    <span class="ts-body-xs-regular stock-card__name">NVIDIA</span>
+                  </button>
+                  <button class="stock-card" data-name="SunPower Corporation">
+                    <div class="stock-card__head">
+                      <span class="avatar-initials stock-card__logo" style="--bg:#0058a3; --fg:#fff">S</span>
+                      <span class="stock-card__trend">
+                        <span class="ts-label-s-regular">65.62 $</span>
+                        <span class="stock-card__pct"><svg class="icon" width="20" height="20"><use href="#i-trend-up" /></svg>33.26%</span>
+                      </span>
+                    </div>
+                    <span class="ts-label-s-medium stock-card__ticker">SPWR</span>
+                    <span class="ts-body-xs-regular stock-card__name">SunPower Corporati...</span>
+                  </button>
+                  <button class="stock-card" data-name="CrowdStrike Holdings, Inc.">
+                    <div class="stock-card__head">
+                      <span class="avatar-initials stock-card__logo" style="--bg:#e01f27; --fg:#fff">C</span>
+                      <span class="stock-card__trend">
+                        <span class="ts-label-s-regular">389.40 $</span>
+                        <span class="stock-card__pct"><svg class="icon" width="20" height="20"><use href="#i-trend-up" /></svg>1.87%</span>
+                      </span>
+                    </div>
+                    <span class="ts-label-s-medium stock-card__ticker">CRWD</span>
+                    <span class="ts-body-xs-regular stock-card__name">CrowdStrike Holdings</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="discovery-section">
+                <div class="discovery-section__head">
+                  <span class="ts-title-xs-bold">Most Popular</span>
+                  <span class="ts-body-xs-regular discovery-section__sub">Stocks that are popular among investors and have international appeal</span>
+                </div>
+                <div class="discovery-scroller">
+                  <button class="stock-card" data-name="Apple">
+                    <div class="stock-card__head">
+                      <span class="avatar-initials stock-card__logo" style="--bg:#141719; --fg:#fff">A</span>
+                      <span class="stock-card__trend">
+                        <span class="ts-label-s-regular">117.93 $</span>
+                        <span class="stock-card__pct"><svg class="icon" width="20" height="20"><use href="#i-trend-up" /></svg>2.39%</span>
+                      </span>
+                    </div>
+                    <span class="ts-label-s-medium stock-card__ticker">AAPL</span>
+                    <span class="ts-body-xs-regular stock-card__name">Apple</span>
+                  </button>
+                  <button class="stock-card" data-name="Google">
+                    <div class="stock-card__head">
+                      <span class="avatar-initials stock-card__logo" style="--bg:#4285f4; --fg:#fff">G</span>
+                      <span class="stock-card__trend">
+                        <span class="ts-label-s-regular">200.93 $</span>
+                        <span class="stock-card__pct"><svg class="icon" width="20" height="20"><use href="#i-trend-up" /></svg>2.39%</span>
+                      </span>
+                    </div>
+                    <span class="ts-label-s-medium stock-card__ticker">GOOG</span>
+                    <span class="ts-body-xs-regular stock-card__name">Google</span>
+                  </button>
+                  <button class="stock-card" data-name="NVIDIA">
+                    <div class="stock-card__head">
+                      <span class="avatar-initials stock-card__logo" style="--bg:#0b0b0b; --fg:#fff">N</span>
+                      <span class="stock-card__trend">
+                        <span class="ts-label-s-regular">117.93 $</span>
+                        <span class="stock-card__pct"><svg class="icon" width="20" height="20"><use href="#i-trend-up" /></svg>2.39%</span>
+                      </span>
+                    </div>
+                    <span class="ts-label-s-medium stock-card__ticker">NVDA</span>
+                    <span class="ts-body-xs-regular stock-card__name">NVIDIA</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="invest-card invest-widget invest-etfs">
+                <div class="invest-widget__head">
+                  <span class="ts-title-xs-bold">ETFs</span>
+                  <button class="invest-widget__link ts-label-m-medium" data-toggle-info="etf">How it works?</button>
+                </div>
+                <p class="invest-widget__helper ts-label-m-regular" id="etf-helper">ETF is an investment basket that includes different stocks and bonds. Buying an ETF lets you diversify your investments with just one transaction</p>
+                <ul class="etf-list">
+                  <li class="etf-row" data-name="SPDR S&amp;P 500 ETF TRUST">
+                    <span class="etf-row__text">
+                      <span class="ts-label-s-medium">SPDR S&amp;P 500 ETF TRUST</span>
+                      <span class="etf-row__trend"><span class="ts-label-s-regular">320.00 $</span><span class="stock-card__pct"><svg class="icon" width="14" height="14"><use href="#i-trend-up" /></svg>2.40 %</span></span>
+                    </span>
+                    <span class="avatar-initials etf-row__logo" style="--bg:#eef1f1; --fg:#141719">SPDR</span>
+                  </li>
+                  <li class="etf-row" data-name="Vanguard Total Stock Market ETF">
+                    <span class="etf-row__text">
+                      <span class="ts-label-s-medium">Vanguard Total Stock Market ETF</span>
+                      <span class="etf-row__trend"><span class="ts-label-s-regular">320.00 $</span><span class="stock-card__pct"><svg class="icon" width="14" height="14"><use href="#i-trend-up" /></svg>2.40 %</span></span>
+                    </span>
+                    <span class="avatar-initials etf-row__logo" style="--bg:#96131a; --fg:#fff">V</span>
+                  </li>
+                  <li class="etf-row" data-name="Invesco QQQ Trust, Series 1">
+                    <span class="etf-row__text">
+                      <span class="ts-label-s-medium">Invesco QQQ Trust, Series 1</span>
+                      <span class="etf-row__trend"><span class="ts-label-s-regular">320.00 $</span><span class="stock-card__pct"><svg class="icon" width="14" height="14"><use href="#i-trend-up" /></svg>2.40 %</span></span>
+                    </span>
+                    <span class="avatar-initials etf-row__logo" style="--bg:#00338d; --fg:#fff">I</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </main>
 
@@ -1068,7 +1574,7 @@
               <svg class="icon" width="24" height="24"><use href="#i-home" /></svg>
               <span class="ts-label-m-regular">Home</span>
             </button>
-            <button class="drawer__item">
+            <button class="drawer__item" id="drawer-investments-open">
               <svg class="icon" width="24" height="24"><use href="#i-trend-up" /></svg>
               <span class="ts-label-m-regular">Investments</span>
             </button>
@@ -2392,20 +2898,31 @@
             </div>
           </div>
         </div>
+
+        <div class="toast" id="toast"></div>
       </div>
     </div>
 
     <script>
-      // Tab bar: switch the active tab on click. Only "Home" and
-      // "Products" have real panels to swap between; the other tabs
-      // (Transfers/Payment/offers) just toggle the active visual state,
-      // same as before.
-      (() => {
+      // Home / Products / Investments are the 3 real swappable panels
+      // sharing one topbar-slot and the persistent tab bar. Transfers/
+      // Payment/offers just toggle the active tab's visual state.
+      window.showMainPanel = (() => {
         const gradientBg = document.querySelector(".gradient-bg");
-        const homeTopbar = document.getElementById("home-topbar");
-        const productsTopbar = document.getElementById("products-topbar");
-        const homeMain = document.getElementById("home-main");
-        const productsMain = document.getElementById("products-main");
+        const panels = {
+          home: { topbar: document.getElementById("home-topbar"), main: document.getElementById("home-main") },
+          products: { topbar: document.getElementById("products-topbar"), main: document.getElementById("products-main") },
+          investments: { topbar: document.getElementById("investments-topbar"), main: document.getElementById("investments-main") },
+        };
+
+        function showMainPanel(name) {
+          Object.entries(panels).forEach(([key, panel]) => {
+            const isActive = key === name;
+            panel.topbar.hidden = !isActive;
+            panel.main.hidden = !isActive;
+          });
+          gradientBg.hidden = name !== "home";
+        }
 
         document.querySelector(".tabbar__bar").addEventListener("click", (e) => {
           const tab = e.target.closest(".tab");
@@ -2413,16 +2930,12 @@
           document.querySelectorAll(".tab--active").forEach((t) => t.classList.remove("tab--active"));
           tab.classList.add("tab--active");
 
-          const isProducts = tab.dataset.tab === "products";
-          const isHome = tab.dataset.tab === "home";
-          if (isProducts || isHome) {
-            gradientBg.hidden = isProducts;
-            homeTopbar.hidden = isProducts;
-            productsTopbar.hidden = !isProducts;
-            homeMain.hidden = isProducts;
-            productsMain.hidden = !isProducts;
+          if (tab.dataset.tab === "home" || tab.dataset.tab === "products") {
+            showMainPanel(tab.dataset.tab);
           }
         });
+
+        return showMainPanel;
       })();
 
       // Products tab: grid/list view toggle + "Get new product" sheet.
@@ -2463,6 +2976,7 @@
         const menuOpenButtons = [
           document.getElementById("home-menu-open"),
           document.getElementById("products-menu-open"),
+          document.getElementById("investments-menu-open"),
         ];
         function openDrawer() {
           drawerBackdrop.classList.add("is-open");
@@ -2487,6 +3001,235 @@
         }
         document.getElementById("drawer-profile-open").addEventListener("click", openSettings);
         document.getElementById("settings-back").addEventListener("click", closeSettings);
+
+        // Investments: reachable from the Products tile and the drawer's
+        // "Investments" item. Figma keeps the "Products" tab highlighted
+        // while viewing it, since it's a Products sub-page.
+        function openInvestments() {
+          closeDrawer();
+          document.querySelectorAll(".tab--active").forEach((t) => t.classList.remove("tab--active"));
+          document.querySelector('.tab[data-tab="products"]').classList.add("tab--active");
+          window.showMainPanel("investments");
+        }
+        document.getElementById("products-tile-investments").addEventListener("click", openInvestments);
+        document.getElementById("drawer-investments-open").addEventListener("click", openInvestments);
+      })();
+
+      // Small floating snackbar used across the app for actions that
+      // don't have a dedicated destination screen (Buy/Deposit/etc).
+      window.showToast = (() => {
+        const toast = document.getElementById("toast");
+        let timer = null;
+        return (msg) => {
+          toast.textContent = msg;
+          toast.classList.add("is-visible");
+          clearTimeout(timer);
+          timer = setTimeout(() => toast.classList.remove("is-visible"), 1600);
+        };
+      })();
+
+      // Investments screen: Portfolio/Discovery tabs, chart range
+      // switcher, All/Day + alphabetical sort, Completed/Pending
+      // transactions, autopilot/ETF info toggles, news carousel.
+      (() => {
+        const screen = document.getElementById("investments-main");
+        if (!screen) return;
+
+        const investTabs = document.getElementById("investments-tabs");
+        const investPanels = {
+          portfolio: document.getElementById("investments-panel-portfolio"),
+          discovery: document.getElementById("investments-panel-discovery"),
+        };
+        investTabs.addEventListener("click", (e) => {
+          const btn = e.target.closest(".seg-tabs__btn");
+          if (!btn) return;
+          investTabs.querySelectorAll(".seg-tabs__btn").forEach((b) => b.classList.remove("seg-tabs__btn--active"));
+          btn.classList.add("seg-tabs__btn--active");
+          const which = btn.dataset.investTab;
+          investPanels.portfolio.hidden = which !== "portfolio";
+          investPanels.discovery.hidden = which !== "discovery";
+        });
+
+        // Chart
+        const linePath = document.getElementById("portfolio-chart-line-path");
+        const fillPath = document.getElementById("portfolio-chart-fill-path");
+        const CHART_W = 311;
+        const CHART_H = 130;
+        function buildChart(points) {
+          const step = CHART_W / (points.length - 1);
+          const coords = points.map((p, i) => [i * step, CHART_H - p * (CHART_H - 10) - 5]);
+          let d = `M${coords[0][0]},${coords[0][1]}`;
+          for (let i = 1; i < coords.length; i++) {
+            const [x0, y0] = coords[i - 1];
+            const [x1, y1] = coords[i];
+            const mx = (x0 + x1) / 2;
+            d += ` C${mx},${y0} ${mx},${y1} ${x1},${y1}`;
+          }
+          linePath.setAttribute("d", d);
+          fillPath.setAttribute("d", `${d} L${CHART_W},${CHART_H} L0,${CHART_H} Z`);
+        }
+        const RANGE_DATA = {
+          "1D": { points: [0.55, 0.3, 0.62, 0.78, 0.5, 0.68, 0.9, 0.72, 0.95], dates: ["14:00", "15:00", "16:00", "17:00", "Now"] },
+          "1W": { points: [0.3, 0.45, 0.4, 0.6, 0.55, 0.7, 0.85], dates: ["Mon", "Tue", "Wed", "Thu", "Fri"] },
+          "1M": { points: [0.2, 0.35, 0.3, 0.5, 0.4, 0.6, 0.55, 0.75, 0.9], dates: ["Wk 1", "Wk 2", "Wk 3", "Wk 4", "Now"] },
+          "6M": { points: [0.15, 0.3, 0.25, 0.45, 0.4, 0.6, 0.55, 0.8], dates: ["Mar", "Apr", "May", "Jun", "Now"] },
+          YTD: { points: [0.1, 0.25, 0.2, 0.4, 0.35, 0.55, 0.5, 0.7, 0.85], dates: ["Jan", "Mar", "May", "Jul", "Now"] },
+          "1Y": { points: [0.2, 0.15, 0.35, 0.3, 0.5, 0.45, 0.65, 0.6, 0.8], dates: ["Q1", "Q2", "Q3", "Q4", "Now"] },
+          All: { points: [0.05, 0.2, 0.15, 0.35, 0.3, 0.5, 0.45, 0.65, 0.6, 0.85], dates: ["2022", "2023", "2024", "2025", "Now"] },
+        };
+        buildChart(RANGE_DATA["1D"].points);
+
+        const rangeSwitcher = document.getElementById("portfolio-range");
+        const dateRow = document.getElementById("portfolio-chart-dates");
+        rangeSwitcher.addEventListener("click", (e) => {
+          const btn = e.target.closest(".pill-switcher__btn");
+          if (!btn) return;
+          rangeSwitcher.querySelectorAll(".pill-switcher__btn").forEach((b) => b.classList.remove("pill-switcher__btn--active"));
+          btn.classList.add("pill-switcher__btn--active");
+          const data = RANGE_DATA[btn.dataset.range];
+          buildChart(data.points);
+          dateRow.innerHTML = data.dates.map((d) => `<span>${d}</span>`).join("");
+        });
+
+        // My investment: All/Day toggle
+        const periodSwitcher = document.getElementById("holdings-period");
+        const holdingsTotal = document.getElementById("holdings-total");
+        const holdingsChange = document.getElementById("holdings-change");
+        const PERIOD_DATA = {
+          Day: { total: "322.40 $", abs: "+9.97 $", pct: "2.05%" },
+          All: { total: "322.40 $", abs: "+56.30 $", pct: "21.15%" },
+        };
+        periodSwitcher.addEventListener("click", (e) => {
+          const btn = e.target.closest(".pill-switcher__btn");
+          if (!btn) return;
+          periodSwitcher.querySelectorAll(".pill-switcher__btn").forEach((b) => b.classList.remove("pill-switcher__btn--active"));
+          btn.classList.add("pill-switcher__btn--active");
+          const data = PERIOD_DATA[btn.dataset.period];
+          holdingsTotal.textContent = data.total;
+          holdingsChange.innerHTML = `<span class="ts-label-m-medium">${data.abs}</span><svg class="icon" width="20" height="20"><use href="#i-trend-up" /></svg><span class="ts-label-m-medium">${data.pct}</span>`;
+        });
+
+        // By Alphabet sort
+        const sortBtn = document.getElementById("holdings-sort");
+        const holdingsList = document.getElementById("holdings-list");
+        const ORIGINAL_ORDER = ["Google inc.", "NVDA", "MSFT"];
+        let alphaSorted = false;
+        sortBtn.addEventListener("click", () => {
+          alphaSorted = !alphaSorted;
+          const items = Array.from(holdingsList.children);
+          items.sort((a, b) =>
+            alphaSorted
+              ? a.dataset.name.localeCompare(b.dataset.name)
+              : ORIGINAL_ORDER.indexOf(a.dataset.name) - ORIGINAL_ORDER.indexOf(b.dataset.name)
+          );
+          items.forEach((item) => holdingsList.appendChild(item));
+          showToast(alphaSorted ? "Sorted alphabetically" : "Default order");
+        });
+
+        // Completed / Pending transactions
+        const txTabs = document.getElementById("transactions-tabs");
+        const txNote = document.getElementById("transactions-note");
+        const txDate = document.getElementById("transactions-date");
+        const txList = document.getElementById("transactions-list");
+        const TX_DATA = {
+          pending: {
+            note: "Price may change while completing the transaction, it will be completed during open hours of US exchange market",
+            date: "24 აგვ, 2024",
+            items: [
+              { logo: "G", bg: "#4285f4", title: "19,82371 Stocks Bought", sub: "Google (GOOG)", amount: "-140.30 $" },
+              { logo: "G", bg: "#4285f4", title: "19,82371 Stocks Bought", sub: "Google (GOOG)", amount: "-140.30 $" },
+            ],
+          },
+          completed: {
+            note: "",
+            date: "20 აგვ, 2024",
+            items: [
+              { logo: "N", bg: "#76b900", title: "5,4021 Stocks Bought", sub: "NVDA (Nvidia)", amount: "-90.00 $" },
+              { logo: "M", bg: "#00a4ef", title: "2,1004 Stocks Sold", sub: "MSFT (Microsoft Inc)", amount: "+64.20 $" },
+            ],
+          },
+        };
+        function renderTx(kind) {
+          const data = TX_DATA[kind];
+          txNote.hidden = !data.note;
+          txNote.textContent = data.note;
+          txDate.textContent = data.date;
+          txList.innerHTML = data.items
+            .map(
+              (tx) => `
+            <li class="invest-transaction">
+              <span class="avatar-initials invest-holding__logo" style="--bg:${tx.bg}; --fg:#fff">${tx.logo}</span>
+              <span class="invest-transaction__text">
+                <span class="ts-label-m-regular">${tx.title}</span>
+                <span class="ts-label-s-regular invest-transaction__sub">${tx.sub}</span>
+              </span>
+              <span class="ts-label-m-regular invest-transaction__amount">${tx.amount}</span>
+            </li>`
+            )
+            .join("");
+        }
+        txTabs.addEventListener("click", (e) => {
+          const btn = e.target.closest(".seg-tabs__btn");
+          if (!btn) return;
+          txTabs.querySelectorAll(".seg-tabs__btn").forEach((b) => b.classList.remove("seg-tabs__btn--active"));
+          btn.classList.add("seg-tabs__btn--active");
+          renderTx(btn.dataset.txTab);
+        });
+
+        // Action buttons / rows -> toast feedback (no dedicated screen)
+        document.querySelectorAll("#investments-panel-portfolio [data-action]").forEach((btn) => {
+          btn.addEventListener("click", () => showToast(btn.dataset.action));
+        });
+        document.getElementById("invest-cash-account").addEventListener("click", () => showToast("Cash Account"));
+        holdingsList.addEventListener("click", (e) => {
+          const row = e.target.closest(".invest-holding");
+          if (row) showToast(row.dataset.name);
+        });
+
+        // Autopilot / ETF "How it works?" toggle
+        document.querySelectorAll("[data-toggle-info]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const key = btn.dataset.toggleInfo;
+            const expanded = btn.getAttribute("aria-expanded") === "true";
+            btn.setAttribute("aria-expanded", String(!expanded));
+            btn.textContent = expanded ? "How it works?" : "Hide info";
+            if (key === "autopilot") {
+              document.getElementById("autopilot-helper").textContent = expanded
+                ? "Some helper text for the autopilot widget that describes feature a little."
+                : "Autopilot automatically invests your spare change into a diversified portfolio based on your risk profile, rebalancing it over time.";
+            } else if (key === "etf") {
+              document.getElementById("etf-helper").textContent = expanded
+                ? "ETF is an investment basket that includes different stocks and bonds. Buying an ETF lets you diversify your investments with just one transaction"
+                : "ETFs trade on exchanges just like stocks, track an index or sector, and typically carry lower fees than actively managed funds.";
+            }
+          });
+        });
+
+        // Discovery: stock cards + ETF rows -> toast feedback
+        document.querySelectorAll(".stock-card, .etf-row").forEach((el) => {
+          el.addEventListener("click", () => showToast(el.dataset.name));
+        });
+
+        // News carousel: scroll updates the active dot; dots jump-scroll
+        const newsScroller = document.getElementById("discovery-news");
+        const newsDots = document.getElementById("discovery-news-dots");
+        const newsCards = Array.from(newsScroller.children);
+        newsDots.addEventListener("click", (e) => {
+          const dot = e.target.closest(".discovery-dots__dot");
+          if (!dot) return;
+          newsCards[Number(dot.dataset.newsIndex)].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+        });
+        let newsScrollTimer = null;
+        newsScroller.addEventListener("scroll", () => {
+          clearTimeout(newsScrollTimer);
+          newsScrollTimer = setTimeout(() => {
+            const cardWidth = newsCards[0].getBoundingClientRect().width + 12;
+            const idx = Math.max(0, Math.min(newsCards.length - 1, Math.round(newsScroller.scrollLeft / cardWidth)));
+            newsDots.querySelectorAll(".discovery-dots__dot").forEach((d, i) => {
+              d.classList.toggle("discovery-dots__dot--active", i === idx);
+            });
+          }, 100);
+        });
       })();
 
       // Account card: eye icon toggles masking the balance.
