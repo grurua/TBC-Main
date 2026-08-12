@@ -3289,10 +3289,11 @@ body {
 .pay-card__all:active {
   opacity: 0.7;
 }
-.pay-card__head-links {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+
+.amt-currency {
+  font-size: 0.85em;
+  font-weight: 500;
+  color: var(--color-text-softer-default);
 }
 
 .pay-mobiles {
